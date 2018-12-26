@@ -1,0 +1,26 @@
+[
+	{
+		"id": 1,
+		"name": "Hans solo",
+		"city": "Corellia",
+		"phone": "333-222-0982"
+	},
+	{
+		"id": 2,
+		"name": "Princes Leia",
+		"city": "Alderaan.",
+		"phone": "233-232-0982"
+	},
+	{
+		"id": 3,
+		"name": "Obi Wan",
+		"city": "Coruscant",
+		"phone": "333-000-0982"
+	},
+	{
+		"id": 4,
+		"name": "Luke SkyWalker",
+		"city": "Naboo",
+		"phone": "021-989-1112"
+	}
+]
