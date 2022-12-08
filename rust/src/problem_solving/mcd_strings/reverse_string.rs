@@ -28,4 +28,9 @@ mod tests {
     fn it_works_to_reverse_string() {
         assert_eq!(reverse_string("abc"), "cba");
     }
+
+    #[test]
+    fn it_works_to_reverse_string_recursive() {
+        assert_eq!(reverse_recursive("abc"), "cba");
+    }
 }
