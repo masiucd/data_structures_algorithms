@@ -1,1 +1,1 @@
-/Users/marcis/masiu/data_structures_and_algorithms_ts/rust/target/debug/rust: /Users/marcis/masiu/data_structures_and_algorithms_ts/rust/src/main.rs
+/Users/marcis/masiu/ds_a_al/rust/target/debug/rust: /Users/marcis/masiu/ds_a_al/rust/src/main.rs /Users/marcis/masiu/ds_a_al/rust/src/problem_solving/mcd_strings/mod.rs /Users/marcis/masiu/ds_a_al/rust/src/problem_solving/mcd_strings/reverse_string.rs /Users/marcis/masiu/ds_a_al/rust/src/problem_solving/mod.rs
