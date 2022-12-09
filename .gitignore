@@ -1,5 +1,4 @@
-.env
-.vscode/
-coverage/
-cov/
-lcov/
+./rust/target
+./rust/target/*
+/rust/target/*
+rust/target/*

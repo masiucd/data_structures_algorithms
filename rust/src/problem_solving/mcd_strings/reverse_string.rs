@@ -1,3 +1,4 @@
+#[allow(dead_code)]
 pub fn reverse_string(input: &str) -> String {
     let mut reversed = String::new();
     for c in input.chars().rev() {
