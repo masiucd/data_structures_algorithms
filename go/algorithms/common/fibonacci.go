@@ -26,3 +26,14 @@ func fibonacciMemo(n int, cache map[int]int) int {
 	}
 	return cache[n]
 }
+
+func fibIter(n int) int {
+	a, b := 1, 1
+	var next int
+	for i := 1; i < n; i++ {
+		next = a + b
+		a = b
+		b = next
+	}
+	return a
+}
