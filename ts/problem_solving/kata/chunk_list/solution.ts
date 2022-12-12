@@ -1,10 +1,8 @@
-function chunkList(list: number[], k: number): number[][] {
-  const result = []
+export function solution<T>(list: T[], k: number): T[][] {
+  const result: T[][] = []
   for (let i = 0; i < list.length; i += k) {
     const xs = list.slice(i, i + k)
     result.push(xs)
   }
   return result
 }
-
-console.log(chunkList([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 3))
