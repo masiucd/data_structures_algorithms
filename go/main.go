@@ -1,27 +1,22 @@
 package main
 
-import (
-	"data_structures_algos_go/data_structures/stack"
-	"fmt"
-	"log"
-)
+import "fmt"
 
 func main() {
-	s := stack.NewStack()
-	s.Push(5)
-	s.Push(2)
-	s.Push(3)
-	s.Push(312)
-	s.Push(1)
-	x, err := s.Peek()
-	if err != nil {
-		log.Fatal(err)
+
+	fmt.Println(solution(2, 6, 2)) // 12
+	fmt.Println(solution(1, 5, 1)) // 15
+	fmt.Println(solution(1, 5, 3)) // 15
+
+}
+
+func solution(start, end, step int) int {
+	if start > end {
+		return 0
 	}
-	pop, err := s.Pop()
-	if err != nil {
-		return
+	var result int
+	for i := start; i <= end; i += step {
+		result += i
 	}
-	fmt.Println(x)
-	x, _ = s.Peek()
-	fmt.Println(x)
+	return result
 }

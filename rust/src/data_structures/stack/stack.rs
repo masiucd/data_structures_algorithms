@@ -32,6 +32,7 @@ impl StackPush for Stack {
     }
 }
 
+#[allow(dead_code)]
 pub fn new() -> Stack {
     Stack { stack: Vec::new() }
 }

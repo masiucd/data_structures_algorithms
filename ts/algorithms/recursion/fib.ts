@@ -13,7 +13,3 @@ function fibMemo(n: number, memo: Record<number, number>): number {
   memo[n] = result
   return result
 }
-
-// console.time("start")
-// console.log(fibMemo(100, {}))
-// console.timeEnd("start")
