@@ -1,4 +1,4 @@
-package sum_of_sequance
+package sum_of_sequence
 
 import (
 	"fmt"

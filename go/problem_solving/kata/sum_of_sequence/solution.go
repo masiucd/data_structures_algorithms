@@ -1,4 +1,4 @@
-package sum_of_sequance
+package sum_of_sequence
 
 func solution(start, end, step int) int {
 	if start > end {
