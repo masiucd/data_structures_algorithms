@@ -20,8 +20,8 @@ func twoSumOne(nums []int, target int) []int {
 func twoSumTwo(nums []int, target int) []int {
 	store := make(map[int]int)
 	for currentIndex, v := range nums {
-		if prevIndex, ok := store[target-v]; ok {
-			return []int{prevIndex, currentIndex}
+		if foundIndex, ok := store[target-v]; ok {
+			return []int{foundIndex, currentIndex}
 		}
 		store[v] = currentIndex
 	}

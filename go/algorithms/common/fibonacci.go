@@ -11,14 +11,14 @@ func fibonacciSequence(n int) []int {
 }
 
 func fibonacci(n int) int {
-	if n < 2 {
+	if n <= 1 {
 		return n
 	}
 	return fibonacci(n-1) + fibonacci(n-2)
 }
 
 func fibonacciMemo(n int, cache map[int]int) int {
-	if n < 2 {
+	if n <= 1 {
 		return n
 	}
 	if _, ok := cache[n]; !ok {
@@ -36,4 +36,19 @@ func fibIter(n int) int {
 		b = next
 	}
 	return a
+}
+
+func fibonacciBottomUp(n int) int {
+	if n < 2 {
+		return n
+	}
+	dp := [2]int{0, 1}
+	i := 2
+	for i <= n {
+		tmp := dp[1]
+		dp[1] = dp[0] + dp[1]
+		dp[0] = tmp
+		i++
+	}
+	return dp[1]
 }
