@@ -1,1 +1,0 @@
-/Users/marcis/masiu/ds_a_al/rust/target/debug/rust: /Users/marcis/masiu/ds_a_al/rust/src/data_structures/mod.rs /Users/marcis/masiu/ds_a_al/rust/src/data_structures/stack/mod.rs /Users/marcis/masiu/ds_a_al/rust/src/data_structures/stack/stack.rs /Users/marcis/masiu/ds_a_al/rust/src/main.rs
