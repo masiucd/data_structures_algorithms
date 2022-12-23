@@ -1,9 +1,7 @@
 mod algo;
 mod data_structures;
 mod problem_solving;
-fn main() {
-    let xs = vec!["zone", "abigail", "theta", "form", "libe", "zas"];
-    let res = problem_solving::kata::longest_consent::solution(&xs, 2);
 
-    println!("{}", algo::recursion::sum::sum(vec![1, 2, 3]))
+fn main() {
+  println!("{}", problem_solving::math::is_prime::is_prime(11))
 }
