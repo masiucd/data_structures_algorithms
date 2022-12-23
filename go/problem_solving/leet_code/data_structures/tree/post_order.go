@@ -1,6 +1,6 @@
 package tree
 
-import "data_structures_algos_go/common/tree"
+import "data_structures_algos_go/algorithms/tree"
 
 /**
  * Definition for a binary tree node.
