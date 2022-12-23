@@ -1,6 +1,6 @@
 package can_reach_leaf
 
-import "data_structures_algos_go/common/tree"
+import "data_structures_algos_go/algorithms/tree"
 
 //Determine if a path exists from the root of the tree to a lead node. It may NOT contain any zeroes.
 

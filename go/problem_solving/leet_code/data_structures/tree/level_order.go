@@ -1,6 +1,6 @@
 package tree
 
-import "data_structures_algos_go/common/tree"
+import "data_structures_algos_go/algorithms/tree"
 
 // https://leetcode.com/problems/binary-tree-level-order-traversal/
 func levelOrder(root *tree.TreeNode) [][]int {

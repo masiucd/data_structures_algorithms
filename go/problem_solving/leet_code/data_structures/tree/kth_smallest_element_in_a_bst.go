@@ -1,6 +1,6 @@
 package tree
 
-import "data_structures_algos_go/common/tree"
+import "data_structures_algos_go/algorithms/tree"
 
 /**
  * Definition for a binary tree node.
@@ -25,7 +25,7 @@ func kthSmallest(root *tree.TreeNode, k int) int {
 		// Process the node (ie: decrement the k) and check if condition is met
 		curr = stack[len(stack)-1]
 		stack = stack[:len(stack)-1]
-		k -= 1
+		k--
 		if k == 0 {
 			return curr.Val
 		}

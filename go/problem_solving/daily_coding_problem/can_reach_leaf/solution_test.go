@@ -1,10 +1,11 @@
 package can_reach_leaf
 
 import (
-	"data_structures_algos_go/common/tree"
+	"data_structures_algos_go/algorithms/tree"
 	"fmt"
-	"github.com/stretchr/testify/assert"
 	"testing"
+
+	"github.com/stretchr/testify/assert"
 )
 
 func TestCanReachLeaf(t *testing.T) {
