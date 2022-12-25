@@ -16,9 +16,20 @@ export function snail(list: number[][]): number[] {
   }
   return result
 }
-const list = [
-  [1, 2, 3],
-  [4, 5, 6],
-  [7, 8, 9],
-]
-console.log(snail(list))
+
+export function snailTwo(list: number[][]): number[] {
+  const result: number[] = []
+  while (list.length > 0) {
+    result.push(...list.shift()!)
+    list.forEach(row => result.push(row.pop()!))
+    list.reverse().forEach(row => row.reverse())
+  }
+  return result
+}
+
+// const list = [
+//   [1, 2, 3],
+//   [4, 5, 6],
+//   [7, 8, 9],
+// ]
+// console.log(snail(list))
