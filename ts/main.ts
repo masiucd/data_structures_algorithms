@@ -1,28 +1,15 @@
-const root = {
-  key: "A",
-  children: [
-    {key: "B", children: [{key: "D", children: []}]},
-    {
-      key: "C",
-      children: [
-        {
-          key: "E",
-          children: [
-            {key: "F", children: []},
-            {key: "G", children: [{key: "H", children: []}]},
-          ],
-        },
-      ],
-    },
-  ],
-}
-function recursiveSum(xs: number[]) {
-  if (xs.length === 0) {
-    return 0
+function snail(list: number[][]): number[] {
+  const result: number[] = []
+  for (let i = 0; i < list.length; i++) {
+    const rows = list[i]
+    // const colsLength = rows.length
+    console.log(rows)
   }
-  const head = xs[0]
-  const tail = xs.slice(1)
-  return head + recursiveSum(tail)
+  return result
 }
-
-console.log(recursiveSum([1, 2, 3, 4]))
+const list = [
+  [1, 2, 3],
+  [4, 5, 6],
+  [7, 8, 9],
+]
+console.log(snail(list))
