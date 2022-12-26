@@ -24,3 +24,14 @@ function binaryNumbers(from: number, to: number) {
 // 1010
 // 1000
 // console.log(10 & 9) // 1000 --> 8
+
+export function countBits(n: number) {
+  let count = 0
+  while (n > 0) {
+    if ((n & 1) === 1) {
+      count++
+    }
+    n = n >> 1
+  }
+  return count
+}
