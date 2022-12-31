@@ -3,16 +3,15 @@ package main
 import "fmt"
 
 func main() {
-
-	fmt.Println(reverseString("hello"))
-
+	fmt.Println(perimeter(5)) // 80
+	fmt.Println(perimeter(7))
+	fmt.Println(perimeter(20))
 }
 
-func reverseString(str string) string {
-	if len(str) == 0 {
-		return str
+func perimeter(n int) int {
+	a, b := 1, 1
+	for i := 0; i < n+1; i++ {
+		a, b = b, a+b
 	}
-	head := string(str[0])
-	tail := str[1:]
-	return reverseString(tail) + head
+	return 4 * (b - 1)
 }
