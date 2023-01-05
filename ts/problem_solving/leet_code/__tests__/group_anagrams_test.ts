@@ -1,4 +1,4 @@
-import {assertEquals} from "https://deno.land/std@0.153.0/testing/asserts.ts"
+import {assertEquals} from "../../../dev_deps.ts"
 import {groupAnagrams} from "../group_anagrams/group_anagrams.ts"
 
 Deno.test("groupAnagrams it works with fully list", () => {
