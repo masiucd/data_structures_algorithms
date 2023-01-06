@@ -3,15 +3,18 @@ package main
 import "fmt"
 
 func main() {
-	fmt.Println(perimeter(5)) // 80
-	fmt.Println(perimeter(7))
-	fmt.Println(perimeter(20))
+	fmt.Println(containsNearbyDuplicate([]int{1, 2, 3, 1}, 3))
+	fmt.Println(containsNearbyDuplicate([]int{1, 0, 1, 1}, 1))
+	fmt.Println(containsNearbyDuplicate([]int{1, 2, 3, 1, 2, 3}, 2))
 }
 
-func perimeter(n int) int {
-	a, b := 1, 1
-	for i := 0; i < n+1; i++ {
-		a, b = b, a+b
+func containsNearbyDuplicate(nums []int, k int) bool {
+	store := make(map[int]int)
+	for i := 0; i < len(nums); i++ {
+		if storedIndex, ok := store[nums[i]]; ok && i-storedIndex <= k {
+			return true
+		}
+		store[nums[i]] = i
 	}
-	return 4 * (b - 1)
+	return false
 }

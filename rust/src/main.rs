@@ -5,20 +5,8 @@ mod data_structures;
 mod problem_solving;
 
 fn main() {
-    println!(
-        "{}",
-        problem_solving::kata::clean_string::solution("abc#d##c")
-    );
-
-    println!(
-        "{:?}",
-        problem_solving::kata::group_anagrams::group_anagrams(vec![
-            "eat".to_string(),
-            "tea".to_string(),
-            "tan".to_string(),
-            "ate".to_string(),
-            "nat".to_string(),
-            "bat".to_string()
-        ])
-    );
+  let nums = vec![1, 2, 3, 1];
+  let k = 3;
+  let result = problem_solving::kata::contains_nearby_duplicate::contains_nearby_duplicate(nums, k);
+  println!("result: {}", result);
 }
