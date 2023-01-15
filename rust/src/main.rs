@@ -1,5 +1,3 @@
-use std::collections::HashMap;
-
 mod algo;
 mod data_structures;
 mod problem_solving;

@@ -1,3 +1,4 @@
+#[allow(dead_code)]
 pub fn solution(nums: Vec<i32>) -> i32 {
   let mut smallest = nums[0];
   for num in nums {

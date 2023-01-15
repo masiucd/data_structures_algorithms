@@ -1,3 +1,4 @@
+#[allow(dead_code)]
 pub fn solution(slice: &[i32]) -> i32 {
   slice
     .iter()
