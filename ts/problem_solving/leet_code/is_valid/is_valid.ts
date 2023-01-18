@@ -19,6 +19,23 @@ export function isValid(s: string): boolean {
   return stack.length === 0
 }
 
-console.log(isValid("()")) // true
-console.log(isValid("()[]{}")) // true
-console.log(isValid("(]")) // false
+export function isValidTwo(s: string) {
+  const stack: string[] = []
+  for (const c of s) {
+    switch (c) {
+      case ")":
+        return stack.pop() === "("
+      case "]":
+        return stack.pop() === "["
+      case "}":
+        return stack.pop() === "{"
+      default:
+        stack.push(c)
+    }
+  }
+  return stack.length === 0
+}
+
+console.log(isValidTwo("()")) // true
+console.log(isValidTwo("()[]{}")) // true
+console.log(isValidTwo("(]")) // false
