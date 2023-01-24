@@ -1,4 +1,10 @@
-const treeData = [
+type Node = {
+  id: number
+  title: string
+  parentId: number | null
+  children: Node[]
+}
+export const treeData: Node[] = [
   {
     id: 1,
     title: "Europe",
@@ -57,3 +63,38 @@ const treeData = [
     ],
   },
 ]
+
+function findNode(treeData: Node[], id: number, node: Node | null = null) {
+  for (const n of treeData) {
+    if (n.id === id) {
+      return n
+    }
+    if (n.children.length > 0) {
+      node = findNode(n.children, id, node)
+      if (node) {
+        return node
+      }
+    }
+  }
+
+  return null
+}
+
+function findNode2(treeData, id) {
+  let foundNode = treeData.find((node) => node.id === id)
+  if (foundNode) {
+    return foundNode
+  } else {
+    for (let i = 0; i < treeData.length; i++) {
+      if (treeData[i].children) {
+        foundNode = findNode(treeData[i].children, id)
+        if (foundNode) {
+          return foundNode
+        }
+      }
+    }
+  }
+  return null
+}
+
+console.log(findNode2(treeData, 5))
