@@ -4,12 +4,10 @@ export function moreZeros(s: string) {
     const [zeros, ones] = countZerosAndOnesInBinary(
       charToBinary(char.charAt(0))
     )
-    console.log({zeros, ones})
     if (zeros > ones) {
       charsWithMoreZeros.push(char)
     }
   }
-
   return [...new Set(charsWithMoreZeros)]
 }
 
