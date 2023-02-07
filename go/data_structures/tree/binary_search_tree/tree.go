@@ -28,7 +28,7 @@ func (bst *Bst) Insert(key int) {
 
 	} else {
 		current := bst.Root
-		for true {
+		for {
 			if key < current.Value {
 				//	go left
 				if current.Left != nil {
@@ -193,4 +193,18 @@ func (bst *Bst) BreadthFirstSearch() []int {
 		level++
 	}
 	return result
+}
+
+func max(a, b int) int {
+	if a > b {
+		return a
+	}
+	return b
+}
+
+func (bst *Bst) MaxDepth(root *Node) int {
+	if bst.Root == nil {
+		return 0
+	}
+	return max(bst.MaxDepth(bst.Root.Left), bst.MaxDepth(bst.Root.Left)) + 1
 }
