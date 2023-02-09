@@ -21,7 +21,8 @@ pub fn is_valid(s: &str) -> bool {
     stack.is_empty()
 }
 
-fn is_valid_two(s: &str) -> bool {
+#[allow(dead_code)]
+pub fn is_valid_two(s: &str) -> bool {
     let mut stack = vec![];
     for ch in s.chars() {
         match ch {
