@@ -208,3 +208,15 @@ func (bst *Bst) MaxDepth(root *Node) int {
 	}
 	return max(bst.MaxDepth(bst.Root.Left), bst.MaxDepth(bst.Root.Left)) + 1
 }
+
+// Count the number of nodes in the tree
+func (bst *Bst) CountNodes() int {
+	return countNodesHelper(bst.Root)
+}
+
+func countNodesHelper(root *Node) int {
+	if root == nil {
+		return 0
+	}
+	return (countNodesHelper(root.Left) + countNodesHelper(root.Right)) + 1
+}
