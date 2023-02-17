@@ -10,3 +10,9 @@ export function zipWith(
   }
   return result
 }
+
+export const zipWith2 = (
+  f: (n: number, b: number) => number,
+  a: number[],
+  b: number[]
+) => Array.from({length: Math.min(a.length, b.length)}, (_, i) => f(a[i], b[i]))
