@@ -27,3 +27,16 @@ func twoSumTwo(nums []int, target int) []int {
 	}
 	return []int{}
 }
+
+func twoSum3(nums []int, target int) []int {
+	var result []int
+	store := make(map[int]int)
+	for currentIndex, v := range nums {
+		if storedIndex, ok := store[target-v]; ok {
+			result = append(result, storedIndex, currentIndex)
+			break
+		}
+		store[v] = currentIndex
+	}
+	return result
+}
