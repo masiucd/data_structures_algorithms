@@ -1,8 +1,9 @@
 package two_sum
 
 import (
-	"github.com/stretchr/testify/assert"
 	"testing"
+
+	"github.com/stretchr/testify/assert"
 )
 
 func TestTwoSumOne(t *testing.T) {
@@ -17,6 +18,13 @@ func TestTwoSumOne(t *testing.T) {
 	for i := range expected {
 		assert.Equal(t, expected[i], actual[i], "Didn't match")
 	}
+
+	expected = twoSum3([]int{3, 2, 4}, 6)
+	actual = []int{1, 2}
+	for i := range expected {
+		assert.Equal(t, expected[i], actual[i], "Didn't match")
+	}
+
 }
 
 func TestTwoSumTwo(t *testing.T) {
@@ -27,6 +35,12 @@ func TestTwoSumTwo(t *testing.T) {
 	}
 
 	expected = twoSumTwo([]int{3, 2, 4}, 6)
+	actual = []int{1, 2}
+	for i := range expected {
+		assert.Equal(t, expected[i], actual[i], "Didn't match")
+	}
+
+	expected = twoSum3([]int{3, 2, 4}, 6)
 	actual = []int{1, 2}
 	for i := range expected {
 		assert.Equal(t, expected[i], actual[i], "Didn't match")
