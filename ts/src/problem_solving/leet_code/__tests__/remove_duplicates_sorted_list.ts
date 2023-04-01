@@ -1,4 +1,5 @@
-import {assertEquals} from "../../../dev_deps.ts"
+import {assertEquals} from "~/dev_deps.ts"
+
 import {
   removeDuplicatesFromSortedList,
   removeDuplicates,

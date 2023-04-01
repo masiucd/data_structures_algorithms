@@ -1,4 +1,4 @@
-import {assertEquals} from "../../../dev_deps.ts"
+import {assertEquals} from "~/dev_deps.ts"
 import {plusOne, plusOne2} from "../plus_one/solution.ts"
 
 Deno.test("plusOne it works with fully list", () => {
