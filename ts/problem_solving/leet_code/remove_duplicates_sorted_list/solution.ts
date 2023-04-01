@@ -1,7 +1,12 @@
-function removeDuplicatesFromSortedList(head: ListNode) {
+export interface ListNode {
+  value: number
+  next: ListNode | null
+}
+
+export function removeDuplicatesFromSortedList(head: ListNode) {
   let current: ListNode | null = head
   while (current) {
-    while (current.next !== null && current.next.val === current.val) {
+    while (current.next !== null && current.next.value === current.value) {
       current.next = current.next.next
     }
     current = current.next
@@ -9,19 +14,23 @@ function removeDuplicatesFromSortedList(head: ListNode) {
   return head
 }
 
-const head = {
-  val: 1,
-  next: {
-    val: 1,
-    next: {
-      val: 2,
-      next: {
-        val: 3,
-        next: {
-          val: 3,
-          next: null,
-        },
-      },
-    },
-  },
+export function removeDuplicates(head: ListNode) {
+  let current: ListNode | null = head
+  while (current && current.next !== null) {
+    if (current.value === current.next.value) {
+      current.next = current.next.next
+    }
+    current = current.next
+  }
+  return head
+}
+
+export function getNodes(node: ListNode) {
+  const xs: number[] = []
+  let current: ListNode | null = node
+  while (current !== null) {
+    xs.push(current.value)
+    current = current.next
+  }
+  return xs
 }
