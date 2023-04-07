@@ -1,4 +1,4 @@
-import {assertEquals} from "../../../dev_deps.ts"
+import {assertEquals} from "~/dev_deps.ts"
 import {brackets, isValid, isValidTwo} from "../is_valid/is_valid.ts"
 
 Deno.test("isValid it works with fully list", () => {

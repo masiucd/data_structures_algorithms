@@ -1,4 +1,4 @@
-import {assertEquals} from "../../../dev_deps.ts"
+import {assertEquals} from "~/dev_deps.ts"
 import {fromRomanToInt} from "../roman_to_int/solution.ts"
 
 Deno.test("fromRomanToInt it works with fully list", () => {

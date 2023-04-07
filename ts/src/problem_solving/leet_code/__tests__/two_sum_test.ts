@@ -1,4 +1,4 @@
-import {assertEquals} from "../../../dev_deps.ts"
+import {assertEquals} from "~/dev_deps.ts"
 import {twoSum} from "../two_sum/solution.ts"
 
 Deno.test("twoSum it works", () => {
