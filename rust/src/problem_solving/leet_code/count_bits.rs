@@ -4,7 +4,7 @@ pub fn count_bits(n: i32) -> i32 {
     .chars()
     .map(|c| c.to_string())
     .map(|s| s.parse::<i32>().unwrap())
-    .filter(|x| x == &1)
+    .filter(|&x| x == 1)
     .collect::<Vec<_>>()
     .len() as i32
 }
