@@ -1,3 +1,5 @@
+pub mod contains_duplicates;
+pub mod count_bits;
 pub mod find_first_matching_index;
 pub mod get_concatenation;
 pub mod len_of_last_word;
@@ -7,4 +9,3 @@ pub mod roman_to_int;
 pub mod single_number;
 pub mod solutions;
 pub mod two_sum;
-pub mod count_bits;
