@@ -9,3 +9,4 @@ pub mod roman_to_int;
 pub mod single_number;
 pub mod solutions;
 pub mod two_sum;
+pub mod happy_number;
