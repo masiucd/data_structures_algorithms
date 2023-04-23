@@ -6,7 +6,7 @@ pub mod len_of_last_word;
 pub mod longest_common_prefix;
 pub mod plus_ons;
 pub mod roman_to_int;
+pub mod happy_number;
 pub mod single_number;
 pub mod solutions;
 pub mod two_sum;
-pub mod happy_number;
