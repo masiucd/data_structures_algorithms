@@ -53,10 +53,27 @@ export class LinkedList<T> implements ListAble<T> {
     this.len++
   }
   get(index: number): T | null {
-    throw new Error("Method not implemented.")
+    if (!this.head) return null
+    if (index < 0 || index >= this.len) throw new Error("Index out of range")
+    let current: Node<T> | null = this.head
+    let count = 0
+    while (current !== null) {
+      if (index === count) {
+        return current.value
+      }
+      count++
+      current = current.next
+    }
+    return null
   }
   delete(index: number): void {
-    throw new Error("Method not implemented.")
+    if (!this.head) return
+    if (index < 0 || index >= this.len) throw new Error("Index out of range")
+    if (index === 0) {
+      this.head = this.head!.next
+      this.len--
+      return
+    }
   }
   insert(index: number, value: T): void {
     throw new Error("Method not implemented.")
