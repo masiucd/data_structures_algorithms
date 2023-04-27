@@ -71,9 +71,22 @@ export class LinkedList<T> implements ListAble<T> {
     if (index < 0 || index >= this.len) throw new Error("Index out of range")
     if (index === 0) {
       this.head = this.head!.next
+      this.tail = this.head === null ? null : this.tail
       this.len--
       return
     }
+    if (index === this.getSize() - 1) {
+      const prevTail = this.getNode(index - 1) as Node<T>
+      prevTail.next = null
+      this.tail = prevTail
+      this.len--
+      return
+    }
+    const prevNode = this.getNode(index - 1) as Node<T>
+    let nodeToRemove = prevNode.next
+    prevNode.next = nodeToRemove!.next
+    nodeToRemove = null
+    this.len--
   }
   insert(index: number, value: T): void {
     throw new Error("Method not implemented.")
@@ -95,5 +108,20 @@ export class LinkedList<T> implements ListAble<T> {
   }
   getTail(): T | null {
     return this.tail ? this.tail.value : null
+  }
+
+  private getNode(index: number): Node<T> | null {
+    if (!this.head) return null
+    if (index < 0 || index >= this.len) throw new Error("Index out of range")
+    let current: Node<T> | null = this.head
+    let count = 0
+    while (current !== null) {
+      if (index === count) {
+        return current
+      }
+      count++
+      current = current.next
+    }
+    return null
   }
 }

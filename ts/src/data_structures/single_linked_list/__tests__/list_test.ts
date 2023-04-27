@@ -44,3 +44,36 @@ Deno.test("Get specific node from the list", () => {
   // Get the middle
   assertEquals(list.get(2), 2)
 })
+
+Deno.test("Delete node from the list", () => {
+  const list = new LinkedList<number>()
+  list.append(10)
+  list.prepend(2)
+  list.append(3)
+  list.prepend(100)
+  list.append(7)
+  list.prepend(22)
+  // [22,100,2,10,3,7]
+  assertEquals(list.print(), [22, 100, 2, 10, 3, 7])
+  // Delete the head
+  list.delete(0)
+  assertEquals(list.print(), [100, 2, 10, 3, 7])
+  // Delete the tail
+  list.delete(4)
+  assertEquals(list.print(), [100, 2, 10, 3])
+  // Delete the middle
+  list.delete(2)
+  assertEquals(list.print(), [100, 2, 3])
+  // Delete the last
+  list.delete(2)
+  assertEquals(list.print(), [100, 2])
+  // Delete the first
+  list.delete(0)
+  assertEquals(list.print(), [2])
+  // Delete the only
+  list.delete(0)
+  assertEquals(list.print(), [])
+  assertEquals(list.getSize(), 0)
+  assertEquals(list.getHead(), null)
+  assertEquals(list.getTail(), null)
+})
