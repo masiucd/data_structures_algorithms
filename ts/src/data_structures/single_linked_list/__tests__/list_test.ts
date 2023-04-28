@@ -1,10 +1,6 @@
 import {assertEquals} from "~/dev_deps.ts"
 import {LinkedList} from "../list.ts"
 
-// function constructList() {
-
-// }
-
 Deno.test("Prepend to list", () => {
   const list = new LinkedList<number>()
   list.prepend(10)
@@ -103,4 +99,17 @@ Deno.test("Insert node to the list", () => {
   // Insert at first
   list.insert(0, 0)
   assertEquals(list.print(), [0, 1, 22, 100, 2, 8, 10, 3, 7, 9, 11])
+})
+
+Deno.test("Reverse list", () => {
+  const list = new LinkedList<number>()
+  list.append(10)
+  list.prepend(2)
+  list.append(3)
+  list.prepend(100)
+  list.append(7)
+  list.prepend(22)
+  assertEquals(list.print(), [22, 100, 2, 10, 3, 7])
+  list.reverse()
+  assertEquals(list.print(), [7, 3, 10, 2, 100, 22])
 })

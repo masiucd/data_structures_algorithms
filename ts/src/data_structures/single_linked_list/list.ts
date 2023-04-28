@@ -17,6 +17,7 @@ interface ListAble<T> {
   getSize(): number
   getHead(): T | null
   getTail(): T | null
+  reverse(): void
 }
 
 export class LinkedList<T> implements ListAble<T> {
@@ -28,6 +29,20 @@ export class LinkedList<T> implements ListAble<T> {
     this.head = null
     this.tail = null
     this.len = 0
+  }
+  reverse(): void {
+    if (!this.head) return
+    let prev = null
+    let current = this.head as Node<T> | null
+    let next = null
+    while (current !== null) {
+      next = current.next
+      current.next = prev
+      prev = current
+      current = next
+    }
+    this.tail = this.head
+    this.head = prev
   }
 
   prepend(value: T): void {
