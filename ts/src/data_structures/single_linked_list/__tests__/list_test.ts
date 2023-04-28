@@ -77,3 +77,30 @@ Deno.test("Delete node from the list", () => {
   assertEquals(list.getHead(), null)
   assertEquals(list.getTail(), null)
 })
+
+Deno.test("Insert node to the list", () => {
+  const list = new LinkedList<number>()
+  list.append(10)
+  list.prepend(2)
+  list.append(3)
+  list.prepend(100)
+  list.append(7)
+  list.prepend(22)
+  // [22,100,2,10,3,7]
+  assertEquals(list.print(), [22, 100, 2, 10, 3, 7])
+  // Insert at head
+  list.insert(0, 1)
+  assertEquals(list.print(), [1, 22, 100, 2, 10, 3, 7])
+  // Insert at tail
+  list.insert(7, 9)
+  assertEquals(list.print(), [1, 22, 100, 2, 10, 3, 7, 9])
+  // Insert at middle
+  list.insert(4, 8)
+  assertEquals(list.print(), [1, 22, 100, 2, 8, 10, 3, 7, 9])
+  // Insert at last
+  list.insert(9, 11)
+  assertEquals(list.print(), [1, 22, 100, 2, 8, 10, 3, 7, 9, 11])
+  // Insert at first
+  list.insert(0, 0)
+  assertEquals(list.print(), [0, 1, 22, 100, 2, 8, 10, 3, 7, 9, 11])
+})

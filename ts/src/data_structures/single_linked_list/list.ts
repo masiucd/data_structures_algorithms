@@ -89,7 +89,22 @@ export class LinkedList<T> implements ListAble<T> {
     this.len--
   }
   insert(index: number, value: T): void {
-    throw new Error("Method not implemented.")
+    if (index < 0) {
+      throw new Error("Index out of range")
+    }
+    if (index === 0) {
+      this.prepend(value)
+      return
+    }
+    if (index >= this.getSize() - 1) {
+      this.append(value)
+      return
+    }
+    const newNode = new Node(value)
+    const prevNode = this.getNode(index - 1) as Node<T>
+    newNode.next = prevNode.next
+    prevNode.next = newNode
+    this.len++
   }
   print(): T[] {
     const result: T[] = []
