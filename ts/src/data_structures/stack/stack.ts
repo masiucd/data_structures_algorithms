@@ -15,18 +15,23 @@ export class Stack<T> implements StackAble<T> {
     this.container = new LinkedList<T>()
   }
   push(value: T): void {
-    throw new Error("Method not implemented.")
+    this.container.append(value)
   }
   pop(): T | null {
-    throw new Error("Method not implemented.")
+    const removed = this.container.getTail()
+    this.container.delete(this.container.getSize() - 1)
+    return removed
   }
   peek(): T | null {
-    throw new Error("Method not implemented.")
+    return this.container.getTail()
   }
   getSize(): number {
-    throw new Error("Method not implemented.")
+    return this.container.getSize()
   }
   isEmpty(): boolean {
-    throw new Error("Method not implemented.")
+    return this.container.getSize() === 0
+  }
+  print(): T[] {
+    return this.container.print()
   }
 }
