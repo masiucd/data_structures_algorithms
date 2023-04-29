@@ -10,3 +10,4 @@ pub mod happy_number;
 pub mod single_number;
 pub mod solutions;
 pub mod two_sum;
+pub mod find_difference;
