@@ -23,6 +23,17 @@ fn reverses_recursion_helper(mut s: String) -> String {
   s
 }
 
+#[allow(dead_code)]
+fn reverse_str_rec(s: &str) -> String {
+  if s.len() == 0 {
+    return String::from("");
+  }
+  let head = &s[0..1];
+  let tail = &s[1..];
+  let res = reverse_str_rec(tail);
+  format!("{}{}", res, head)
+}
+
 #[cfg(test)]
 mod tests {
   use super::*;
@@ -35,5 +46,10 @@ mod tests {
   #[test]
   fn it_works_to_reverse_string_recursive() {
     assert_eq!(reverse_recursive("abc"), "cba");
+  }
+
+  #[test]
+  fn it_works_to_reverse_string_rec() {
+    assert_eq!(reverse_str_rec("abc"), "cba");
   }
 }
