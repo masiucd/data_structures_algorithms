@@ -18,6 +18,7 @@ interface ListAble<T> {
   getHead(): T | null
   getTail(): T | null
   reverse(): void
+  find(value: T): number
 }
 
 export class LinkedList<T> implements ListAble<T> {
@@ -30,6 +31,7 @@ export class LinkedList<T> implements ListAble<T> {
     this.tail = null
     this.len = 0
   }
+
   reverse(): void {
     if (!this.head) return
     let prev = null
@@ -153,5 +155,18 @@ export class LinkedList<T> implements ListAble<T> {
       current = current.next
     }
     return null
+  }
+
+  // recursive
+  find(value: T): number {
+    if (!this.head) return -1
+    let index = 0
+    const find = (node: Node<T> | null, value: T): number => {
+      if (!node) return -1
+      if (node.value === value) return index
+      index++
+      return find(node.next, value)
+    }
+    return find(this.head, value)
   }
 }
