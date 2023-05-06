@@ -16,6 +16,10 @@ interface BstTreeAble<T> {
   printInOrder(): T[]
   printPreOrder(): T[]
   printPostOrder(): T[]
+  dfs(value: T): boolean
+  bfs(value: T): boolean
+  printDFS(): T[]
+  printBFS(): T[]
 }
 
 export class BinarySearchTree<T> implements BstTreeAble<T> {
@@ -78,6 +82,19 @@ export class BinarySearchTree<T> implements BstTreeAble<T> {
     }
     traverse(this.root)
     return result
+  }
+  dfs(value: T): boolean {
+    throw new Error("Method not implemented.")
+  }
+  bfs(value: T): boolean {
+    throw new Error("Method not implemented.")
+  }
+
+  printDFS(): T[] {
+    throw new Error("Method not implemented.")
+  }
+  printBFS(): T[] {
+    throw new Error("Method not implemented.")
   }
 }
 
