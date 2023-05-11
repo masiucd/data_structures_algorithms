@@ -8,9 +8,9 @@ pub fn bs_search(xs: &Vec<i32>, target: i32) -> (bool, isize) {
       return (true, middle as isize);
     }
     if target < xs[middle] {
-      end = xs[middle] as usize;
+      end = (xs[middle] - 1) as usize;
     } else {
-      start = xs[middle] as usize;
+      start = (xs[middle] + 1) as usize;
     }
   }
   (false, -1)
@@ -32,5 +32,19 @@ mod tests {
     let xs = vec![1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
     let res = bs_search(&xs, 5);
     assert_eq!(res, (true, 4));
+  }
+
+  #[test]
+  fn test_bs_search_found_2() {
+    let xs = vec![1, 2, 3, 4, 5, 6, 7, 8, 9];
+    let res = bs_search(&xs, 5);
+    assert_eq!(res, (true, 4));
+  }
+
+  #[test]
+  fn test_bs_search_found_3() {
+    let xs = vec![1, 2, 3, 4, 5, 6, 7, 8, 9];
+    let res = bs_search(&xs, 1);
+    assert_eq!(res, (true, 0));
   }
 }
