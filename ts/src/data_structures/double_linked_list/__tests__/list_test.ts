@@ -8,3 +8,11 @@ Deno.test("Append", () => {
   list.append(3);
   assertEquals(list.toArray(), [1, 2, 3]);
 });
+
+Deno.test("Prepend", () => {
+  const list = new List<number>();
+  list.prepend(1);
+  list.prepend(2);
+  list.prepend(3);
+  assertEquals(list.toArray(), [3, 2, 1]);
+});

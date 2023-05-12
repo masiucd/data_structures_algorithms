@@ -52,7 +52,17 @@ export class List<T> implements DoubleLinkedListAble<T> {
     }
   }
   prepend(value: T): void {
-    throw new Error("Method not implemented.");
+    const node = new Node(value);
+    if (!this.head) {
+      this.head = node;
+      this.tail = node;
+      this.len++;
+      return;
+    }
+    node.next = this.head;
+    this.head.prev = node;
+    this.head = node;
+    this.len++;
   }
   insert(value: T, index: number): void {
     throw new Error("Method not implemented.");
