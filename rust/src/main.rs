@@ -1,12 +1,11 @@
-use crate::problem_solving::leet_code::count_bits;
-
-mod algo;
-mod data_structures;
-mod problem_solving;
+// Name of the project: rust
+use rust::algos::bits::count;
+use rust::common;
+use rust::math;
 
 fn main() {
-  let res = count_bits::count_bits(5);
-  // print as binary
-  println!("binary: {:b}", 5);
-  println!("res: {}", res);
+  let xs = math::prime::prime_nums_from_range(1, 10);
+  println!("{:?}", xs);
+  let r = math::prime::is_prime(4);
+  println!("{}", r);
 }
