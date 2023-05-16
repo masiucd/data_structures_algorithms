@@ -5,7 +5,7 @@ interface DoubleLinkedListAble<T> {
   remove(index: number): void;
   removeFirst(): void;
   removeLast(): void;
-  get(index: number): T;
+  get(index: number): T | null;
   getFirst(): T | null;
   getLast(): T | null;
   size(): number;
@@ -76,8 +76,35 @@ export class List<T> implements DoubleLinkedListAble<T> {
   removeLast(): void {
     throw new Error("Method not implemented.");
   }
-  get(index: number): T {
-    throw new Error("Method not implemented.");
+  get(index: number): T | null {
+    if (index < 0 || index > this.len) {
+      throw new Error("Index out of range");
+    }
+    // check if we should traverse from tail or head
+    const middle = Math.floor(this.len / 2);
+    let count = 0;
+    let current = this.head;
+    if (index <= middle) {
+      // traverse from head
+      while (current) {
+        if (count === index) {
+          return current.value;
+        }
+        current = current.next;
+        count++;
+      }
+    }
+    // traverse from tail
+    current = this.tail;
+    count = this.len - 1;
+    while (current) {
+      if (count === index) {
+        return current.value;
+      }
+      current = current.prev;
+      count--;
+    }
+    return null;
   }
   getFirst(): T | null {
     if (this.head) {
