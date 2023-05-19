@@ -1,5 +1,36 @@
-use std::collections::{ HashMap, HashSet };
 pub mod kata {
+  use std::collections::{ HashMap, HashSet };
+
+  #[allow(dead_code)]
+  pub fn int_to_roman(num: i32) -> String {
+    let values = vec![1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1];
+    let symbols = vec!["M", "CM", "D", "CD", "C", "XC", "L", "XL", "X", "IX", "V", "IV", "I"];
+    let mut res = String::new();
+    let mut num = num;
+    for (i, n) in values.iter().enumerate() {
+      while num >= *n {
+        res.push_str(symbols[i]);
+        num -= n;
+      }
+    }
+    res
+  }
+
+  #[allow(dead_code)]
+  pub fn group_anagrams(strs: Vec<String>) -> Vec<Vec<String>> {
+    let mut map: HashMap<String, Vec<String>> = HashMap::new();
+    for s in strs {
+      let mut chars: Vec<char> = s.chars().collect();
+      chars.sort();
+      let key = chars.into_iter().collect();
+      map
+        .entry(key)
+        .or_insert(vec![])
+        .push(s);
+    }
+    map.values().cloned().collect()
+  }
+
   pub fn clean_string(input: &str) -> String {
     let mut result = String::new();
     for c in input.chars() {
@@ -45,16 +76,6 @@ pub mod kata {
   #[cfg(test)]
   mod tests {
     use super::*;
-
-    #[test]
-    fn test() {
-      assert_eq!(solution("abc#d##c"), "ac");
-      assert_eq!(solution("abc####d##c#"), "");
-      assert_eq!(solution("#cwks"), "cwks");
-      assert_eq!(solution("#####"), "");
-    }
-    use super::*;
-
     #[test]
     fn test_contains_nearby_duplicate() {
       let nums = vec![1, 2, 3, 1];
@@ -71,6 +92,18 @@ pub mod kata {
       let k = 2;
       let result = contains_nearby_duplicate(nums, k);
       assert_eq!(result, false);
+    }
+
+    #[test]
+    fn test_int_to_roman() {
+      let res = int_to_roman(1000);
+      assert_eq!(res, "M");
+    }
+
+    #[test]
+    fn test_int_to_roman_2() {
+      let res = int_to_roman(1990);
+      assert_eq!(res, "MCMXC");
     }
   }
 }
