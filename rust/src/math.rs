@@ -1,3 +1,26 @@
+pub mod basics {
+  pub fn average(xs: &Vec<i32>) -> i32 {
+    let size = xs.len() as i32;
+    let sum: i32 = xs.iter().sum();
+    sum / size
+  }
+
+  pub fn median(xs: &Vec<i32>) -> i32 {
+    let size = xs.len() as i32;
+    let middle = (size / 2) as usize;
+    if is_even(size) {
+      println!("middle = {middle}");
+      return xs[middle];
+    }
+    let a = xs[middle];
+    let b = xs[middle + 1];
+    return (a + b) / 2;
+  }
+
+  pub fn is_even(n: i32) -> bool {
+    n % 2 == 0
+  }
+}
 pub mod prime {
   #[allow(dead_code)]
   pub fn is_prime(n: i32) -> bool {
