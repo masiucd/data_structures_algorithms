@@ -1,4 +1,19 @@
 pub mod basics {
+  pub struct Triangle {
+    h: f64,
+    b: f64,
+    c: f64,
+  }
+
+  impl Triangle {
+    pub fn area(&self) -> f64 {
+      (self.h * self.b) / 2.0
+    }
+    pub fn is_pythagoras_formula_possible(&self) -> bool {
+      f64::powf(self.c, 2.0) == f64::powf(self.h, 2.0) + f64::powf(self.b, 2.0)
+    }
+  }
+
   pub fn average(xs: &Vec<i32>) -> i32 {
     if xs.is_empty() {
       return 0;
@@ -58,6 +73,26 @@ pub mod basics {
       assert_eq!(median(&vec![1, 2, 3, 4, 5]), 3.0);
       assert_eq!(median(&vec![1, 2, 3, 4]), 2.5);
       assert_eq!(median(&vec![1, 2, 3, 4, 5, 6]), 3.5);
+    }
+
+    #[test]
+    fn test_triangle() {
+      let t1 = Triangle {
+        h: 100.0,
+        b: 10.0,
+        c: 30.0,
+      };
+      assert!(!t1.is_pythagoras_formula_possible());
+      assert_eq!(t1.area(), 500.0);
+
+      let t1 = Triangle {
+        h: 3.0,
+        b: 4.0,
+        c: 5.0,
+      };
+
+      assert!(t1.is_pythagoras_formula_possible());
+      assert_eq!(t1.area(), 6.0);
     }
   }
 }
