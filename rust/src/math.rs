@@ -1,24 +1,64 @@
 pub mod basics {
   pub fn average(xs: &Vec<i32>) -> i32 {
+    if xs.is_empty() {
+      return 0;
+    }
     let size = xs.len() as i32;
     let sum: i32 = xs.iter().sum();
     sum / size
   }
 
-  pub fn median(xs: &Vec<i32>) -> i32 {
-    let size = xs.len() as i32;
-    let middle = (size / 2) as usize;
-    if is_even(size) {
-      println!("middle = {middle}");
-      return xs[middle];
+  pub fn median(xs: &Vec<i32>) -> f64 {
+    if xs.len() == 0 {
+      return 0.0;
     }
-    let a = xs[middle];
-    let b = xs[middle + 1];
-    return (a + b) / 2;
+    let xs = xs
+      .iter()
+      .map(|x| *x as f64)
+      .collect::<Vec<f64>>();
+
+    if xs.len() == 2 {
+      return (xs[0] + xs[1]) / 2.0;
+    }
+    if xs.len() == 3 {
+      return xs[xs.len() / 2];
+    }
+    let size = xs.len();
+    let middle = (size / 2) as usize;
+    if !is_even(size as i32) {
+      return xs[middle] as f64;
+    }
+    let a = xs[middle - 1];
+    let b = xs[middle];
+    return (a + b) / 2.0;
   }
 
   pub fn is_even(n: i32) -> bool {
     n % 2 == 0
+  }
+
+  #[cfg(test)]
+  mod tests {
+    use super::*;
+    #[test]
+    fn test_average() {
+      assert_eq!(average(&vec![1, 2]), 1);
+      assert_eq!(average(&vec![1, 2, 3]), 2);
+      assert_eq!(average(&vec![1, 2, 4]), 2);
+      assert_eq!(average(&vec![]), 0);
+      assert_eq!(average(&vec![1]), 1);
+      assert_eq!(average(&vec![2]), 2);
+    }
+    #[test]
+    fn test_median() {
+      assert_eq!(median(&vec![]), 0.0);
+      assert_eq!(median(&vec![1]), 1.0);
+      assert_eq!(median(&vec![1, 2]), 1.5);
+      assert_eq!(median(&vec![1, 2, 3]), 2.0);
+      assert_eq!(median(&vec![1, 2, 3, 4, 5]), 3.0);
+      assert_eq!(median(&vec![1, 2, 3, 4]), 2.5);
+      assert_eq!(median(&vec![1, 2, 3, 4, 5, 6]), 3.5);
+    }
   }
 }
 pub mod prime {
