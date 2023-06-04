@@ -2,10 +2,6 @@ pub mod binary_search_tree {
   pub mod bst;
 }
 
-pub mod single_linked_list {
-  pub mod list;
-}
-
 pub mod stack {
   pub mod stack_with_list;
   #[derive(Debug)]

@@ -1,5 +1,5 @@
 pub mod search {
-  pub fn linnear_search(xs: Vec<i32>, x: i32) -> Option<usize> {
+  pub fn linear_search(xs: Vec<i32>, x: i32) -> Option<usize> {
     for (i, &v) in xs.iter().enumerate() {
       if v == x {
         return Some(i);
@@ -40,8 +40,8 @@ pub mod search {
     }
 
     #[test]
-    fn test_linnear_search_it_works() {
-      assert_eq!(linnear_search(vec![1, 2, 3, 4, 5], 3), Some(2));
+    fn test_linear_search_it_works() {
+      assert_eq!(linear_search(vec![1, 2, 3, 4, 5], 3), Some(2));
     }
   }
 }

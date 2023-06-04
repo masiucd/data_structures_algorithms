@@ -1,3 +1,38 @@
+pub mod stats {
+  pub fn calculate_median(nums: &Vec<i32>) -> f64 {
+    let mut nums = nums.clone();
+    nums.sort();
+    let mid = nums.len() / 2;
+    if nums.len() % 2 == 0 {
+      ((nums[mid] + nums[mid - 1]) as f64) / 2.0
+    } else {
+      nums[mid] as f64
+    }
+  }
+
+  pub fn calculate_average(nums: &Vec<i32>) -> f64 {
+    let mut sum = 0;
+    for num in nums {
+      sum += num;
+    }
+    (sum as f64) / (nums.len() as f64)
+  }
+  #[cfg(test)]
+  mod tests {
+    use super::*;
+
+    #[test]
+    fn test_calculate_median_it_works() {
+      assert_eq!(calculate_median(&vec![1, 2, 3, 4, 5]), 3.0);
+      assert_eq!(calculate_median(&vec![1, 2, 3, 4, 5, 6]), 3.5);
+    }
+
+    #[test]
+    fn test_calculate_average_it_works() {
+      assert_eq!(calculate_average(&vec![1, 2, 3, 4, 5]), 3.0);
+    }
+  }
+}
 pub mod prime {
   #[allow(dead_code)]
   pub fn is_prime(n: i32) -> bool {
