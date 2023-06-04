@@ -1,3 +1,41 @@
+pub mod strings {
+  #[allow(dead_code)]
+  pub fn pig_latin(input: &str) -> String {
+    let vowels = ['a', 'e', 'i', 'o', 'u'];
+    let mut res = input.to_string();
+    let first = input.chars().next().unwrap();
+    if vowels.contains(&first) {
+      // add to the end hay to the end of the word
+      res.push_str("-hay");
+    } else if !vowels.contains(&first) {
+      // move the first consonant to the end of the word and add ay
+      res.remove(0);
+      res.push_str(&format!("-{}ay", first));
+    }
+    res
+  }
+
+  #[cfg(test)]
+  mod tests {
+    use super::*;
+    #[test]
+    fn test_pig_latin() {
+      let res = pig_latin("apple");
+      assert_eq!(res, "apple-hay");
+    }
+    #[test]
+    fn test_pig_latin_2() {
+      let res = pig_latin("first");
+      assert_eq!(res, "irst-fay");
+    }
+
+    #[test]
+    fn test_pig_latin_3() {
+      let res = pig_latin("Здравствуйте");
+      assert_eq!(res, "дравствуйте-Зay");
+    }
+  }
+}
 pub mod kata {
   use std::collections::{ HashMap, HashSet };
 
@@ -73,6 +111,25 @@ pub mod kata {
     false
   }
 
+  #[allow(dead_code)]
+  pub fn smallest_int(nums: Vec<i32>) -> i32 {
+    let mut smallest = nums[0];
+    for num in nums {
+      if num < smallest {
+        smallest = num;
+      }
+    }
+    smallest
+  }
+
+  #[allow(dead_code)]
+  pub fn positive_sum(slice: &[i32]) -> i32 {
+    slice
+      .iter()
+      .filter(|x| x.is_positive())
+      .sum()
+  }
+
   #[cfg(test)]
   mod tests {
     use super::*;
@@ -104,6 +161,21 @@ pub mod kata {
     fn test_int_to_roman_2() {
       let res = int_to_roman(1990);
       assert_eq!(res, "MCMXC");
+    }
+
+    #[test]
+    fn test_smallest_int() {
+      assert_eq!(smallest_int(vec![1]), 1);
+      assert_eq!(smallest_int(vec![1, 2, 3]), 1);
+      assert_eq!(smallest_int(vec![1, 2, -3]), -3);
+      assert_eq!(smallest_int(vec![1, -2, 3]), -2);
+    }
+
+    #[test]
+    fn test_positive_sum() {
+      assert_eq!(positive_sum(&vec![1, 2, 3, 4]), 10);
+      assert_eq!(positive_sum(&vec![1, 2, 3, 4, -10]), 10);
+      assert_eq!(positive_sum(&vec![1, 2, -3, 4, -10]), 7);
     }
   }
 }

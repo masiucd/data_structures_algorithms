@@ -1,12 +1,17 @@
 // Name of the project: rust
 // use rust::algos::bits::count;
 // use rust::common;
-use rust::math;
-// use rust::problem_solving::kata;
+
+use rust::problem_solving::strings;
 
 fn main() {
-  let xs = vec![1, 2, 3, 4, 5, 6, 7, 8, 9];
-  let res = math::basics::median(&xs);
-
+  let res = strings::pig_latin("apple");
+  let res = strings::pig_latin("first");
+  let res = strings::pig_latin("Здравствуйте");
   println!("{res}");
 }
+
+// Convert strings to pig latin.
+//  The first consonant of each word is moved to the end of the word and ay is added,
+//   so first becomes irst-fay. Words that start with a vowel have hay added to the end instead (apple becomes apple-hay).
+//    Keep in mind the details about UTF-8 encoding!
