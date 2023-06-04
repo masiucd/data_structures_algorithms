@@ -39,3 +39,48 @@ pub mod strings {
     format!("{}{}", res, head)
   }
 }
+
+pub mod trees {
+  #[derive(Debug)]
+  pub struct Item {
+    id: u8,
+    title: String,
+    parent_id: Option<u8>,
+  }
+
+  #[derive(Debug, Clone)]
+  #[allow(dead_code)]
+  pub struct TreeNode {
+    id: u8,
+    title: String,
+    parent_id: Option<u8>,
+    children: Vec<TreeNode>,
+  }
+
+  pub fn build_tree(xs: &Vec<Item>, parent_id: Option<u8>) -> Vec<TreeNode> {
+    xs.iter()
+      .filter(|x| x.parent_id == parent_id)
+      .map(|x| TreeNode {
+        title: x.title.clone(),
+        id: x.id,
+        parent_id: x.parent_id,
+        children: build_tree(xs, Some(x.id)),
+      })
+      .collect()
+  }
+
+  #[cfg(test)]
+  mod tests {
+    use super::*;
+    #[test]
+    fn test_build_tree() {
+      let xs: Vec<Item> = vec![
+        Item { id: 1, title: "Europe".to_string(), parent_id: None },
+        Item { id: 2, title: "Asia".to_string(), parent_id: None },
+        Item { id: 3, title: "France".to_string(), parent_id: Some(1) },
+        Item { id: 4, title: "Thailand".to_string(), parent_id: Some(2) },
+        Item { id: 5, title: "Paris".to_string(), parent_id: Some(3) }
+      ];
+    }
+  }
+}
