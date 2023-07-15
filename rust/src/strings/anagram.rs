@@ -11,14 +11,11 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_1() {
+    fn test_is_anagram() {
         let s = String::from("anagram");
         let t = String::from("nagaram");
         assert_eq!(is_anagram(s, t), true);
-    }
 
-    #[test]
-    fn test_2() {
         let s = String::from("rat");
         let t = String::from("car");
         assert_eq!(is_anagram(s, t), false);

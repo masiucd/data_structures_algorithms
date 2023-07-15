@@ -1,1 +1,2 @@
-pub mod is_anagram;
+pub mod anagram;
+pub mod palindrome;
