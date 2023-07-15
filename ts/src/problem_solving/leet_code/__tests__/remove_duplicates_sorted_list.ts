@@ -1,10 +1,11 @@
-import {assertEquals} from "~/dev_deps.ts"
+import {assertEquals} from "~/dev_deps.ts";
 
 import {
   removeDuplicatesFromSortedList,
   removeDuplicates,
   getNodes,
-} from "../remove_duplicates_sorted_list/solution.ts"
+  deleteDuplicates,
+} from "../remove_duplicates_sorted_list/solution.ts";
 
 const head = {
   value: 1,
@@ -21,7 +22,7 @@ const head = {
       },
     },
   },
-}
+};
 
 Deno.test("removeDuplicatesFromSortedList it works", () => {
   assertEquals(removeDuplicatesFromSortedList(head), {
@@ -33,8 +34,8 @@ Deno.test("removeDuplicatesFromSortedList it works", () => {
         next: null,
       },
     },
-  })
-})
+  });
+});
 
 Deno.test("removeDuplicates it works", () => {
   assertEquals(removeDuplicates(head), {
@@ -46,9 +47,22 @@ Deno.test("removeDuplicates it works", () => {
         next: null,
       },
     },
-  })
-})
+  });
+});
 
 Deno.test("getNodes it works", () => {
-  assertEquals(getNodes(head), [1, 1, 2, 3, 3])
-})
+  assertEquals(getNodes(head), [1, 1, 2, 3, 3]);
+});
+
+Deno.test("deleteDuplicates it works", () => {
+  assertEquals(deleteDuplicates(head), {
+    value: 1,
+    next: {
+      value: 2,
+      next: {
+        value: 3,
+        next: null,
+      },
+    },
+  });
+});
