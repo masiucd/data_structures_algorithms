@@ -130,6 +130,15 @@ pub mod kata {
       .sum()
   }
 
+  #[allow(dead_code)]
+  fn is_anagram_one(s1: &str, s2: &str) -> bool {
+    let mut chars = s1.chars().into_iter().collect::<Vec<char>>();
+    let mut chars2 = s2.chars().into_iter().collect::<Vec<char>>();
+    chars.sort();
+    chars2.sort();
+    chars == chars2
+  }
+
   #[cfg(test)]
   mod tests {
     use super::*;
@@ -161,6 +170,15 @@ pub mod kata {
     fn test_int_to_roman_2() {
       let res = int_to_roman(1990);
       assert_eq!(res, "MCMXC");
+    }
+
+    #[test]
+    fn test_is_anagram() {
+      let res = is_anagram_one("anagram", "nagaram");
+      assert!(res);
+
+      let res = !is_anagram_one("anagram", "nagaras");
+      assert!(res);
     }
 
     #[test]
