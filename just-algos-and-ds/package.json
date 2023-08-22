@@ -6,9 +6,12 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "dev:turbo": "next dev --turbo",
+    "build:turbo": "next build --turbo"
   },
   "dependencies": {
+    "bright": "^0.8.4",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.0.0",
     "eslint": "8.47.0",
@@ -16,25 +19,28 @@
     "next": "13.4.19",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "tailwind-merge": "^1.14.0"
+    "server-only": "^0.0.1",
+    "tailwind-merge": "^1.14.0",
+    "tailwindcss-animate": "^1.0.6",
+    "@tailwindcss/container-queries": "^0.1.1"
   },
   "devDependencies": {
-    "@types/node": "20.5.1",
-    "autoprefixer": "10.4.15",
-    "postcss": "8.4.28",
-    "@types/react": "18.2.20",
-    "@types/react-dom": "18.2.7",
-    "tailwindcss": "3.3.3",
-    "eslint-plugin-simple-import-sort": "^10.0.0",
-    "eslint-plugin-tailwindcss": "^3.13.0",
-    "prettier": "^3.0.2",
-    "prettier-plugin-tailwindcss": "^0.5.3",
-    "typescript": "5.1.6",
     "@tailwindcss/typography": "^0.5.9",
     "@types/better-sqlite3": "^7.6.4",
+    "@types/node": "20.5.1",
+    "@types/react": "18.2.20",
+    "@types/react-dom": "18.2.7",
     "@types/uuid": "^9.0.2",
+    "autoprefixer": "10.4.15",
     "eslint": "8.41.0",
     "eslint-config-next": "13.4.11",
-    "eslint-plugin-unused-imports": "^3.0.0"
+    "eslint-plugin-simple-import-sort": "^10.0.0",
+    "eslint-plugin-tailwindcss": "^3.13.0",
+    "eslint-plugin-unused-imports": "^3.0.0",
+    "postcss": "8.4.28",
+    "prettier": "^3.0.2",
+    "prettier-plugin-tailwindcss": "^0.5.3",
+    "tailwindcss": "3.3.3",
+    "typescript": "5.1.6"
   }
 }
