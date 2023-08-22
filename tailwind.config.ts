@@ -10,11 +10,9 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        gray: colors.neutral,
-        green: colors.green,
-        primary: colors.purple,
-        blue: colors.blue,
-        red: colors.red,
+        gray: colors.slate,
+        primary: colors.sky,
+        blue: colors.sky,
         yellow: colors.amber,
       },
       backgroundImage: {
