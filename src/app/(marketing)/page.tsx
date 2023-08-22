@@ -1,4 +1,5 @@
 import {PageWrapper} from "@/components/page_wrapper";
+import {Tooltip} from "@/components/tooltip";
 
 const PopularTopics = Object.freeze([
   {
@@ -73,11 +74,16 @@ export default function Home() {
             <div className="h-full">
               <strong className="font-bold">{topic.title}</strong>
               {/* TODO tooltip */}
-              <p className="text-sm text-gray-700">
-                {topic.description.length > 150
-                  ? `${topic.description.substring(0, 150)}... `
-                  : topic.description}
-              </p>
+              <Tooltip
+                text={topic.description}
+                disabled={topic.description.length < 150}
+              >
+                <p className="text-sm text-gray-700">
+                  {topic.description.length > 150
+                    ? `${topic.description.substring(0, 150)}... `
+                    : topic.description}
+                </p>
+              </Tooltip>
             </div>
           </li>
         ))}
