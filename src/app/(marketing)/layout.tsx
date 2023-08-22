@@ -26,9 +26,9 @@ import {type PropsWithChildren} from "react";
 export default function Layout({children}: PropsWithChildren) {
   return (
     <>
-      <main className="flex min-h-screen flex-col border">
-        <div className="grid flex-1 grid-cols-1 border border-red-500 sm:grid-cols-12">
-          <aside className="border sm:col-span-3">
+      <main className="flex min-h-screen flex-col ">
+        <div className="grid flex-1 grid-cols-1  sm:grid-cols-12">
+          <aside className=" sm:col-span-3">
             <ul>
               <li>Home</li>
               <li>About</li>
@@ -36,9 +36,7 @@ export default function Layout({children}: PropsWithChildren) {
               <li>Contact</li>
             </ul>
           </aside>
-          <section className="flex flex-col border sm:col-span-9">
-            {children}
-          </section>
+          <section className="flex flex-col  sm:col-span-9">{children}</section>
         </div>
       </main>
     </>

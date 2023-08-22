@@ -1,36 +1,38 @@
+import {PageWrapper} from "@/components/page_wrapper";
+
 const PopularTopics = Object.freeze([
   {
     title: "Algorithms",
     description:
-      "Algorithms are a set of instructions or rules designed to solve a specific problem. They are used in every part of life, from making a cup of tea to landing a plane. In computer science, algorithms are used to solve problems with data. They are a fundamental part of computer science, and understanding them is essential to becoming a good programmer.",
+      "Different algorithms are used to solve different problems. From sorting to searching, algorithms are used to solve problems with data. ",
     icon: null,
     path: "/algorithms",
   },
   {
     title: "Data Structures",
     description:
-      "Data structures are a way of organizing and storing data so that it can be accessed and modified efficiently. They are used in every part of life, from making a cup of tea to landing a plane. In computer science, algorithms are used to solve problems with data. They are a fundamental part of computer science, and understanding them is essential to becoming a good programmer.",
+      "Different data structures are used to store different types of data. From linked lists to stacks, data structures are used to store data.",
     icon: null,
     path: "/data-structures",
   },
   {
     title: "Sorting",
     description:
-      "Sorting is the process of arranging a list of items in a particular order. Sorting algorithms are used to sort data into a specific order. They are used in every part of life, from making a cup of tea to landing a plane. In computer science, algorithms are used to solve problems with data. They are a fundamental part of computer science, and understanding them is essential to becoming a good programmer.",
+      "Sorting is the process of arranging a list of items in a particular order. Sorting algorithms are used to arrange a list of items in a particular order.",
     icon: null,
     path: "/algorithms/sorting",
   },
   {
     title: "Searching",
     description:
-      "Searching is the process of finding a particular item in a list of items. Searching algorithms are used to find a particular item in a list of items. They are used in every part of life, from making a cup of tea to landing a plane. In computer science, algorithms are used to solve problems with data. They are a fundamental part of computer science, and understanding them is essential to becoming a good programmer.",
+      "Searching is the process of finding a particular item in a list of items. Searching algorithms are used to find a particular item in a list of items. They are used in every part of life, from making a cup of tea to landing a plane.",
     icon: null,
     path: "/algorithms/searching",
   },
   {
     title: "Linked Lists",
     description:
-      "A linked list is a linear data structure that consists of a sequence of nodes. Each node contains data and a pointer to the next node in the sequence. Linked lists are used to implement other data structures such as stacks and queues. They are used in every part of life, from making a cup of tea to landing a plane. In computer science, algorithms are used to solve problems with data. They are a fundamental part of computer science, and understanding them is essential to becoming a good programmer.",
+      "Linked lists are a linear data structure that stores data in a non-contiguous manner. They are used to implement other data structures such as queues and stacks. They are used in every part of life, from making a cup of tea to landing a plane. In computer science, algorithms are used to solve problems with data. They are a fundamental part of computer science, and understanding them is essential to becoming a good programmer.",
     icon: null,
     path: "/data-structures/linked-lists",
   },
@@ -45,17 +47,41 @@ const PopularTopics = Object.freeze([
 
 export default function Home() {
   return (
-    <div>
-      <ul className="grid grid-cols-1 gap-5 border p-2 sm:grid-cols-2 lg:grid-cols-3">
+    <PageWrapper fluid className="border">
+      <div className="flex flex-1 items-center bg-main-hero dark:bg-main-hero-white">
+        <div className="flex flex-col items-center justify-center rounded-sm bg-gray-950/70 p-2">
+          <h1 className="text-4xl font-extrabold tracking-tighter text-gray-200 drop-shadow-2xl dark:text-gray-100 sm:text-5xl lg:text-6xl">
+            <span className="block">Learn Algorithms and Data Structures</span>
+            <span className=" block">
+              with code examples and visualization{" "}
+            </span>
+          </h1>
+          <p className="mt-6 max-w-3xl text-xl text-gray-300 drop-shadow-xl dark:text-gray-400">
+            Algorithms and data structures are the building blocks of computer
+            science. They are used to solve problems with data. They are a
+            fundamental part of computer science, and understanding them is
+            essential to becoming a good programmer.
+          </p>
+        </div>
+      </div>
+      <ul className="grid flex-1 grid-cols-1 gap-5 border p-2 sm:grid-cols-2 lg:grid-cols-3">
         {PopularTopics.map((topic) => (
-          <li key={topic.title} className="max-w-sm">
-            <h2>{topic.title}</h2>
-            <p className="truncate text-sm text-gray-500">
-              {topic.description}
-            </p>
+          <li
+            key={topic.title}
+            className="h-40 rounded-md border border-gray-800 p-1 shadow-md"
+          >
+            <div className="h-full">
+              <strong className="font-bold">{topic.title}</strong>
+              {/* TODO tooltip */}
+              <p className="text-sm text-gray-700">
+                {topic.description.length > 150
+                  ? `${topic.description.substring(0, 150)}... `
+                  : topic.description}
+              </p>
+            </div>
           </li>
         ))}
       </ul>
-    </div>
+    </PageWrapper>
   );
 }
