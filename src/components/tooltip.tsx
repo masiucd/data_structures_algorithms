@@ -29,7 +29,7 @@ export function Tooltip({
         <RadixTooltip.Portal>
           <RadixTooltip.Content
             className={cn(
-              "bg-gray-900 shadow leading-tight text-gray-50 max-w-xs p-1 rounded-md",
+              "bg-gray-900 leading-tight text-gray-50 max-w-xs p-1 rounded-md border border-blue-500 shadow-lg",
               className
             )}
           >

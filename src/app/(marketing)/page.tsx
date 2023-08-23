@@ -1,7 +1,9 @@
+import Link from "next/link";
+
 import {PageWrapper} from "@/components/page_wrapper";
 import {Tooltip} from "@/components/tooltip";
 
-const PopularTopics = Object.freeze([
+const PopularTopics = [
   {
     title: "Algorithms",
     description:
@@ -38,14 +40,32 @@ const PopularTopics = Object.freeze([
     path: "/data-structures/linked-lists",
   },
   {
+    title: "Trees",
+    description: "Trees",
+    icon: null,
+    path: "/data-structures/trees",
+  },
+  {
+    title: "Queues",
+    description: "Queues",
+    icon: null,
+    path: "/data-structures/queues",
+  },
+  {
+    title: "Recursion",
+    description: "Recursion",
+    icon: null,
+    path: "/algorithms/recursion",
+  },
+  {
     title: "Stacks",
     description:
       "A stack is a linear data structure that follows the Last In First Out (LIFO) principle. It is a collection of elements that are added and removed in a specific order. Stacks are used to implement other data structures such as queues and linked lists. They are used in every part of life, from making a cup of tea to landing a plane. In computer science, algorithms are used to solve problems with data. They are a fundamental part of computer science, and understanding them is essential to becoming a good programmer.",
     icon: null,
     path: "/data-structures/stacks",
   },
-]);
-
+];
+const DESCRIPTION_LENGTH = 100;
 export default function Home() {
   return (
     <PageWrapper fluid className="border">
@@ -66,27 +86,35 @@ export default function Home() {
         </div>
       </div>
       <ul className="grid flex-1 grid-cols-1 gap-5 border p-2 sm:grid-cols-2 lg:grid-cols-3">
-        {PopularTopics.map((topic) => (
-          <li
-            key={topic.title}
-            className="h-40 rounded-md border border-gray-800 p-1 shadow-md"
-          >
-            <div className="h-full">
-              <strong className="font-bold">{topic.title}</strong>
-              {/* TODO tooltip */}
-              <Tooltip
-                text={topic.description}
-                disabled={topic.description.length < 150}
-              >
-                <p className="text-sm text-gray-700">
-                  {topic.description.length > 150
-                    ? `${topic.description.substring(0, 150)}... `
-                    : topic.description}
-                </p>
-              </Tooltip>
-            </div>
-          </li>
-        ))}
+        {PopularTopics.sort((a, b) => a.title.localeCompare(b.title)).map(
+          (topic) => (
+            <li
+              key={topic.title}
+              className="h-32 rounded-md border border-gray-800 p-1 shadow-md"
+            >
+              <div className="flex h-full flex-col border border-red-500">
+                <strong className="font-bold">{topic.title}</strong>
+                {/* TODO tooltip */}
+                <Tooltip
+                  text={topic.description}
+                  disabled={topic.description.length < DESCRIPTION_LENGTH}
+                >
+                  <p className="text-sm text-gray-700">
+                    {topic.description.length > DESCRIPTION_LENGTH
+                      ? `${topic.description.substring(
+                          0,
+                          DESCRIPTION_LENGTH
+                        )}... `
+                      : topic.description}
+                  </p>
+                </Tooltip>
+                <div className="mt-auto border border-red-500">
+                  <Link href={topic.path}>To {topic.title}</Link>
+                </div>
+              </div>
+            </li>
+          )
+        )}
       </ul>
     </PageWrapper>
   );
