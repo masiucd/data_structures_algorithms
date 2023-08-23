@@ -1,9 +1,11 @@
+import Link from "next/link";
 import {type PropsWithChildren} from "react";
 
 import {TreeDataType, TreeNode} from "@/types/tree";
 
 import {TreeList} from "./components/tree_list";
 
+// TODO add slug Property
 const TreeData = Object.freeze([
   {id: 1, title: "Algorithms", parentId: null},
   {id: 2, title: "Data Structures", parentId: null},
@@ -16,48 +18,74 @@ const TreeData = Object.freeze([
   {id: 9, title: "Queues", parentId: 2},
   {id: 10, title: "Trees", parentId: 2},
   {id: 11, title: "Graphs", parentId: 2},
-  {id: 12, title: "Hashing", parentId: 2},
+  // {id: 12, title: "Hashing", parentId: 2},
   {id: 13, title: "Recursion", parentId: 1},
-  {id: 14, title: "Backtracking", parentId: 1},
-  {id: 15, title: "Dynamic Programming", parentId: 1},
-  {id: 16, title: "Greedy Algorithms", parentId: 1},
-  {id: 17, title: "Divide and Conquer", parentId: 1},
-  {id: 18, title: "Bit Manipulation", parentId: 1},
-  {id: 19, title: "Mathematics", parentId: 1},
-  {id: 20, title: "Puzzles", parentId: 1},
+  // {id: 14, title: "Backtracking", parentId: 1},
+  // {id: 15, title: "Dynamic Programming", parentId: 1},
+  // {id: 16, title: "Greedy Algorithms", parentId: 1},
+  // {id: 17, title: "Divide and Conquer", parentId: 1},
+  // {id: 18, title: "Bit Manipulation", parentId: 1},
+  // {id: 19, title: "Mathematics", parentId: 1},
+  // {id: 20, title: "Puzzles", parentId: 1},
+  {id: 21, title: "Bubble sort", parentId: 3},
+  {id: 22, title: "Insertion sort", parentId: 3},
+  {id: 23, title: "Dynamic Arrays", parentId: 6},
+  {id: 24, title: "Static Arrays", parentId: 6},
+  {id: 25, title: "Single Linked List", parentId: 7},
+  {id: 26, title: "Double Linked List", parentId: 7},
 ]);
 
 function getChildren(treeData: readonly TreeNode[], parentId: number | null) {
   return treeData.filter((item) => item.parentId === parentId);
 }
 
+// function buildPath() {}
+
 function getTree(
   treeData: readonly TreeNode[],
-  parentId: number | null
+  parentId: number | null,
+  absolutePath: string = ""
 ): TreeDataType[] {
   let children = getChildren(treeData, parentId);
-  return children.map((child) => ({
-    ...child,
-    children: getTree(treeData, child.id),
-  }));
+  return children.map((child) => {
+    const childAbsolutePath = `${absolutePath}${child.title}/`;
+    return {
+      ...child,
+      children: getTree(treeData, child.id, absolutePath),
+      href: childAbsolutePath, // TODO
+    };
+  });
 }
 
 export default function Layout({children}: PropsWithChildren) {
   let tree = getTree(TreeData, null);
+
   return (
     <>
       <main className="flex min-h-screen flex-col ">
-        <div className="grid flex-1 grid-cols-1  sm:grid-cols-12">
-          <aside className=" sm:col-span-2">
+        <div className="grid flex-1 grid-cols-1 sm:grid-cols-12">
+          <aside className=" sm:col-span-2 md:col-span-3">
             <ul>
-              <li>Home</li>
-              <li>About</li>
-              <li>FAQ</li>
-              <li>Contact</li>
+              <li>
+                <Link href="/">Home</Link>
+              </li>
+              <li>
+                About
+                <Link href="/">About</Link>
+              </li>
+              <li>
+                <Link href="/">FAQ</Link>
+              </li>
+              <li>
+                <Link href="/">Contact</Link>
+              </li>
             </ul>
-            <TreeList tree={tree} />
+
+            <ul className="flex flex-col gap-1">
+              <TreeList tree={tree} />
+            </ul>
           </aside>
-          <section className="flex flex-col  sm:col-span-10">
+          <section className="flex flex-col  sm:col-span-10 md:col-span-9">
             {children}
           </section>
         </div>

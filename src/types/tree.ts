@@ -6,4 +6,5 @@ export type TreeNode = {
 
 export type TreeDataType = TreeNode & {
   children: TreeDataType[];
+  href: string;
 };

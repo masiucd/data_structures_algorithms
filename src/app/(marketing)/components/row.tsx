@@ -1,37 +1,59 @@
 "use client";
+import {motion} from "framer-motion";
+import Link from "next/link";
 import {type PropsWithChildren, useState} from "react";
 
 import {cn} from "@/app/lib/css";
+import {Icons} from "@/components/icons";
 import type {TreeDataType} from "@/types/tree";
 
-let marginLeft = new Map<number, string>()
-  .set(0, "ml-0")
-  .set(1, "ml-[20px]")
-  .set(2, "ml-[40px]")
-  .set(3, "ml-[60px]")
-  .set(4, "ml-[80px]")
-  .set(5, "ml-[100px]")
-  .set(6, "ml-[120px]");
+function renderIcon(node: TreeDataType, on: boolean) {
+  if (node.children.length > 0 && !on) {
+    return <Icons.FilePlus />;
+  }
+  if (node.children.length === 0) {
+    return <Icons.Box />;
+  }
+  return <Icons.FileMinus />;
+}
 
 export function Row({
   node,
-  level = 0,
   children,
 }: PropsWithChildren<{
   node: TreeDataType;
-  level?: number;
 }>) {
   let [on, setOn] = useState(false);
   return (
-    <li className={cn("flex", marginLeft.get(level))}>
-      <button
-        onClick={() => {
-          setOn(!on);
-        }}
-      >
-        {node.title}
-      </button>
+    <motion.li
+      initial={{opacity: 0.5, height: 0}}
+      animate={{
+        opacity: 1,
+        height: "auto",
+        transition: {
+          duration: 1.2,
+          type: "spring",
+        },
+      }}
+    >
+      <div className="flex gap-1">
+        <button
+          disabled={node.children.length === 0}
+          className={cn(
+            "flex items-center disabled:opacity-60",
+            node.children.length === 0 && "cursor-not-allowed text-blue-950"
+          )}
+          onClick={() => {
+            setOn(!on);
+          }}
+        >
+          <span>{renderIcon(node, on)}</span>
+        </button>
+        <Link href="/algorithms">
+          <span>{node.title}</span>
+        </Link>
+      </div>
       {on && children}
-    </li>
+    </motion.li>
   );
 }
