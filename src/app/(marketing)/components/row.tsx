@@ -49,7 +49,7 @@ export function Row({
         >
           <span>{renderIcon(node, on)}</span>
         </button>
-        <Link href="/algorithms">
+        <Link href={node.href}>
           <span>{node.title}</span>
         </Link>
       </div>

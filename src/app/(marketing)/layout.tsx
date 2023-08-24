@@ -5,7 +5,6 @@ import {TreeDataType, TreeNode} from "@/types/tree";
 
 import {TreeList} from "./components/tree_list";
 
-// TODO add slug Property
 const TreeData = Object.freeze([
   {id: 1, title: "Algorithms", parentId: null},
   {id: 2, title: "Data Structures", parentId: null},
@@ -35,11 +34,25 @@ const TreeData = Object.freeze([
   {id: 26, title: "Double Linked List", parentId: 7},
 ]);
 
+function generateSlug(title: string) {
+  return title.toLowerCase().replace(/ /g, "-");
+}
+
 function getChildren(treeData: readonly TreeNode[], parentId: number | null) {
   return treeData.filter((item) => item.parentId === parentId);
 }
 
-// function buildPath() {}
+function buildAbsolutePath(
+  treeData: readonly TreeNode[],
+  id: number | null = null
+): string {
+  let node = treeData.find((item) => item.id === id);
+  if (node === undefined) {
+    return "";
+  }
+  let parentAbsolutePath = buildAbsolutePath(treeData, node.parentId);
+  return `${parentAbsolutePath}/${generateSlug(node.title)}`;
+}
 
 function getTree(
   treeData: readonly TreeNode[],
@@ -48,11 +61,10 @@ function getTree(
 ): TreeDataType[] {
   let children = getChildren(treeData, parentId);
   return children.map((child) => {
-    const childAbsolutePath = `${absolutePath}${child.title}/`;
     return {
       ...child,
       children: getTree(treeData, child.id, absolutePath),
-      href: childAbsolutePath, // TODO
+      href: buildAbsolutePath(treeData, child.id),
     };
   });
 }

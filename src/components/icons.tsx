@@ -1,7 +1,31 @@
-import {BoxIcon, FileMinusIcon, FilePlusIcon} from "@radix-ui/react-icons";
+import {
+  BoxIcon,
+  CodeIcon,
+  ColumnsIcon,
+  Component1Icon,
+  FileMinusIcon,
+  FilePlusIcon,
+  FrameIcon,
+  GitHubLogoIcon,
+  LayersIcon,
+  PieChartIcon,
+  RulerHorizontalIcon,
+  StackIcon,
+  TwitterLogoIcon,
+} from "@radix-ui/react-icons";
 
 export const Icons = Object.freeze({
   FilePlus: FilePlusIcon,
   FileMinus: FileMinusIcon,
   Box: BoxIcon,
+  Frame: FrameIcon,
+  GitHubLogo: GitHubLogoIcon,
+  TwitterLogo: TwitterLogoIcon,
+  Stack: StackIcon,
+  Layers: LayersIcon,
+  Queue: ColumnsIcon,
+  PieChart: PieChartIcon,
+  Code: CodeIcon,
+  RulerHorizontal: RulerHorizontalIcon,
+  Tree: Component1Icon,
 });
