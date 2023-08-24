@@ -49,7 +49,10 @@ export function Row({
         >
           <span>{renderIcon(node, on)}</span>
         </button>
-        <Link href={node.href}>
+        <Link
+          href={node.href}
+          className={cn(node.children.length > 0 && "pointer-events-none")}
+        >
           <span>{node.title}</span>
         </Link>
       </div>
