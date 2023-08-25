@@ -4,6 +4,7 @@ import {notFound} from "next/navigation";
 import {useMDXComponent} from "next-contentlayer/hooks";
 
 import {buildAbsolutePath} from "@/app/lib/tree";
+import {Icons} from "@/components/icons";
 import {TreeData} from "@/data/tree_data";
 
 export async function generateStaticParams() {
@@ -41,14 +42,41 @@ async function getPost(slugs: string[]) {
   return post;
 }
 
+function getDate(post: Post) {
+  if (!post.updated) {
+    return post.date;
+  }
+  return post.date === post.updated ? post.date : post.updated;
+}
+
 function Mdx({code, post}: {code: string; post: Post}) {
   let MDXContent = useMDXComponent(code);
+  let date = getDate(post);
   return (
     <article className="prose prose-neutral mx-auto border border-red-400 py-1 dark:prose-invert">
-      <aside className="mb-5 border border-red-400">
-        <h1 className="m-0 p-0">{post.title}</h1>
-        <p className="m-0 p-0">{post.description}</p>
-        <p className="m-0 p-0">{format(parseISO(post.date), "yyyy/M/do")}</p>
+      <aside className="mb-5 flex justify-between border border-red-400">
+        <div className="flex flex-col">
+          <h1 className="m-0 p-0">{post.title}</h1>
+          <p className="m-0 p-0">{post.description}</p>
+        </div>
+        <div className="flex flex-col justify-between ">
+          <time className="m-0 p-0">
+            {format(parseISO(date), "LLL do, yyyy")}
+          </time>
+          <ul className="m-0 flex list-none gap-3 p-0">
+            {post.tags.map((tag) => (
+              <li
+                className="m-0 flex items-center gap-1 p-0 capitalize"
+                key={tag}
+              >
+                <span>
+                  <Icons.RulerHorizontal />
+                </span>
+                <span>{tag}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
       </aside>
       <MDXContent components={{}} />
     </article>
@@ -67,10 +95,6 @@ async function Page({params}: {params: {slug: string[]}}) {
 
   return (
     <section>
-      {/* <aside className="mb-5">
-        <h1>{post.title}</h1>
-        <p>{format(parseISO(post.date), "yyyy/M/do")}</p>
-      </aside> */}
       <Mdx code={post.body.code} post={post} />
     </section>
   );

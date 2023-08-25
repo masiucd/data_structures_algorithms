@@ -24,7 +24,6 @@ export function Row({
   node: TreeDataType;
 }>) {
   let [on, setOn] = useState(false);
-
   return (
     <motion.li
       initial={{opacity: 0.5, height: 0}}

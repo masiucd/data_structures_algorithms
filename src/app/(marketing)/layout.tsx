@@ -77,7 +77,7 @@ export default function Layout({children}: PropsWithChildren) {
     <>
       <main className="flex min-h-screen flex-col ">
         <div className="grid flex-1 grid-cols-1 sm:grid-cols-12">
-          <aside className="flex border-gray-600/30 sm:col-span-2 sm:flex-col sm:border-r sm:shadow md:col-span-3">
+          <aside className="flex border-gray-600/30 shadow-inner sm:col-span-2 sm:flex-col sm:border-r sm:shadow md:col-span-3">
             <ul className="flex max-h-[38rem] flex-col gap-1 overflow-auto">
               <TreeList tree={tree} />
             </ul>
