@@ -12,7 +12,7 @@ function renderIcon(node: TreeDataType, on: boolean) {
     return <Icons.FilePlus />;
   }
   if (node.children.length === 0) {
-    return <Icons.Box />;
+    return <Icons.Code />;
   }
   return <Icons.FileMinus />;
 }
@@ -24,6 +24,7 @@ export function Row({
   node: TreeDataType;
 }>) {
   let [on, setOn] = useState(false);
+
   return (
     <motion.li
       initial={{opacity: 0.5, height: 0}}
@@ -37,24 +38,33 @@ export function Row({
       }}
     >
       <div className="flex gap-1">
-        <button
-          disabled={node.children.length === 0}
-          className={cn(
-            "flex items-center disabled:opacity-60",
-            node.children.length === 0 && "cursor-not-allowed text-blue-950"
-          )}
-          onClick={() => {
-            setOn(!on);
-          }}
-        >
-          <span>{renderIcon(node, on)}</span>
-        </button>
-        <Link
-          href={node.href}
-          className={cn(node.children.length > 0 && "pointer-events-none")}
-        >
-          <span>{node.title}</span>
-        </Link>
+        {node.children.length > 0 ? (
+          <button
+            className={cn(
+              "flex items-center disabled:opacity-60",
+              node.children.length === 0 && "cursor-not-allowed text-blue-950"
+            )}
+            onClick={() => {
+              setOn(!on);
+            }}
+          >
+            <span>{renderIcon(node, on)}</span>
+            <span>{node.title}</span>
+          </button>
+        ) : (
+          <div>
+            <Link
+              href={node.href}
+              className={cn(
+                "flex items-center gap-1",
+                node.children.length > 0 && "pointer-events-none"
+              )}
+            >
+              <span>{renderIcon(node, on)}</span>
+              <span>{node.title}</span>
+            </Link>
+          </div>
+        )}
       </div>
       {on && children}
     </motion.li>

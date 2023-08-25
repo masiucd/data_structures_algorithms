@@ -6,12 +6,20 @@ export const Post = defineDocumentType(() => ({
   contentType: "mdx",
   fields: {
     title: {type: "string", required: true},
+    description: {type: "string", required: true},
     date: {type: "date", required: true},
+    updated: {type: "date", required: false},
+    problem: {type: "string", required: true},
+    tags: {type: "list", of: {type: "string"}, required: true},
   },
   computedFields: {
     url: {
       type: "string",
       resolve: (post) => `/posts/${post._raw.flattenedPath}`,
+    },
+    slug: {
+      type: "string",
+      resolve: (post) => post._raw.flattenedPath,
     },
   },
 }));

@@ -25,5 +25,6 @@ export const TreeData = Object.freeze([
   // {id: 24, title: "Static Arrays", parentId: 6},
   {id: 25, title: "Single Linked List", parentId: 7},
   {id: 26, title: "Double Linked List", parentId: 7},
-  {id: 27, title: "reverse string", parentId: 5},
+  {id: 27, title: "Reverse String", parentId: 5},
+  {id: 28, title: "Is Palindrome", parentId: 5},
 ]);

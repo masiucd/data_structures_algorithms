@@ -81,7 +81,7 @@ export default function Layout({children}: PropsWithChildren) {
             <ul className="flex max-h-[38rem] flex-col gap-1 overflow-auto">
               <TreeList tree={tree} />
             </ul>
-            <div className="ml-auto flex flex-col gap-1 px-1 pb-1 sm:mt-auto">
+            <div className="ml-auto flex flex-col gap-1 px-1 pb-1 sm:mt-auto  sm:w-full">
               <ul className="flex gap-2">
                 {PAGE_LINKS.map((link) => (
                   <li key={link.title}>
