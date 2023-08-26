@@ -65,6 +65,9 @@ dependencies:
   server-only:
     specifier: ^0.0.1
     version: 0.0.1
+  shiki:
+    specifier: ^0.14.3
+    version: 0.14.3
   tailwind-merge:
     specifier: ^1.14.0
     version: 1.14.0

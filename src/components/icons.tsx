@@ -11,6 +11,7 @@ import {
   Instagram,
   Layers as Stack,
   LayersIcon,
+  Link,
   Network,
   PieChart,
   Ruler,
@@ -38,7 +39,7 @@ export const Icons = Object.freeze({
   Discord: Computer,
   Instagram,
   Database,
-
+  Link,
   Search,
   Hash,
 });

@@ -1,12 +1,12 @@
 import {allPosts, Post} from "contentlayer/generated";
 import {format, parseISO} from "date-fns";
 import {notFound} from "next/navigation";
-import {useMDXComponent} from "next-contentlayer/hooks";
-import {ReactNode} from "react";
 
 import {buildAbsolutePath} from "@/app/lib/tree";
 import {Icons} from "@/components/icons";
 import {TreeData} from "@/data/tree_data";
+
+import {Mdx} from "./components/mdx";
 
 export async function generateStaticParams() {
   let paths = TreeData.map((node) => {
@@ -49,39 +49,6 @@ function getDate(post: Post) {
   return post.date === post.updated ? post.date : post.updated;
 }
 
-function Box({children}: {children: ReactNode}) {
-  return (
-    <div className="mb-3 flex flex-col gap-1 rounded-md p-1 shadow-md dark:border-gray-700">
-      {children}
-    </div>
-  );
-}
-
-function Mdx({code}: {code: string}) {
-  let MDXContent = useMDXComponent(code);
-
-  return (
-    <article className="prose prose-neutral mx-auto py-1  dark:prose-invert prose-h2:mb-1 prose-h2:mt-0">
-      <MDXContent
-        components={{
-          // pre: (props) => (
-          //   // @ts-ignore
-          //   <Code
-          //     {...props}
-          //     theme={{
-          //       dark: "github-dark",
-          //       light: "github-light",
-          //     }}
-          //     // lineNumbers
-          //   />
-          // ),
-          Box,
-        }}
-      />
-    </article>
-  );
-}
-
 async function Page({params}: {params: {slug: string[]}}) {
   let post = await getPost(params.slug);
   if (!post) {
@@ -93,17 +60,29 @@ async function Page({params}: {params: {slug: string[]}}) {
     <section>
       <aside className="mx-auto mb-5 flex w-[650px] justify-between pt-10 ">
         <div className="flex flex-col">
-          <h1 className="">{post.title}</h1>
-          <p className="">{post.description}</p>
+          <h1 className="mb-2">{post.title}</h1>
+          <div>
+            <p>{post.description}</p>
+            <a
+              href={post.problem}
+              className="flex items-center gap-1 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-300"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <span>
+                <Icons.Link size={20} />
+              </span>
+              <span>Leet code</span>
+            </a>
+          </div>
         </div>
-        <div className="flex flex-col justify-between ">
-          <time className="">{format(parseISO(date), "LLL do, yyyy")}</time>
-          <ul className="m-0 flex list-none gap-3 p-0">
+        <div className="flex flex-col gap-1">
+          <time className="text-gray-500 dark:text-gray-400">
+            {format(parseISO(date), "LLL do, yyyy")}
+          </time>
+          <ul className=" flex list-none gap-1 ">
             {post.tags.map((tag) => (
-              <li
-                className="m-0 flex items-center gap-1 p-0 capitalize"
-                key={tag}
-              >
+              <li className=" flex items-center capitalize" key={tag}>
                 <span>
                   <Icons.Hash size={20} />
                 </span>
