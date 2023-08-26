@@ -77,10 +77,10 @@ export default function Layout({children}: PropsWithChildren) {
       <main className="flex min-h-screen flex-col ">
         <div className="grid flex-1 grid-cols-1 sm:grid-cols-12">
           <aside className="flex border-gray-600/30 shadow-inner sm:col-span-2 sm:flex-col sm:border-r sm:shadow md:col-span-3">
-            <ul className="flex max-h-[38rem] flex-col gap-1 overflow-auto">
+            <ul className="flex max-h-[38rem] flex-col gap-1 overflow-auto sm:fixed">
               <TreeList tree={tree} />
             </ul>
-            <div className="ml-auto flex flex-col gap-1 px-1 pb-1 sm:mt-auto  sm:w-full">
+            <div className="bottom-0 ml-auto flex flex-col gap-1 px-1 pb-1  sm:fixed sm:mt-auto sm:w-full">
               <ul className="flex gap-2">
                 {PAGE_LINKS.map((link) => (
                   <li key={link.title}>
@@ -93,7 +93,7 @@ export default function Layout({children}: PropsWithChildren) {
                   </li>
                 ))}
               </ul>
-              <ul className="flex gap-2">
+              <ul className=" flex gap-2">
                 {SOCIAL_LINKS.map((link) => (
                   <li
                     key={link.title}

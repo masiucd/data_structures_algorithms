@@ -16,7 +16,7 @@ The input is a string of characters.
 
 **Example 1:**
 
-```
+```text
 Input: "hello"
 
 Output: "olleh"
@@ -24,7 +24,142 @@ Output: "olleh"
 
 **Example 2:**
 
-```
+```text
 Input: "world"
 Output: "dlrow"
 ```
+
+**Example 3:**
+
+```text
+Input: "a"
+Output: "a"
+```
+
+## Solutions
+
+### TypeScript/JavaScript
+
+<Box>
+  ```ts showLineNumbers title="for loop" 
+  function reverseString(str: string): string {
+    let reversed = "";
+  
+    for (let i = str.length - 1; i >= 0; i--) {
+      reversed += str[i];
+    }
+  
+    return reversed;
+  }
+  ```
+  
+  ## Explanation
+  
+  Here we are using a `for` loop to iterate over the string from the end to the beginning.
+  We are starting from the last character and adding it to the `reversed` string.
+  Time complexity is `O(n)`.
+  Space complexity is `O(n)`.
+</Box>
+
+<Box>
+  ```ts title="while loop" showLineNumbers
+  function reverseString(str: string): string {
+    let reversed = "";
+    let i = str.length - 1;
+  
+    while (i >= 0) {
+      reversed += str[i];
+      i--;
+    }
+  
+    return reversed;
+  }
+  ```
+  
+  ## Explanation
+  
+  Here we are using a `while` loop to iterate over the string from the end to the beginning.
+  We are starting from the last character and adding it to the `reversed` string.
+  Time complexity is `O(n)`.
+  Space complexity is `O(n)`.
+</Box>
+
+<Box>
+  ```ts title="array reverse" showLineNumbers
+  function reverseString(str: string): string {
+    return str.split("").reverse().join("");
+  }
+  ```
+  
+  ## Explanation
+  
+  Here we are splitting the string into an array of characters, reversing the array and joining it back into a string.
+  Time complexity is `O(n)`.
+  Space complexity is `O(n)`.
+</Box>
+
+<Box>
+
+```ts title="recursion" showLineNumbers
+function reverseString(str: string): string {
+  if (str.length === 0) return "";
+
+  return reverseString(str.slice(1)) + str[0];
+}
+```
+
+## Explanation
+
+Here we are using recursion to reverse the string.
+We are slicing the string from the second character to the end and adding the first character to the end of the string.
+We are doing this until the string is empty.
+Time complexity is `O(n)`.
+Space complexity is `O(n)`.
+
+</Box>
+
+### Rust
+
+<Box>
+  ```rust title="for loop" 
+  fn reverse_string(str: &str) -> String {
+    let mut reversed = String::new();
+  
+    for c in str.chars().rev() {
+      reversed.push(c);
+    }
+  
+    reversed
+  }
+  ```
+  
+  ## Explanation
+  
+  Here we are using a `for` loop to iterate over the string from the end to the beginning.
+  We are starting from the last character and adding it to the `reversed` string.
+  Time complexity is `O(n)`.
+  Space complexity is `O(n)`.
+</Box>
+
+<Box>
+  ```rust title="while loop" 
+  fn reverse_string(str: &str) -> String {
+    let mut reversed = String::new();
+    let mut i = str.len() - 1;
+  
+    while i >= 0 {
+      reversed.push(str.chars().nth(i).unwrap());
+      i -= 1;
+    }
+  
+    reversed
+  }
+  ```
+  
+  ## Explanation
+  
+  Here we are using a `while` loop to iterate over the string from the end to the beginning.
+  We are starting from the last character and adding it to the `reversed` string.
+  Time complexity is `O(n)`.
+  Space complexity is `O(n)`.
+</Box>

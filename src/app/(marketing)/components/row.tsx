@@ -55,7 +55,7 @@ export function Row({
             <Link
               href={node.href}
               className={cn(
-                "flex items-center gap-1",
+                "flex items-center gap-1 hover:text-blue-400 hover:drop-shadow-xl transition-colors duration-200",
                 node.children.length > 0 && "pointer-events-none"
               )}
             >

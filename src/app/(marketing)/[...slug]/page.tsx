@@ -2,6 +2,7 @@ import {allPosts, Post} from "contentlayer/generated";
 import {format, parseISO} from "date-fns";
 import {notFound} from "next/navigation";
 import {useMDXComponent} from "next-contentlayer/hooks";
+import {ReactNode} from "react";
 
 import {buildAbsolutePath} from "@/app/lib/tree";
 import {Icons} from "@/components/icons";
@@ -19,7 +20,6 @@ export async function generateStaticParams() {
   return paths;
 }
 
-// TODO
 export async function generateMetadata({params}: {params: {slug: string[]}}) {
   let slug = params.slug.at(-1);
   if (!slug) {
@@ -49,36 +49,35 @@ function getDate(post: Post) {
   return post.date === post.updated ? post.date : post.updated;
 }
 
-function Mdx({code, post}: {code: string; post: Post}) {
-  let MDXContent = useMDXComponent(code);
-  let date = getDate(post);
+function Box({children}: {children: ReactNode}) {
   return (
-    <article className="prose prose-neutral mx-auto border border-red-400 py-1 dark:prose-invert">
-      <aside className="mb-5 flex justify-between border border-red-400">
-        <div className="flex flex-col">
-          <h1 className="m-0 p-0">{post.title}</h1>
-          <p className="m-0 p-0">{post.description}</p>
-        </div>
-        <div className="flex flex-col justify-between ">
-          <time className="m-0 p-0">
-            {format(parseISO(date), "LLL do, yyyy")}
-          </time>
-          <ul className="m-0 flex list-none gap-3 p-0">
-            {post.tags.map((tag) => (
-              <li
-                className="m-0 flex items-center gap-1 p-0 capitalize"
-                key={tag}
-              >
-                <span>
-                  <Icons.RulerHorizontal />
-                </span>
-                <span>{tag}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </aside>
-      <MDXContent components={{}} />
+    <div className="mb-3 flex flex-col gap-1 rounded-md p-1 shadow-md dark:border-gray-700">
+      {children}
+    </div>
+  );
+}
+
+function Mdx({code}: {code: string}) {
+  let MDXContent = useMDXComponent(code);
+
+  return (
+    <article className="prose prose-neutral mx-auto py-1  dark:prose-invert prose-h2:mb-1 prose-h2:mt-0">
+      <MDXContent
+        components={{
+          // pre: (props) => (
+          //   // @ts-ignore
+          //   <Code
+          //     {...props}
+          //     theme={{
+          //       dark: "github-dark",
+          //       light: "github-light",
+          //     }}
+          //     // lineNumbers
+          //   />
+          // ),
+          Box,
+        }}
+      />
     </article>
   );
 }
@@ -88,14 +87,33 @@ async function Page({params}: {params: {slug: string[]}}) {
   if (!post) {
     notFound();
   }
-  // We can get the correct MDX post from the last index when accessing the list
-  // let leafNodes = TreeData.filter((node) => {
-  //   return !TreeData.some((node2) => node2.parentId === node.id);
-  // });
 
+  let date = getDate(post);
   return (
     <section>
-      <Mdx code={post.body.code} post={post} />
+      <aside className="mx-auto mb-5 flex w-[650px] justify-between pt-10 ">
+        <div className="flex flex-col">
+          <h1 className="">{post.title}</h1>
+          <p className="">{post.description}</p>
+        </div>
+        <div className="flex flex-col justify-between ">
+          <time className="">{format(parseISO(date), "LLL do, yyyy")}</time>
+          <ul className="m-0 flex list-none gap-3 p-0">
+            {post.tags.map((tag) => (
+              <li
+                className="m-0 flex items-center gap-1 p-0 capitalize"
+                key={tag}
+              >
+                <span>
+                  <Icons.Hash size={20} />
+                </span>
+                <span>{tag}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </aside>
+      <Mdx code={post.body.code} />
     </section>
   );
 }

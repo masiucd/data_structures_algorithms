@@ -10,42 +10,42 @@ const TopicsExamples = [
     description:
       "Different algorithms are used to solve different problems. From sorting to searching, algorithms are used to solve problems with data. ",
     icon: Icons.PieChart,
-    path: "/algorithms",
+    path: "/topics/algorithms",
   },
   {
     title: "Data Structures",
     description:
       "Different data structures are used to store different types of data. From linked lists to stacks, data structures are used to store data.",
     icon: Icons.Database,
-    path: "/data-structures",
+    path: "topics/data-structures",
   },
   {
     title: "Sorting",
     description:
       "Sorting is the process of arranging a list of items in a particular order. Sorting algorithms are used to arrange a list of items in a particular order.",
     icon: Icons.SortAsc,
-    path: "/algorithms/sorting",
+    path: "topics/algorithms/sorting",
   },
   {
     title: "Searching",
     description:
       "Searching is the process of finding a particular item in a list of items. Searching algorithms are used to find a particular item in a list of items. They are used in every part of life, from making a cup of tea to landing a plane.",
     icon: Icons.Search,
-    path: "/algorithms/searching",
+    path: "/topics/algorithms/searching",
   },
   {
     title: "Linked Lists",
     description:
       "Linked lists are a linear data structure that stores data in a non-contiguous manner. They are used to implement other data structures such as queues and stacks. They are used in every part of life, from making a cup of tea to landing a plane. In computer science, algorithms are used to solve problems with data. They are a fundamental part of computer science, and understanding them is essential to becoming a good programmer.",
     icon: Icons.Queue,
-    path: "/data-structures/linked-lists",
+    path: "/topics/data-structures/linked-lists",
   },
   {
     title: "Trees",
     description:
       "Trees are a non-linear data structure that stores data in a hierarchical manner. They are used to implement other data structures such as heaps and graphs. They are used in every part of life, from making a cup of tea to landing a plane. In computer science, algorithms are used to solve problems with data. They are a fundamental part of computer science, and understanding them is essential to becoming a good programmer.",
     icon: Icons.Tree,
-    path: "/data-structures/trees",
+    path: "/topics/data-structures/trees",
   },
 ];
 
@@ -62,7 +62,7 @@ function Top() {
             <span className="block">with code examples and visualization </span>
           </h1>
         </div>
-        <div className="flex w-full flex-col gap-2 rounded bg-gray-950/30 p-2">
+        <div className="flex w-full flex-col gap-2 rounded bg-blue-950/20 p-2">
           <p className=" max-w-3xl text-xl text-gray-300 drop-shadow-xl dark:text-gray-400">
             Algorithms and data structures are the building blocks of computer
             science. They are used to solve problems with data. They are a
@@ -75,9 +75,9 @@ function Top() {
                 About
               </span>
             </Link>
-            <Link href="/data-structures">
+            <Link href="/topics">
               <span className="text-sm font-semibold text-gray-100 transition-opacity duration-150 hover:opacity-50">
-                Data Structures
+                Topics
               </span>
             </Link>
           </div>

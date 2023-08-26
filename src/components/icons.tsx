@@ -7,6 +7,7 @@ import {
   FilePlus,
   Frame,
   Github,
+  Hash,
   Instagram,
   Layers as Stack,
   LayersIcon,
@@ -37,5 +38,7 @@ export const Icons = Object.freeze({
   Discord: Computer,
   Instagram,
   Database,
+
   Search,
+  Hash,
 });

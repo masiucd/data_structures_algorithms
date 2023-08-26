@@ -24,34 +24,97 @@
   }
 }
 
-h1,
-h2,
-h3,
-h4,
-h5 {
-  @apply tracking-tight;
+@layer base {
+  h1 {
+    @apply text-4xl;
+  }
+
+  h2 {
+    @apply text-3xl;
+  }
+
+  h3 {
+    @apply text-2xl;
+  }
+
+  h4 {
+    @apply text-xl;
+  }
+
+  h5 {
+    @apply text-lg;
+  }
+
+  p {
+    @apply text-base;
+  }
+
+  :is(h1, h2, h3, h4, h5, ) {
+    @apply font-bold tracking-tight;
+  }
 }
 
-h1 {
-  @apply text-4xl font-bold text-gray-800;
+div[data-rehype-pretty-code-fragment] {
+  @apply mb-0 pb-0;
+}
+div[data-rehype-pretty-code-fragment] code {
+  @apply grid;
 }
 
-h2 {
-  @apply text-3xl font-bold text-gray-800;
+.prose :where(code):not(:where([class~="not-prose"] *)) {
+  @apply before:content-[''] after:content-[''];
 }
 
-h3 {
-  @apply text-2xl font-bold text-gray-800;
+[data-rehype-pretty-code-fragment] code {
+  @apply grid min-w-full break-words rounded-none border-0 bg-transparent p-0 text-sm text-black;
+  counter-reset: line;
+  box-decoration-break: clone;
+}
+[data-rehype-pretty-code-fragment] .line {
+  @apply py-1;
+}
+[data-rehype-pretty-code-fragment] [data-line-numbers] > .line::before {
+  counter-increment: line;
+  content: counter(line);
+  display: inline-block;
+  width: 1rem;
+  margin-right: 1rem;
+  text-align: right;
+  color: #fff;
+}
+[data-rehype-pretty-code-fragment] .line--highlighted {
+  @apply bg-slate-500;
+}
+[data-rehype-pretty-code-fragment] .line-highlighted span {
+  @apply relative;
+}
+[data-rehype-pretty-code-fragment] .word--highlighted {
+  @apply rounded-md bg-slate-500  p-1;
+}
+[data-rehype-pretty-code-title] {
+  @apply px-4 py-3 font-mono text-base capitalize font-medium border rounded-t-lg text-gray-900 dark:text-gray-100 dark:bg-gray-950 border-gray-700 bg-gray-100;
+}
+[data-rehype-pretty-code-title] + pre {
+  @apply mt-0 rounded-t-none border-t-0;
 }
 
-h4 {
-  @apply text-xl font-bold text-gray-800;
+pre[data-theme="dark"] {
+  color-scheme: dark;
 }
 
-h5 {
-  @apply text-lg font-bold text-gray-800;
+@media (prefers-color-scheme: dark) {
+  [data-theme="light"] {
+    display: none;
+  }
+}
+@media (prefers-color-scheme: light) {
+  [data-theme="dark"] {
+    display: none;
+  }
 }
 
-p {
-  @apply text-base text-gray-800;
+@media (prefers-color-scheme: light), (prefers-color-scheme: no-preference) {
+  pre[data-theme="dark"] {
+    display: none;
+  }
 }

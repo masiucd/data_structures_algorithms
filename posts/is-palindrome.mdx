@@ -28,14 +28,29 @@ Input: "racecar"
 Output: "true"
 ```
 
-Lorem ipsum dolor sit amet consectetur adipisicing elit.
-Rem ad ea maiores esse error inventore pariatur itaque, repellendus, officiis fugiat sapiente! Facilis eum porro voluptas dolores veniam libero ut ipsam!
+**Example 3:**
 
-Lorem ipsum dolor sit amet consectetur adipisicing elit.
-Rem ad ea maiores esse error inventore pariatur itaque, repellendus, officiis fugiat sapiente! Facilis eum porro voluptas dolores veniam libero ut ipsam!Lorem ipsum dolor sit amet consectetur adipisicing elit.
-Rem ad ea maiores esse error inventore pariatur itaque, repellendus, officiis fugiat sapiente! Facilis eum porro voluptas dolores veniam libero ut ipsam!Lorem ipsum dolor sit amet consectetur adipisicing elit.
-Rem ad ea maiores esse error inventore pariatur itaque, repellendus, officiis fugiat sapiente! Facilis eum porro voluptas dolores veniam libero ut ipsam!Lorem ipsum dolor sit amet consectetur adipisicing elit.
-Rem ad ea maiores esse error inventore pariatur itaque, repellendus, officiis fugiat sapiente! Facilis eum porro voluptas dolores veniam libero ut ipsam!Lorem ipsum dolor sit amet consectetur adipisicing elit.
-Rem ad ea maiores esse error inventore pariatur itaque, repellendus, officiis fugiat sapiente! Facilis eum porro voluptas dolores veniam libero ut ipsam!Lorem ipsum dolor sit amet consectetur adipisicing elit.
-Rem ad ea maiores esse error inventore pariatur itaque, repellendus, officiis fugiat sapiente! Facilis eum porro voluptas dolores veniam libero ut ipsam!Lorem ipsum dolor sit amet consectetur adipisicing elit.
-Rem ad ea maiores esse error inventore pariatur itaque, repellendus, officiis fugiat sapiente! Facilis eum porro voluptas dolores veniam libero ut ipsam!
+```
+Input: "apple"
+Output: "false"
+```
+
+## Solution
+
+```javascript title="Using reverse" showLineNumbers
+function isPalindrome(str) {
+  let left = 0;
+  let right = str.length - 1;
+
+  while (left < right) {
+    if (str[left] !== str[right]) {
+      return false;
+    }
+
+    left++;
+    right--;
+  }
+
+  return true;
+}
+```
