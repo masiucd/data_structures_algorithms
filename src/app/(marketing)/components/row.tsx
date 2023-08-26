@@ -9,12 +9,12 @@ import type {TreeDataType} from "@/types/tree";
 
 function renderIcon(node: TreeDataType, on: boolean) {
   if (node.children.length > 0 && !on) {
-    return <Icons.FilePlus />;
+    return <Icons.FilePlus size={20} />;
   }
   if (node.children.length === 0) {
-    return <Icons.Code />;
+    return <Icons.Code size={20} />;
   }
-  return <Icons.FileMinus />;
+  return <Icons.FileMinus size={20} />;
 }
 
 export function Row({

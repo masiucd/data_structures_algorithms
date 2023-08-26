@@ -16,21 +16,21 @@ const TopicsExamples = [
     title: "Data Structures",
     description:
       "Different data structures are used to store different types of data. From linked lists to stacks, data structures are used to store data.",
-    icon: Icons.Layers,
+    icon: Icons.Database,
     path: "/data-structures",
   },
   {
     title: "Sorting",
     description:
       "Sorting is the process of arranging a list of items in a particular order. Sorting algorithms are used to arrange a list of items in a particular order.",
-    icon: Icons.RulerHorizontal,
+    icon: Icons.SortAsc,
     path: "/algorithms/sorting",
   },
   {
     title: "Searching",
     description:
       "Searching is the process of finding a particular item in a list of items. Searching algorithms are used to find a particular item in a list of items. They are used in every part of life, from making a cup of tea to landing a plane.",
-    icon: Icons.Code,
+    icon: Icons.Search,
     path: "/algorithms/searching",
   },
   {
@@ -51,29 +51,36 @@ const TopicsExamples = [
 
 function Top() {
   return (
-    <div className="mb-5 flex flex-1 items-center bg-main-hero dark:bg-main-hero-white">
-      <div className="flex flex-col items-center justify-center rounded-sm bg-gray-950/70 p-2">
-        <h1 className="text-4xl font-extrabold  text-gray-200 drop-shadow-2xl dark:text-gray-100 sm:text-5xl lg:text-6xl">
-          <span className="block">Learn Algorithms and Data Structures</span>
-          <span className=" block">with code examples and visualization </span>
-        </h1>
-        <p className="mt-6 max-w-3xl text-xl text-gray-300 drop-shadow-xl dark:text-gray-400">
-          Algorithms and data structures are the building blocks of computer
-          science. They are used to solve problems with data. They are a
-          fundamental part of computer science, and understanding them is
-          essential to becoming a good programmer.
-        </p>
-        <div className="flex w-full gap-5">
-          <Link href="/about">
-            <span className="text-sm font-semibold text-gray-100 transition-opacity duration-150 hover:opacity-50">
-              About
+    <div className="flex flex-1 items-center bg-main-hero dark:bg-main-hero-white">
+      <div className="flex flex-col items-center justify-center gap-2 rounded bg-gray-950/70">
+        <div className="p-2">
+          <h1 className="text-4xl font-extrabold  text-gray-200 drop-shadow-2xl dark:text-gray-100 sm:text-5xl lg:text-6xl">
+            <span className="block">
+              Learn <span className="text-blue-200">Algorithms</span> and{" "}
+              <span className="text-blue-200">Data Structures</span>
             </span>
-          </Link>
-          <Link href="/data-structures">
-            <span className="text-sm font-semibold text-gray-100 transition-opacity duration-150 hover:opacity-50">
-              Data Structures
-            </span>
-          </Link>
+            <span className="block">with code examples and visualization </span>
+          </h1>
+        </div>
+        <div className="flex w-full flex-col gap-2 rounded bg-gray-950/30 p-2">
+          <p className=" max-w-3xl text-xl text-gray-300 drop-shadow-xl dark:text-gray-400">
+            Algorithms and data structures are the building blocks of computer
+            science. They are used to solve problems with data. They are a
+            fundamental part of computer science, and understanding them is
+            essential to becoming a good programmer.
+          </p>
+          <div className="flex w-full gap-5">
+            <Link href="/about">
+              <span className="text-sm font-semibold text-gray-100 transition-opacity duration-150 hover:opacity-50">
+                About
+              </span>
+            </Link>
+            <Link href="/data-structures">
+              <span className="text-sm font-semibold text-gray-100 transition-opacity duration-150 hover:opacity-50">
+                Data Structures
+              </span>
+            </Link>
+          </div>
         </div>
       </div>
     </div>
@@ -84,7 +91,9 @@ const DESCRIPTION_LENGTH = 100;
 function Grid() {
   return (
     <div className="flex max-h-96 flex-col gap-1 overflow-scroll p-2 md:max-h-full">
-      <h3>Common Topics</h3>
+      <div className="p-2">
+        <h3>Common Topics</h3>
+      </div>
       <ul className="grid flex-1 grid-cols-1 gap-5 p-2 sm:grid-cols-2 lg:grid-cols-3 ">
         {TopicsExamples.sort((a, b) => a.title.localeCompare(b.title)).map(
           (topic) => (
@@ -94,7 +103,7 @@ function Grid() {
             >
               <div className="flex h-full flex-col">
                 <div className="flex items-center gap-1">
-                  <topic.icon />
+                  <topic.icon size={20} />
                   <strong className="font-bold">{topic.title}</strong>
                 </div>
                 <Tooltip

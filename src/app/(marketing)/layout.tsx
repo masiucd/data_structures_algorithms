@@ -72,7 +72,6 @@ const SOCIAL_LINKS = Object.freeze([
 
 export default function Layout({children}: PropsWithChildren) {
   let tree = getTree(TreeData, null);
-
   return (
     <>
       <main className="flex min-h-screen flex-col ">
@@ -101,7 +100,7 @@ export default function Layout({children}: PropsWithChildren) {
                     className="text-sm font-semibold text-blue-950 transition-opacity duration-150 hover:opacity-50"
                   >
                     <a href={link.href}>
-                      <link.icon fontSize={30} />
+                      <link.icon fontSize={20} />
                     </a>
                   </li>
                 ))}
