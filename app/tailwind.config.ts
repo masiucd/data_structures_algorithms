@@ -1,5 +1,6 @@
 import type {Config} from "tailwindcss";
 import colors from "tailwindcss/colors";
+import {fontFamily} from "tailwindcss/defaultTheme";
 
 const config: Config = {
   content: [
@@ -10,6 +11,9 @@ const config: Config = {
   darkMode: "class",
   theme: {
     extend: {
+      fontFamily: {
+        mono: ["var(--mono)", ...fontFamily.mono],
+      },
       colors: {
         gray: colors.slate,
         primary: colors.sky,
