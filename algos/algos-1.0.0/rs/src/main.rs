@@ -1,9 +1,8 @@
 use rs::algorithms::strings::is_palindrome::is_palindrome;
+use rs::algorithms::strings::count_vowels::{ count_vowels, count_vowels_rec };
 // use rs::data_structures::lists::lists::Node;
 
 fn main() {
-    let res = is_palindrome("racecar"); // true
-    println!("{res}");
-    let res = is_palindrome("marcell"); // false
-    println!("{res}");
+    let r = count_vowels_rec("hello");
+    println!("count_vowels: {}", r);
 }
