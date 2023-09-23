@@ -1,11 +1,6 @@
-package main
+package calPoints
 
 import "strconv"
-
-func main() {
-	n := calPoints([]string{"5", "2", "C", "D", "+"})
-	println(n)
-}
 
 func sumList(list []int) int {
 	sum := 0
