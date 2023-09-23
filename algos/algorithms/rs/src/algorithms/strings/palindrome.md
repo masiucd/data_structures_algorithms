@@ -10,10 +10,10 @@ assert_eq!(is_palindrome("abba"), true);
 assert_eq!(is_palindrome("abab"), false);
 ```
 
-## Complexity
+## Complexity Analysis
 
-- Time complexity: `O(n)`
-- Space complexity: `O(1)`
+- Time complexity: `O(n)` where `n` is the length of the string `s`.
+- Space complexity: `O(1)` since we are not using any extra space to solve this problem in place.
 
 ## References
 
