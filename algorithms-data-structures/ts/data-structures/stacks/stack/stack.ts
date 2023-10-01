@@ -1,10 +1,10 @@
-export class Stack {
-  private items: any[];
+export class Stack<T> {
+  private items: T[];
   constructor() {
     this.items = [];
   }
 
-  push(element: any) {
+  push(element: T) {
     this.items.push(element);
   }
 
