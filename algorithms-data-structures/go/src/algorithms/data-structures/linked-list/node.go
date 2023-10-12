@@ -20,4 +20,5 @@ type Listable interface {
 	Delete(value int)
 	Traverse()
 	Reverse()
+	Print()
 }
