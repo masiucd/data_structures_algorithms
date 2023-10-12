@@ -24,6 +24,15 @@ func (l *SingleList) Append(value int) {
 
 }
 func (l *SingleList) Prepend(value int) {
+	newNode := &SingleNode{Value: value}
+	if l.Head == nil {
+		l.Head = newNode
+		l.Tail = newNode
+	} else {
+		newNode.Next = l.Head
+		l.Head = newNode
+	}
+	l.Size++
 
 }
 func (l *SingleList) InsertAt(value, index int) {
