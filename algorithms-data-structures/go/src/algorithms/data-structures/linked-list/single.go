@@ -1,5 +1,10 @@
 package linkedlist
 
+import (
+	"fmt"
+	"strings"
+)
+
 type SingleList struct {
 	Head *SingleNode
 	Tail *SingleNode
@@ -40,7 +45,15 @@ func (l *SingleList) Traverse() {}
 
 func Reverse() {}
 
-func (l *SingleList) Print() {}
+func (l *SingleList) Print() {
+	current := l.Head
+	var xs []string
+	for current != nil {
+		xs = append(xs, fmt.Sprintf("%d", current.Value))
+		current = current.Next
+	}
+	fmt.Println(strings.Join(xs, " -> "))
+}
 
 func New() *SingleList {
 	return &SingleList{}

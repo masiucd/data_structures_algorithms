@@ -9,5 +9,5 @@ func main() {
 	// ll.Prepend(20)
 	ll.Append(30)
 
-	print(ll)
+	ll.Print()
 }
