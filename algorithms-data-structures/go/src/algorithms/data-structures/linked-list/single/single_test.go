@@ -1,4 +1,4 @@
-package linkedlist
+package single
 
 import (
 	"github.com/stretchr/testify/assert"

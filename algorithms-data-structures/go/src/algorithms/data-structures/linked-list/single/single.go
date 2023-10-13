@@ -1,18 +1,19 @@
-package linkedlist
+package single
 
 import (
 	"fmt"
+	"go-ds/src/algorithms/data-structures/linked-list"
 	"strings"
 )
 
 type SingleList struct {
-	Head *SingleNode
-	Tail *SingleNode
+	Head *linkedlist.SingleNode
+	Tail *linkedlist.SingleNode
 	Size int
 }
 
 func (l *SingleList) Append(value int) {
-	newNode := &SingleNode{Value: value}
+	newNode := &linkedlist.SingleNode{Value: value}
 	if l.Head == nil {
 		l.Head = newNode
 		l.Tail = newNode
@@ -24,7 +25,7 @@ func (l *SingleList) Append(value int) {
 
 }
 func (l *SingleList) Prepend(value int) {
-	newNode := &SingleNode{Value: value}
+	newNode := &linkedlist.SingleNode{Value: value}
 	if l.Head == nil {
 		l.Head = newNode
 		l.Tail = newNode
@@ -40,7 +41,7 @@ func (l *SingleList) InsertAt(value, index int) {
 	if l.Head == nil {
 		l.Append(value)
 	} else {
-		newNode := &SingleNode{Value: value}
+		newNode := &linkedlist.SingleNode{Value: value}
 		prevNode := l.Get(index - 1)
 		nextNode := prevNode.Next
 		prevNode.Next = newNode
@@ -63,7 +64,7 @@ func (l *SingleList) Search(value int) bool {
 	return false
 }
 
-func (l *SingleList) Get(index int) *SingleNode {
+func (l *SingleList) Get(index int) *linkedlist.SingleNode {
 	if index < 0 || index >= l.Size {
 		return nil
 	}
@@ -106,8 +107,8 @@ func (l *SingleList) Reverse() {
 		return
 	}
 	current := l.Head
-	var prev *SingleNode
-	var next *SingleNode
+	var prev *linkedlist.SingleNode
+	var next *linkedlist.SingleNode
 	for current != nil {
 		next = current.Next
 		current.Next = prev
@@ -116,7 +117,7 @@ func (l *SingleList) Reverse() {
 	}
 	l.Tail = l.Head
 	l.Head = prev
-	
+
 }
 
 func (l *SingleList) Print() {
