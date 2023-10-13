@@ -8,7 +8,7 @@ In computer science, a linked list is a linear collection of data elements, in w
 - `Prepend(value int)` - Add a node to the beginning of the list
 - `InsertAt(value, index int)` - Add a node at a given index
 - `Search(value int) bool` - Search for a node
-- `Get(index int) int` - Get a node at a given index
+- `Get(index int) *SingleNode` - Get a node at a given index
 - `Delete(value int)` - Delete a node
 - `Traverse()` - Traverse the list
 - `Reverse()` - Reverse the list

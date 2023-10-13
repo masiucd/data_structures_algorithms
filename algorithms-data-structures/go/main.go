@@ -1,13 +1,22 @@
 package main
 
-import linkedlist "go-ds/src/algorithms/data-structures/linked-list"
+import (
+	"fmt"
+)
 
 func main() {
 
-	ll := linkedlist.New()
-	ll.Append(10)
-	// ll.Prepend(20)
-	ll.Append(30)
+	apa := check(1)
+	fmt.Println(apa)
+}
 
-	ll.Print()
+func check(n int) int {
+	switch n {
+	case 1:
+		fmt.Println("ENTER")
+		return n * 10
+	default:
+		return n * 100
+	}
+	return 0
 }

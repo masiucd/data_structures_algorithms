@@ -35,15 +35,35 @@ func (l *SingleList) Prepend(value int) {
 	l.Size++
 
 }
+
 func (l *SingleList) InsertAt(value, index int) {
+	if l.Head == nil {
+		l.Append(value)
+	} else {
+		newNode := &SingleNode{Value: value}
+		prevNode := l.Get(index - 1)
+		nextNode := prevNode.Next
+		prevNode.Next = newNode
+		newNode.Next = nextNode
+		l.Size++
+	}
 
 }
 func (l *SingleList) Search(value int) bool {
 	return false
 }
 
-func (l *SingleList) Get(index int) int {
-	return 0
+func (l *SingleList) Get(index int) *SingleNode {
+	if index < 0 || index >= l.Size {
+		return nil
+	}
+
+	current := l.Head
+	for counter := 0; counter < index; counter++ {
+		current = current.Next
+	}
+
+	return current
 }
 
 func (l *SingleList) Delete(value int) {
