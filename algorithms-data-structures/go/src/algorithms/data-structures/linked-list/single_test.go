@@ -48,3 +48,14 @@ func TestSingleList_InsertAt(t *testing.T) {
 	assert.Equal(t, ll.Get(2).Value, 20)
 	assert.Equal(t, ll.Get(3).Value, 30)
 }
+
+func TestSingleList_Search(t *testing.T) {
+	ll := New()
+	ll.Append(10)
+	ll.Append(20)
+	ll.Append(30)
+	assert.Equal(t, true, ll.Search(10))
+	assert.Equal(t, true, ll.Search(20))
+	assert.Equal(t, true, ll.Search(30))
+	assert.Equal(t, false, ll.Search(100))
+}

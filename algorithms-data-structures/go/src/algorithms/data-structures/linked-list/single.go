@@ -50,6 +50,16 @@ func (l *SingleList) InsertAt(value, index int) {
 
 }
 func (l *SingleList) Search(value int) bool {
+	if l.Head == nil || l.Tail == nil {
+		return false
+	}
+	current := l.Head
+	for current != nil {
+		if current.Value == value {
+			return true
+		}
+		current = current.Next
+	}
 	return false
 }
 
