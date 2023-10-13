@@ -17,8 +17,7 @@ type Listable interface {
 	InsertAt(value, index int)
 	Search(value int) bool
 	Get(index int) *SingleNode
-	Delete(value int)
-	Traverse()
+	Delete(index int)
 	Reverse()
 	Print()
 }

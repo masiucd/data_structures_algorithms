@@ -59,3 +59,33 @@ func TestSingleList_Search(t *testing.T) {
 	assert.Equal(t, true, ll.Search(30))
 	assert.Equal(t, false, ll.Search(100))
 }
+
+func TestSingleList_Delete(t *testing.T) {
+	ll := New()
+	ll.Append(10)
+	ll.Append(20)
+	ll.Append(30)
+	ll.Delete(1)
+	assert.Equal(t, 2, ll.Size)
+	assert.Equal(t, ll.Get(0).Value, 10)
+	assert.Equal(t, ll.Get(1).Value, 30)
+	ll.Delete(0)
+	assert.Equal(t, 1, ll.Size)
+	assert.Equal(t, ll.Get(0).Value, 30)
+	ll.Delete(0)
+	assert.Equal(t, 0, ll.Size)
+	assert.Nil(t, ll.Head)
+	assert.Nil(t, ll.Tail)
+}
+
+func TestSingleList_Reverse(t *testing.T) {
+	ll := New()
+	ll.Append(10)
+	ll.Append(20)
+	ll.Append(30)
+	ll.Reverse()
+	assert.Equal(t, 3, ll.Size)
+	assert.Equal(t, ll.Get(0).Value, 30)
+	assert.Equal(t, ll.Get(1).Value, 20)
+	assert.Equal(t, ll.Get(2).Value, 10)
+}

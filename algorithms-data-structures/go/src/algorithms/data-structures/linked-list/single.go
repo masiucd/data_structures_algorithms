@@ -76,13 +76,48 @@ func (l *SingleList) Get(index int) *SingleNode {
 	return current
 }
 
-func (l *SingleList) Delete(value int) {
+func (l *SingleList) Delete(index int) {
+	if index < 0 || index >= l.Size {
+		return
+	}
+
+	if index == 0 {
+		l.Head = l.Head.Next
+		l.Tail = l.Head
+		l.Size--
+		return
+	}
+
+	prevNode := l.Get(index - 1)
+	if index == l.Size-1 {
+		l.Tail = prevNode
+		prevNode.Next = nil
+		l.Size--
+		return
+	}
+
+	prevNode.Next = prevNode.Next.Next
+	l.Size--
 
 }
 
-func (l *SingleList) Traverse() {}
-
-func Reverse() {}
+func (l *SingleList) Reverse() {
+	if l.Size <= 1 {
+		return
+	}
+	current := l.Head
+	var prev *SingleNode
+	var next *SingleNode
+	for current != nil {
+		next = current.Next
+		current.Next = prev
+		prev = current
+		current = next
+	}
+	l.Tail = l.Head
+	l.Head = prev
+	
+}
 
 func (l *SingleList) Print() {
 	current := l.Head
