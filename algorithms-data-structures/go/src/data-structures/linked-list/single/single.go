@@ -2,12 +2,12 @@ package single
 
 import (
 	"fmt"
-	"go-ds/src/algorithms/data-structures/linked-list"
+	"go-ds/src/data-structures/linked-list"
 	"strings"
 )
 
 type SingleList struct {
-	Head *linkedlist.SingleNode
+	Head *linkedlist.linkedlist
 	Tail *linkedlist.SingleNode
 	Size int
 }
