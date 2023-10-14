@@ -7,7 +7,7 @@ import (
 )
 
 type SingleList struct {
-	Head *linkedlist.linkedlist
+	Head *linkedlist.SingleNode
 	Tail *linkedlist.SingleNode
 	Size int
 }
