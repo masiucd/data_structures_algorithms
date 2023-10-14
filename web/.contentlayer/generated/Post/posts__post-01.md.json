@@ -1,0 +1,18 @@
+{
+  "title": "My First Post",
+  "date": "2021-12-24T00:00:00.000Z",
+  "body": {
+    "raw": "\nUllamco et nostrud magna commodo nostrud ...\n",
+    "html": "<p>Ullamco et nostrud magna commodo nostrud ...</p>"
+  },
+  "_id": "posts/post-01.md",
+  "_raw": {
+    "sourceFilePath": "posts/post-01.md",
+    "sourceFileName": "post-01.md",
+    "sourceFileDir": "posts",
+    "contentType": "markdown",
+    "flattenedPath": "posts/post-01"
+  },
+  "type": "Post",
+  "url": "/posts/posts/post-01"
+}
