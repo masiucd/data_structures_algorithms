@@ -1,14 +1,4 @@
-package main
-
-import "fmt"
-
-/**
- * Definition for singly-linked list.
- * type ListNode struct {
- *     Val int
- *     Next *ListNode
- * }
- */
+package linked_list
 
 type ListNode struct {
 	Val  int
@@ -40,25 +30,4 @@ func mergeTwoLists(list1 *ListNode, list2 *ListNode) *ListNode {
 	}
 
 	return dummy.Next
-}
-
-func main() {
-
-	ListOne := &ListNode{1, &ListNode{2, &ListNode{4, nil}}}
-	ListTwo := &ListNode{1, &ListNode{3, &ListNode{4, nil}}}
-
-	res := mergeTwoLists(ListOne, ListTwo)
-
-	r := printList(res)
-	fmt.Println(r)
-
-}
-
-func printList(list *ListNode) []int {
-	var xs []int
-	for list != nil {
-		xs = append(xs, list.Val)
-		list = list.Next
-	}
-	return xs
 }

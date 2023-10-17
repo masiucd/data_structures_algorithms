@@ -1,6 +1,8 @@
 package double
 
-import linkedlist "go-ds/src/algorithms/data-structures/linked-list"
+import (
+	"go-ds/src/data-structures/linked-list"
+)
 
 type DoubleList struct {
 	Head *linkedlist.DoubleNode
