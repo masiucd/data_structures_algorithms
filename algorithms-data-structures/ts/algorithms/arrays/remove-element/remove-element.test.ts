@@ -1,5 +1,5 @@
 import {expect, test} from "bun:test";
-import {removeElement, removeElementTwo} from "./remove_element";
+import {removeElement, removeElementTwo} from "./remove-element";
 
 test("removeElement", () => {
   expect(removeElement([3, 2, 2, 3], 3)).toBe(2);
