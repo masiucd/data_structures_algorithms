@@ -13,3 +13,24 @@ pub fn target_sum(xs: Vec<i32>, size: u8) -> i32 {
 
     max_sum
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_target_sum() {
+        let xs = vec![1, 10, 1, 2, 3];
+        let size = 3;
+        let result = target_sum(xs, size);
+        assert_eq!(result, 14);
+    }
+
+    #[test]
+    fn test_target_sum_2() {
+        let xs = vec![1, 10, 1, 2, 3];
+        let size = 2;
+        let result = target_sum(xs, size);
+        assert_eq!(result, 11);
+    }
+}
