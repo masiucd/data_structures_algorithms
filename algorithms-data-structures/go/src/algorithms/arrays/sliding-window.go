@@ -11,14 +11,6 @@ func slidingWindow(xs []int, windowSize int) int {
 		//Add the next element to the window
 		temp = temp - xs[i-windowSize] + xs[i]
 		maxSum = max(maxSum, temp)
-
 	}
 	return maxSum
-}
-
-func max(a, b int) int {
-	if a > b {
-		return a
-	}
-	return b
 }
