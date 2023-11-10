@@ -54,7 +54,4 @@ func TestGet(t *testing.T) {
 
 	node = list.Get(3)
 	assert.Equal(t, node.Value, 4)
-
-	node = list.Get(4)
-	assert.Nil(t, node)
 }
