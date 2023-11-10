@@ -40,7 +40,11 @@ func (list *DoubleList) Prepend(value int) {
 }
 
 func (list *DoubleList) InsertAt(value, index int) {
-	//
+	// if list.Head == nil {
+	// 	list.Append(value)
+	// } else {
+	// 	// prevNode :
+	// }
 }
 
 func (list *DoubleList) Search(value int) bool {
@@ -48,6 +52,39 @@ func (list *DoubleList) Search(value int) bool {
 }
 
 func (list *DoubleList) Get(index int) *linkedlist.DoubleNode {
+	if list.Size == 0 || index > list.Size || index < 0 {
+		return nil
+	}
+	if index == 0 {
+		return list.Head
+	}
+	if index == list.Size-1 {
+		return list.Tail
+	}
+	middle := (list.Size) / 2
+	if index <= middle {
+		// start from head
+		current := list.Head
+		count := 0
+		for current != nil {
+			if index == count {
+				return current
+			}
+			current = current.Next
+			count++
+		}
+	} else {
+		// start from tail
+		current := list.Tail
+		count := list.Size
+		for count >= middle {
+			if count == index {
+				return current
+			}
+			current = current.Prev
+			count--
+		}
+	}
 	return nil
 }
 
