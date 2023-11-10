@@ -17,7 +17,6 @@ func (list *DoubleList) Append(value int) {
 		list.Head = node
 		list.Tail = node
 	} else {
-		// a := list.Tail
 		list.Tail.Next = node
 		node.Prev = list.Tail
 		list.Tail = node
@@ -27,7 +26,17 @@ func (list *DoubleList) Append(value int) {
 }
 
 func (list *DoubleList) Prepend(value int) {
-	//
+	// if list is empty
+	node := &linkedlist.DoubleNode{Value: value}
+	if list.Head == nil {
+		list.Head = node
+		list.Tail = node
+	} else {
+		node.Next = list.Head
+		list.Head.Prev = node
+		list.Head = node
+	}
+	list.Size++
 }
 
 func (list *DoubleList) InsertAt(value, index int) {
