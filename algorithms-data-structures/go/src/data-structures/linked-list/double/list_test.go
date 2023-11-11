@@ -58,3 +58,25 @@ func TestGet(t *testing.T) {
 	node = list.Get(4)
 	assert.Nil(t, node)
 }
+
+func TestInsertAt(t *testing.T) {
+	list := NewDoubleList()
+	list.Append(1)
+	list.Append(2)
+	list.Append(3)
+	list.Append(4)
+
+	assert.Equal(t, list.Size, 4)
+
+	list.InsertAt(100, 0)
+	assert.Equal(t, list.Size, 5)
+	assert.Equal(t, list.Head.Value, 100)
+
+	list.InsertAt(10, list.Size-1)
+	assert.Equal(t, list.Size, 6)
+	assert.Equal(t, list.Tail.Value, 10)
+
+	list.InsertAt(40, 3)
+	assert.Equal(t, list.Size, 7)
+	assert.Equal(t, list.Get(3).Value, 40)
+}
