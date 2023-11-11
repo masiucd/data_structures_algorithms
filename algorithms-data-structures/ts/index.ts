@@ -1,12 +1,4 @@
-import {Node, merge, printList} from "./algorithms/linked-list/merge";
+import {totalSum} from "./algorithms/arrays/sliding-window/total-sum";
 
-let t1 = new Node(1);
-t1.next = new Node(3);
-t1.next.next = new Node(5);
-
-let t2 = new Node(2);
-t2.next = new Node(4);
-t2.next.next = new Node(6);
-
-let merged = merge(t1, t2);
-console.log("🚀 ~ file: merge.test.ts:14 ~ test ~ merged:", printList(merged));
+let res = totalSum([1, 2, 3, 4], 2);
+console.log("res", res);
