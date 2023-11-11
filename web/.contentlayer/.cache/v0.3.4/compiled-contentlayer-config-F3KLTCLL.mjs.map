@@ -1,7 +1,0 @@
-{
-  "version": 3,
-  "sources": ["../../../contentlayer.config.ts"],
-  "sourcesContent": ["import {defineDocumentType, makeSource} from \"contentlayer/source-files\";\n\nexport const Post = defineDocumentType(() => ({\n  name: \"Post\",\n  filePathPattern: `**/*.md`,\n  fields: {\n    title: {type: \"string\", required: true},\n    date: {type: \"date\", required: true},\n  },\n  computedFields: {\n    url: {\n      type: \"string\",\n      resolve: (post) => `/posts/${post._raw.flattenedPath}`,\n    },\n  },\n}));\n\nexport default makeSource({contentDirPath: \"posts\", documentTypes: [Post]});\n"],
-  "mappings": ";AAAA,SAAQ,oBAAoB,kBAAiB;AAEtC,IAAM,OAAO,mBAAmB,OAAO;AAAA,EAC5C,MAAM;AAAA,EACN,iBAAiB;AAAA,EACjB,QAAQ;AAAA,IACN,OAAO,EAAC,MAAM,UAAU,UAAU,KAAI;AAAA,IACtC,MAAM,EAAC,MAAM,QAAQ,UAAU,KAAI;AAAA,EACrC;AAAA,EACA,gBAAgB;AAAA,IACd,KAAK;AAAA,MACH,MAAM;AAAA,MACN,SAAS,CAAC,SAAS,UAAU,KAAK,KAAK,aAAa;AAAA,IACtD;AAAA,EACF;AACF,EAAE;AAEF,IAAO,8BAAQ,WAAW,EAAC,gBAAgB,SAAS,eAAe,CAAC,IAAI,EAAC,CAAC;",
-  "names": []
-}
