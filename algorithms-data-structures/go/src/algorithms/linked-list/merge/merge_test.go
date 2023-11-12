@@ -1,8 +1,9 @@
-package linked_list
+package merge
 
 import (
-	"github.com/stretchr/testify/assert"
 	"testing"
+
+	"github.com/stretchr/testify/assert"
 )
 
 func TestMergeTwoLists(t *testing.T) {

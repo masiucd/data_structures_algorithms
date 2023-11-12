@@ -1,4 +1,4 @@
-package linked_list
+package merge
 
 type ListNode struct {
 	Val  int
