@@ -12,7 +12,7 @@ type DoubleList struct {
 
 func (list *DoubleList) Append(value int) {
 	// if list is empty
-	node := &linkedlist.DoubleNode{Value: value}
+	node := newNode(value)
 	if list.Head == nil {
 		list.Head = node
 		list.Tail = node
@@ -27,7 +27,7 @@ func (list *DoubleList) Append(value int) {
 
 func (list *DoubleList) Prepend(value int) {
 	// if list is empty
-	node := &linkedlist.DoubleNode{Value: value}
+	node := newNode(value)
 	if list.Head == nil {
 		list.Head = node
 		list.Tail = node
@@ -40,11 +40,27 @@ func (list *DoubleList) Prepend(value int) {
 }
 
 func (list *DoubleList) InsertAt(value, index int) {
-	// if list.Head == nil {
-	// 	list.Append(value)
-	// } else {
-	// 	// prevNode :
-	// }
+	if index < 0 || index > list.Size {
+		return
+	}
+	if index == 0 {
+		list.Prepend(value)
+		return
+	}
+	if index == list.Size-1 || list.Head == nil {
+		list.Append(value)
+		return
+	}
+	node := newNode(value)
+	prevNode := list.Get(index - 1)
+	node.Prev = prevNode
+	node.Next = prevNode.Next
+	prevNode.Next = node
+	if node.Next == nil {
+		list.Tail = node
+	}
+	list.Size++
+
 }
 
 func (list *DoubleList) Search(value int) bool {
@@ -99,4 +115,8 @@ func (list *DoubleList) Print() {}
 
 func NewDoubleList() *DoubleList {
 	return &DoubleList{}
+}
+
+func newNode(value int) *linkedlist.DoubleNode {
+	return &linkedlist.DoubleNode{Value: value}
 }
