@@ -8,15 +8,11 @@ type BrowserNode struct {
 
 type BrowserHistoryList struct {
 	Current *BrowserNode
-	Head    *BrowserNode
-	Tail    *BrowserNode
 }
 
 func New(homepage string) *BrowserHistoryList {
 	return &BrowserHistoryList{
 		Current: &BrowserNode{Val: homepage},
-		Head:    &BrowserNode{Val: homepage},
-		Tail:    &BrowserNode{Val: homepage},
 	}
 }
 
