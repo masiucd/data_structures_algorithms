@@ -25,3 +25,21 @@ func TestBrowserHistory(t *testing.T) {
 	assert.Equal(t, "leetcode.com", bh.Back(2))
 
 }
+
+func TestBrowserHistoryWithLinkedList(t *testing.T) {
+	bh := New("leetcode.com")
+	bh.Visit("google.com")
+	bh.Visit("facebook.com")
+	bh.Visit("youtube.com")
+
+	assert.Equal(t, "facebook.com", bh.Back(1))
+	assert.Equal(t, "google.com", bh.Back(1))
+	assert.Equal(t, "leetcode.com", bh.Back(1))
+
+	bh.Visit("ifkgbg.se")
+	bh.Visit("legia.com")
+
+	assert.Equal(t, "legia.com", bh.Forward(1))
+	assert.Equal(t, "ifkgbg.se", bh.Back(1))
+	
+}
