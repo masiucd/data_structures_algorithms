@@ -1,4 +1,4 @@
-package recursion
+package sum
 
 import (
 	"github.com/stretchr/testify/assert"

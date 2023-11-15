@@ -1,4 +1,4 @@
-package recursion
+package sum
 
 func sumRecursive(xs []int) int {
 	if len(xs) == 0 {
