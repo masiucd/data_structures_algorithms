@@ -1,18 +1,20 @@
 package countstudents
 
 func CountStudents(students []int, sandwiches []int) int {
-	preferenceCount := [2]int{0, 0}
-	for _, student := range students {
-		preferenceCount[student]++
+	countPref := [2]int{0, 0}
+
+	for _, s := range students {
+		countPref[s]++
 	}
-	for _, sandwich := range sandwiches {
-		if preferenceCount[sandwich] > 0 {
-			preferenceCount[sandwich]--
-		} else {
+
+	for _, s := range sandwiches {
+		if countPref[s] == 0 {
 			break
 		}
+		countPref[s]--
 	}
-	return preferenceCount[0] + preferenceCount[1]
+
+	return countPref[0] + countPref[1]
 }
 
 /**
