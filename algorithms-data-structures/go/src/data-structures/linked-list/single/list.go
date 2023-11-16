@@ -77,16 +77,16 @@ func (l *SingleList) Get(index int) *linkedlist.SingleNode {
 	return current
 }
 
-func (l *SingleList) Delete(index int) {
+func (l *SingleList) Delete(index int) *linkedlist.SingleNode {
 	if index < 0 || index >= l.Size {
-		return
+		return nil
 	}
 
 	if index == 0 {
 		l.Head = l.Head.Next
 		l.Tail = l.Head
 		l.Size--
-		return
+		return nil
 	}
 
 	prevNode := l.Get(index - 1)
@@ -94,12 +94,14 @@ func (l *SingleList) Delete(index int) {
 		l.Tail = prevNode
 		prevNode.Next = nil
 		l.Size--
-		return
+		return nil
 	}
 
-	prevNode.Next = prevNode.Next.Next
+	var node *linkedlist.SingleNode
+	node = prevNode.Next
+	prevNode.Next = node.Next
 	l.Size--
-
+	return node
 }
 
 func (l *SingleList) Reverse() {
@@ -128,6 +130,10 @@ func (l *SingleList) Print() {
 		current = current.Next
 	}
 	fmt.Println(strings.Join(xs, " -> "))
+}
+
+func (l *SingleList) Length() int {
+	return l.Size
 }
 
 func New() *SingleList {
