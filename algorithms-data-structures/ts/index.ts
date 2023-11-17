@@ -1,4 +1,5 @@
-import {totalSum} from "./algorithms/arrays/sliding-window/total-sum";
+import {insertionSort} from "./algorithms/sorting/insertion/sort";
 
-let res = totalSum([1, 2, 3, 4], 2);
-console.log("res", res);
+let res = insertionSort([5, 4, 3, 2, 1]);
+
+console.log(res);
