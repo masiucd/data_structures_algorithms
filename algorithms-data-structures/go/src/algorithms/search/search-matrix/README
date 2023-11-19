@@ -1,0 +1,51 @@
+# Search Matrix
+
+## Search Matrix Algorithm
+
+This algorithm is used to search for a target value in a matrix. The matrix is assumed to be sorted row-wise, with each row sorted in ascending order.
+
+### Algorithm Steps:
+
+1. Start from the top-right element of the matrix.
+2. If the current element is equal to the target value, return True.
+3. If the current element is greater than the target value, move left to the previous column.
+4. If the current element is less than the target value, move down to the next row.
+5. Repeat steps 2-4 until the target value is found or the search space is exhausted.
+
+### Pseudo Code:
+
+```
+function searchMatrix(matrix, target):
+    if matrix is empty:
+        return False
+    row := 0
+    col := matrix[0].length - 1
+    while row < matrix.length and col >= 0:
+        if matrix[row][col] == target:
+            return True
+        else if matrix[row][col] < target:
+            row := row + 1
+        else:
+            col := col - 1
+    return False
+```
+
+```go
+func searchMatrix(matrix [][]int, target int) bool {
+  if len(matrix) == 0 {
+    return false
+  }
+  row := 0
+  col := len(matrix[0]) - 1
+  for row < len(matrix) && col >= 0 {
+    if matrix[row][col] == target {
+      return true
+    } else if matrix[row][col] < target {
+      row++
+    } else {
+      col--
+    }
+  }
+  return false
+}
+```
