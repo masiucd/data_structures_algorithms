@@ -1,17 +1,8 @@
-package main
+package fizzbuzz
 
-import (
-	"fmt"
-	"strconv"
-)
+import "strconv"
 
-func main() {
-	r := fizzBuss(15)
-	fmt.Println(r)
-
-}
-
-func fizzBuss(n int) []string {
+func makeFizzBuzList(n int) []string {
 	var result []string = make([]string, n)
 	for i := 0; i < n; i++ {
 		switch {
@@ -25,6 +16,5 @@ func fizzBuss(n int) []string {
 			result[i] = strconv.Itoa(i)
 		}
 	}
-
 	return result
 }
