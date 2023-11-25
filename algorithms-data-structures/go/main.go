@@ -1,28 +1,30 @@
 package main
 
-import "fmt"
-
 func main() {
-	xs := []int{1, 2, 3, 4, 5, 6}
+	matrix := [][]int{
+		{1, 2, 3, 4, 5},
+		{6, 7, 8, 9, 10},
+		{11, 12, 13, 14, 15},
+	}
 
-	res := binarySearch(xs, 5)
-	fmt.Println(res)
-
+	res := searchMatrix(matrix, 12) // true
+	println(res)
 }
 
-func binarySearch(xs []int, target int) int {
-	start := 0
-	end := len(xs) - 1
-	for start <= end {
-		middle := (start + end) / 2
-		if xs[middle] == target {
-			return middle
-		}
-		if xs[middle] < target {
-			start = middle + 1
+func searchMatrix(matrix [][]int, target int) bool {
+	if len(matrix) == 0 {
+		return false
+	}
+	row := 0
+	col := len(matrix[0]) - 1
+	for row < len(matrix) && col >= 0 {
+		if matrix[row][col] == target {
+			return true
+		} else if matrix[row][col] < target {
+			row++
 		} else {
-			end = middle - 1
+			col--
 		}
 	}
-	return -1
+	return false
 }
