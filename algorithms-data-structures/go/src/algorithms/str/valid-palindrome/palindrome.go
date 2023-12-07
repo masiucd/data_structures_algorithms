@@ -1,19 +1,9 @@
-package main
+package validpalindrome
 
 import (
-	"fmt"
 	"regexp"
 	"strings"
 )
-
-func main() {
-	res := isPalindrome("A man a plan a canal Panama")
-	fmt.Println(res)
-	res = isPalindrome("race a car")
-	fmt.Println(res)
-	res = isPalindrome("booo")
-	fmt.Println(res)
-}
 
 func isPalindrome(s string) bool {
 	if len(s) < 2 {
