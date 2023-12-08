@@ -17,32 +17,49 @@ export class BinarySearchTree {
     this.root = null;
   }
 
-  insert(value: number): boolean {
-    let node = new TreeNode(value);
+  insertIter(value: number): TreeNode | null {
     if (this.root === null) {
-      this.root = node;
-      return true;
+      this.root = new TreeNode(value);
+      return this.root;
     }
-    let current = this.root;
-    while (true) {
-      if (value === current.value) return false;
-      if (value < current.value) {
-        // go left
-        if (current.left && value < current.value) {
-          current = current.left;
-        } else {
-          current.left = node;
+    let node = this.root;
+    while (node !== null) {
+      if (value < node.value) {
+        if (node.left === null) {
+          node.left = new TreeNode(value);
+          return node.left;
         }
+        node = node.left;
       } else {
-        // go right
-        if (current.right && value < current.value) {
-          current = current.right;
-        } else {
-          current.right = node;
+        if (node.right === null) {
+          node.right = new TreeNode(value);
+          return node.right;
         }
+        node = node.right;
       }
-      return true;
     }
+    return null;
+  }
+
+  insert(value: number): TreeNode | null {
+    if (this.root === null) {
+      this.root = new TreeNode(value);
+      return this.root;
+    }
+    return this.#insertHelper(this.root, value);
+  }
+
+  #insertHelper(node: TreeNode | null, value: number) {
+    if (node === null) {
+      node = new TreeNode(value);
+      return node;
+    }
+    if (value < node.value) {
+      node.left = this.#insertHelper(node.left, value);
+    } else {
+      node.right = this.#insertHelper(node.right, value);
+    }
+    return node;
   }
 
   contains(value: number): boolean {
@@ -50,5 +67,24 @@ export class BinarySearchTree {
   }
   max(): number {
     return -1;
+  }
+  bfs(): number[] {
+    if (this.root === null) return [];
+    let result: number[] = [];
+    let queue: TreeNode[] = []; // TODO make a real Q data structure
+    queue.push(this.root);
+    while (queue.length > 0) {
+      let node = queue.shift();
+      if (node) {
+        result.push(node?.value);
+        if (node.left) {
+          queue.push(node.left);
+        }
+        if (node.right) {
+          queue.push(node.right);
+        }
+      }
+    }
+    return result;
   }
 }
