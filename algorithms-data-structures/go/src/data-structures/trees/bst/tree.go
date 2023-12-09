@@ -18,6 +18,8 @@ type Tree interface {
 	Contains(value int) bool
 	BFS() []int
 	DFS(order string) []int // in, pre, post
+	Min() *Node             // in, pre, post
+	Max() *Node             // in, pre, post
 
 }
 
@@ -53,7 +55,33 @@ func (t *Bst) Remove(value int) {
 	if t.root == nil {
 		return
 	}
+	t.root = remove(t.root, value)
+}
 
+func remove(node *Node, value int) *Node {
+	if node == nil {
+		return nil
+	}
+	if value < node.Value {
+		node.Left = remove(node.Left, value)
+	}
+	if value > node.Value {
+		node.Right = remove(node.Right, value)
+	}
+	if value == node.Value {
+		if node.Left == nil && node.Right == nil {
+			return nil
+		}
+		if node.Left == nil {
+			return node.Right
+		}
+		if node.Right == nil {
+			return node.Left
+		}
+		node.Value = findMin(node.Right).Value
+		node.Right = remove(node.Right, node.Value)
+	}
+	return node
 }
 
 func (t *Bst) Size() int {
@@ -83,9 +111,10 @@ func find(node *Node, value int) *Node {
 	if value == node.Value {
 		return node
 	}
-	find(node.Left, value)
-	find(node.Right, value)
-	return nil
+	if left := find(node.Left, value); left != nil {
+		return left
+	}
+	return find(node.Right, value)
 }
 
 func (t *Bst) Contains(value int) bool {
@@ -149,4 +178,30 @@ func postOrder(node *Node, result *[]int) {
 	postOrder(node.Left, result)
 	postOrder(node.Right, result)
 	*result = append(*result, node.Value)
+}
+
+func (t *Bst) Min() *Node {
+	if t.root == nil {
+		return nil
+	}
+	return findMin(t.root)
+}
+func findMin(node *Node) *Node {
+	if node.Left == nil {
+		return node
+	}
+	return findMin(node.Left)
+}
+func (t *Bst) Max() *Node {
+	if t.root == nil {
+		return nil
+	}
+	return findMax(t.root)
+}
+
+func findMax(node *Node) *Node {
+	if node.Right == nil {
+		return node
+	}
+	return findMax(node.Right)
 }

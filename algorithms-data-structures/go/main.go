@@ -1,7 +1,6 @@
 package main
 
 import (
-	cc "container/list"
 	"fmt"
 	"go-ds/src/data-structures/trees/bst"
 )
@@ -15,13 +14,7 @@ func main() {
 	bst.Insert(2)
 	bst.Insert(1)
 	fmt.Println(bst.BFS())
-	fmt.Println(bst.Size())
-	fmt.Println(bst.DFS("PRE"))
-	fmt.Println(bst.DFS("POST"))
-	fmt.Println(bst.DFS("IN"))
-	fmt.Println(bst.Contains(222))
-
-	x := cc.New()
-	fmt.Println(x)
+	bst.Remove(15)
+	fmt.Println(bst.BFS())
 
 }
