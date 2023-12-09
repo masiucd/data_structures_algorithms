@@ -22,6 +22,6 @@ A binary search tree is a binary tree in which every node fits a specific orderi
 - `toArray()`: returns an array with all the values in the tree, in order
 - `toString()`: returns a string representation of the tree
 - `bfs()`: returns an array with all the values in the tree, in breadth-first order
-- `dfs()`: returns an array with all the values in the tree, in depth-first order
+- `dfs(order: "PRE" | "POST" | "IN");`: returns an array with all the values in the tree, in depth-first order (pre-order, post-order or in-order)
 
 ![Binary Search Tree](https://upload.wikimedia.org/wikipedia/commons/thumb/d/da/Binary_search_tree.svg/1200px-Binary_search_tree.svg.png)

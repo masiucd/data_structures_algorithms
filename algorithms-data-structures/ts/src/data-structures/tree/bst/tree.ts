@@ -1,17 +1,3 @@
-// - `insert(value)`: inserts a new value in the tree, recursively
-// - `insertIter(value)`: inserts a new value in the tree, iteratively
-// - `find(value)`: returns the node with the given value
-// - `remove(value)`: removes the node with the given value
-// - `contains(value)`: returns true if the value exists in the tree, otherwise false
-// - `size()`: returns the number of nodes in the tree
-// - `depth()`: returns the maximum depth of the tree
-// - `min()`: returns the minimum value in the tree
-// - `max()`: returns the maximum value in the tree
-// - `isEmpty()`: returns true if the tree is empty, otherwise false
-// - `toArray()`: returns an array with all the values in the tree, in order
-// - `toString()`: returns a string representation of the tree
-// - `bfs()`: returns an array with all the values in the tree, in breadth-first order
-// - `dfs()`: returns an array with all the values in the tree, in depth-first order
 interface BinarySearchTreeAble {
   insert(value: number): TreeNode | null;
   insertIter(value: number): TreeNode | null;
@@ -26,7 +12,7 @@ interface BinarySearchTreeAble {
   toArray(): number[];
   toString(): string;
   bfs(): number[];
-  dfs(): number[];
+  dfs(order: "PRE" | "POST" | "IN"): number[];
 }
 
 class TreeNode {
@@ -110,27 +96,20 @@ export class BinarySearchTree implements BinarySearchTreeAble {
     }
     return result;
   }
-  #insertHelper(node: TreeNode | null, value: number) {
-    if (node === null) {
-      node = new TreeNode(value);
-      return node;
-    }
-    if (value < node.value) {
-      node.left = this.#insertHelper(node.left, value);
-    } else {
-      node.right = this.#insertHelper(node.right, value);
-    }
-    return node;
-  }
+
   find(value: number): TreeNode | null {
-    throw new Error("Method not implemented.");
+    if (this.root === null) return null;
+    return this.#findHelper(this.root, value);
   }
+
   remove(value: number): TreeNode | null {
     throw new Error("Method not implemented.");
   }
   size(): number {
-    throw new Error("Method not implemented.");
+    if (this.root === null) return 0;
+    return this.#sizeHelper(this.root);
   }
+
   depth(): number {
     throw new Error("Method not implemented.");
   }
@@ -151,7 +130,66 @@ export class BinarySearchTree implements BinarySearchTreeAble {
   toString(): string {
     throw new Error("Method not implemented.");
   }
-  dfs(): number[] {
-    throw new Error("Method not implemented.");
+  dfs(order: "PRE" | "POST" | "IN" = "PRE"): number[] {
+    let result: number[] = [];
+    switch (order) {
+      case "PRE":
+        this.#preOrder(this.root, result);
+        break;
+      case "POST":
+        this.#postOrder(this.root, result);
+        break;
+      case "IN":
+        this.#inOrder(this.root, result);
+        break;
+      default:
+        break;
+    }
+    return result;
+  }
+  #inOrder(node: TreeNode | null, result: number[]) {
+    if (node === null) return;
+    this.#inOrder(node.left, result);
+    result.push(node.value);
+    this.#inOrder(node.right, result);
+  }
+
+  #preOrder(node: TreeNode | null, result: number[]) {
+    if (node === null) return;
+    result.push(node.value);
+    this.#preOrder(node.left, result);
+    this.#preOrder(node.right, result);
+  }
+
+  #postOrder(node: TreeNode | null, result: number[]) {
+    if (node === null) return;
+    this.#postOrder(node.left, result);
+    this.#postOrder(node.right, result);
+    result.push(node.value);
+  }
+
+  #sizeHelper(node: TreeNode | null): number {
+    if (node === null) return 0;
+    return 1 + this.#sizeHelper(node.left) + this.#sizeHelper(node.right);
+  }
+  #insertHelper(node: TreeNode | null, value: number) {
+    if (node === null) {
+      node = new TreeNode(value);
+      return node;
+    }
+    if (value < node.value) {
+      node.left = this.#insertHelper(node.left, value);
+    } else {
+      node.right = this.#insertHelper(node.right, value);
+    }
+    return node;
+  }
+  #findHelper(node: TreeNode | null, value: number): TreeNode | null {
+    if (node === null) return null;
+    if (node.value === value) return node;
+    if (value < node.value) {
+      return this.#findHelper(node.left, value);
+    }
+    return this.#findHelper(node.right, value);
   }
 }
