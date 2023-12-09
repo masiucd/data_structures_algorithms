@@ -1,5 +1,9 @@
 package bst
 
+import (
+	ll "github.com/bahlo/generic-list-go"
+)
+
 type Node struct {
 	Value int
 	Left  *Node
@@ -90,16 +94,18 @@ func (t *Bst) Contains(value int) bool {
 
 func (t *Bst) BFS() []int {
 	var result []int
-	q := []Node{*t.root}
-	for len(q) > 0 {
-		node := q[0]
-		q = q[1:]
+	queue := ll.New[*Node]()
+	queue.PushBack(t.root)
+	for queue.Len() > 0 {
+		element := queue.Front()
+		node := element.Value
+		queue.Remove(element)
 		result = append(result, node.Value)
 		if node.Left != nil {
-			q = append(q, *node.Left)
+			queue.PushBack(node.Left)
 		}
 		if node.Right != nil {
-			q = append(q, *node.Right)
+			queue.PushBack(node.Right)
 		}
 	}
 	return result
