@@ -14,6 +14,7 @@ type Tree interface {
 	Insert(value int)
 	Search(value int) bool
 	Remove(value int)
+	Size() int
 	Traverse()
 	Find(value int) *Node
 	Contains(value int) bool
@@ -50,8 +51,20 @@ func insert(node *Node, value int) *Node {
 	return node
 }
 
-func (t *Bst) Search(value int) bool   { return false }
-func (t *Bst) Remove(value int)        {}
+func (t *Bst) Search(value int) bool { return false }
+func (t *Bst) Remove(value int)      {}
+func (t *Bst) Size() int {
+	if t.root == nil {
+		return 0
+	}
+	return size(t.root)
+}
+func size(node *Node) int {
+	if node == nil {
+		return 0
+	}
+	return 1 + size(node.left) + size(node.right)
+}
 func (t *Bst) Traverse()               {}
 func (t *Bst) Find(value int) *Node    { return nil }
 func (t *Bst) Contains(value int) bool { return false }
@@ -74,6 +87,9 @@ func (t *Bst) BFS() []int {
 }
 
 func (t *Bst) DFS(order string) []int { return nil }
+func inOrder(result *[]int)           {}
+func preOrder(result *[]int)          {}
+func postOrder(result *[]int)         {}
 
 func main() {
 	bst := NewBst()
@@ -82,7 +98,7 @@ func main() {
 	bst.Insert(15)
 	bst.Insert(2)
 	bst.Insert(1)
-
 	fmt.Println(bst.BFS())
+	fmt.Println(bst.Size())
 
 }
