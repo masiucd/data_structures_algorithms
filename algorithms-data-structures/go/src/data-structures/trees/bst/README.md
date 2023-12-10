@@ -26,6 +26,8 @@ This is a binary search tree.
 - Contains(value int) bool
 - BFS() []int
 - DFS(order string) []int // in, pre, post
+- Min() int
+- Max() int
 
 ## Time Complexity
 

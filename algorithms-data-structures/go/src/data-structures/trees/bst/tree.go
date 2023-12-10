@@ -18,9 +18,8 @@ type Tree interface {
 	Contains(value int) bool
 	BFS() []int
 	DFS(order string) []int // in, pre, post
-	Min() *Node             // in, pre, post
-	Max() *Node             // in, pre, post
-
+	Min() *Node
+	Max() *Node
 }
 
 func NewBst() Tree {
@@ -88,13 +87,21 @@ func (t *Bst) Size() int {
 	if t.root == nil {
 		return 0
 	}
-	return size(t.root)
-}
-func size(node *Node) int {
-	if node == nil {
-		return 0
+	var count int
+	stack := []*Node{t.root}
+	for len(stack) > 0 {
+		node := stack[len(stack)-1]  // Get the last element
+		stack = stack[:len(stack)-1] // Remove the last element
+		count++
+		if node.Left != nil {
+			stack = append(stack, node.Left)
+		}
+		if node.Right != nil {
+			stack = append(stack, node.Right)
+		}
 	}
-	return 1 + size(node.Left) + size(node.Right)
+
+	return count
 }
 
 func (t *Bst) Find(value int) *Node {

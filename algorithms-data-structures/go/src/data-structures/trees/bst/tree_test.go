@@ -69,3 +69,8 @@ func TestDFSPostOrder(t *testing.T) {
 	bst := buildTree()
 	assert.Equal(t, []int{1, 2, 5, 20, 15, 10}, bst.DFS("POST"))
 }
+
+func TestSize(t *testing.T) {
+	bst := buildTree()
+	assert.Equal(t, 6, bst.Size())
+}
