@@ -1,20 +1,40 @@
 package main
 
-import (
-	"fmt"
-	"go-ds/src/data-structures/trees/bst"
-)
+type TreeNode struct {
+	Val   int
+	Left  *TreeNode
+	Right *TreeNode
+}
 
 func main() {
-	bst := bst.NewBst()
-	bst.Insert(10)
-	bst.Insert(5)
-	bst.Insert(15)
-	bst.Insert(20)
-	bst.Insert(2)
-	bst.Insert(1)
-	fmt.Println(bst.BFS())
-	bst.Remove(15)
-	fmt.Println(bst.BFS())
+	root := &TreeNode{Val: 1}
+	root.Left = &TreeNode{Val: 2}
+	root.Right = &TreeNode{Val: 3}
+	targetSum := 4
+	res := hasPathSum(root, targetSum)
+	println(res)
+}
 
+/**
+ * Definition for a binary tree node.
+ * type TreeNode struct {
+ *     Val int
+ *     Left *TreeNode
+ *     Right *TreeNode
+ * }
+ */
+func hasPathSum(root *TreeNode, targetSum int) bool {
+	if root == nil {
+		return false
+	}
+	if root.Val == targetSum && root.Left == nil && root.Right == nil {
+		return true
+	}
+	if hasPathSum(root.Left, targetSum-root.Val) {
+		return true
+	}
+	if hasPathSum(root.Right, targetSum-root.Val) {
+		return true
+	}
+	return false
 }
