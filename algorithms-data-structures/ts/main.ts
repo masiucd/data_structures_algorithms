@@ -1,17 +1,18 @@
-import {BinarySearchTree} from "@/data-structures/tree/bst/tree";
+import {TreeNode} from "@/data-structures/tree/TreeNode";
+import {
+  dfsUsingRecursion,
+  dfsUsingStack,
+} from "@/data-structures/tree/depth-first-search/dfs";
 
-let bst = new BinarySearchTree();
-bst.insert(10);
-bst.insert(8);
-bst.insert(16);
-bst.insert(5);
-bst.insert(7);
-bst.insert(32);
-bst.insert(12);
-bst.insert(20);
+let node = new TreeNode(1);
+node.left = new TreeNode(2);
+node.right = new TreeNode(3);
+node.left.left = new TreeNode(4);
+node.left.right = new TreeNode(5);
+node.right.left = new TreeNode(6);
 
-console.log(bst.bfs());
-console.log(bst.min());
-console.log(bst.max());
-console.log(bst.dfs("POST"));
-console.log(bst.find(5));
+let numbers: Array<number> = [];
+console.log(dfsUsingStack(node));
+console.log("----");
+dfsUsingRecursion(node, numbers);
+console.log(numbers);
