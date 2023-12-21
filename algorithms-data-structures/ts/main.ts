@@ -1,17 +1,32 @@
-import {BinarySearchTree} from "@/data-structures/tree/bst/tree";
+function topKFrequent(nums: number[], k: number): number[] {
+  let store = new Map<number, number>();
+  for (let n of nums) {
+    if (store.has(n)) {
+      let amount = store.get(n);
+      if (amount) {
+        store.set(n, amount + 1);
+      }
+    } else {
+      store.set(n, 1);
+    }
+  }
 
-let bst = new BinarySearchTree();
-bst.insert(10);
-bst.insert(8);
-bst.insert(16);
-bst.insert(5);
-bst.insert(7);
-bst.insert(32);
-bst.insert(12);
-bst.insert(20);
+  let buckets: number[][] = new Array(nums.length + 1).map(() => []);
+  for (let [k, v] of store) {
+    if (!buckets[v]) buckets[v] = [];
+    buckets[v].push(k);
+  }
 
-console.log(bst.bfs());
-console.log(bst.min());
-console.log(bst.max());
-console.log(bst.dfs("POST"));
-console.log(bst.find(5));
+  let result: number[] = [];
+  for (let i = buckets.length - 1; i >= 0; i--) {
+    let bucket = buckets[i];
+
+    if (bucket && k > 0) {
+      result.push(...bucket);
+      k -= bucket.length;
+    }
+  }
+  return result;
+}
+
+console.log(topKFrequent([1, 1, 1, 2, 2, 3], 2));
