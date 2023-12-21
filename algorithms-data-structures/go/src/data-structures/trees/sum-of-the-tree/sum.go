@@ -1,16 +1,12 @@
 package sumofthetree
 
-type treeNode struct {
-	value int
-	left  *treeNode
-	right *treeNode
-}
+import "go-ds/src/data-structures/trees"
 
-func treeSum(root *treeNode) int {
+func treeSum(root *trees.TreeNode) int {
 	if root == nil {
 		return 0
 	}
-	left := treeSum(root.left)
-	right := treeSum(root.right)
-	return root.value + left + right
+	left := treeSum(root.Left)
+	right := treeSum(root.Right)
+	return root.Val + left + right
 }
