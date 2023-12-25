@@ -1,5 +1,7 @@
 package main
 
+import "fmt"
+
 type TreeNode struct {
 	Val   int
 	Left  *TreeNode
@@ -10,9 +12,9 @@ func main() {
 	root := &TreeNode{Val: 1}
 	root.Left = &TreeNode{Val: 2}
 	root.Right = &TreeNode{Val: 3}
-	targetSum := 4
-	res := hasPathSum(root, targetSum)
-	println(res)
+
+	res := insertIntoBST(root, 5)
+	fmt.Println(res)
 }
 
 /**
@@ -23,18 +25,18 @@ func main() {
  *     Right *TreeNode
  * }
  */
-func hasPathSum(root *TreeNode, targetSum int) bool {
+func insertIntoBST(root *TreeNode, val int) *TreeNode {
+	return insert(root, val)
+}
+
+func insert(root *TreeNode, val int) *TreeNode {
 	if root == nil {
-		return false
+		return &TreeNode{Val: val}
 	}
-	if root.Val == targetSum && root.Left == nil && root.Right == nil {
-		return true
+	if val < root.Val {
+		root.Left = insert(root.Left, val)
+	} else if val > root.Val {
+		root.Right = insert(root.Right, val)
 	}
-	if hasPathSum(root.Left, targetSum-root.Val) {
-		return true
-	}
-	if hasPathSum(root.Right, targetSum-root.Val) {
-		return true
-	}
-	return false
+	return root
 }
