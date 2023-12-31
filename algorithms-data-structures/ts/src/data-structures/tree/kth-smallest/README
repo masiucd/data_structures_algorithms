@@ -1,0 +1,40 @@
+# Kth Smallest Element in a BST
+
+Given a binary search tree, write a function `kthSmallest` to find the kth smallest element in it.
+
+## Example 1:
+
+```
+Input: root = [3,1,4,null,2], k = 1
+Output: 1
+```
+
+## Example 2:
+
+```
+Input: root = [5,3,6,2,4,null,null,1], k = 3
+Output: 3
+```
+
+## solution
+
+```ts
+function kthSmallest(root: TreeNode | null, k: number): number {
+  let nums: number[] = [];
+  dfsInOrder(root, nums);
+  return k === 0 ? nums[0] : nums[k - 1];
+}
+
+function dfsInOrder(root: TreeNode | null, nums: number[]) {
+  if (!root) return;
+  dfsInOrder(root.left, nums);
+  nums.push(root.val);
+  dfsInOrder(root.right, nums);
+}
+```
+
+The provided TypeScript code is a solution for finding the kth smallest element in a binary search tree (BST). It uses the depth-first search (DFS) algorithm in an _in-order traversal_ manner.
+
+The main function `kthSmallest` takes two arguments: root, which is the root node of the BST, and k, which is the position of the smallest element you want to find. The root can be either a TreeNode or null. The function `kthSmallest` initializes an empty array nums to store the elements of the BST in sorted order. It then calls the helper function `dfsInOrder` to fill the nums array. After the DFS traversal, the nums array will contain the elements of the BST in ascending order. The function then returns the kth smallest element. If k is 0, it returns the first element; otherwise, it returns the k-1th element (since array indices start at 0).
+
+The helper function `dfsInOrder` performs an _in-order traversal_ of the BST. It takes two arguments: root, which is the current node in the traversal, and nums, which is the array to store the elements. If the root is null, it means we've reached a leaf node and the function returns. Otherwise, it recursively calls `dfsInOrder` on the left child of the current node, adds the value of the current node to the nums array, and then recursively calls `dfsInOrder` on the right child. This order of operations ensures that the elements are added to the nums array in ascending order.
