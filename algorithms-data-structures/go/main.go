@@ -1,39 +1,42 @@
 package main
 
-<<<<<<< HEAD
-import (
-	"fmt"
-)
+import "fmt"
+
+type TreeNode struct {
+	Val   int
+	Left  *TreeNode
+	Right *TreeNode
+}
 
 func main() {
+	root := &TreeNode{Val: 1}
+	root.Left = &TreeNode{Val: 2}
+	root.Right = &TreeNode{Val: 3}
 
-	xs := []int{1, 1, 1, 1, 2, 2, 2, 3}
-	k := 2
-	res := topKFrequent(xs, k)
+	res := insertIntoBST(root, 5)
 	fmt.Println(res)
 }
 
-func topKFrequent(numbers []int, k int) []int {
-	var store = make(map[int]int)
-	for _, v := range numbers {
-		store[v]++
-	}
-	// bucket that stores the numbers with the same frequency
-	bucket := make([][]int, len(numbers)+1)
-	for k, v := range store {
-		bucket[v] = append(bucket[v], k)
-	}
+/**
+ * Definition for a binary tree node.
+ * type TreeNode struct {
+ *     Val int
+ *     Left *TreeNode
+ *     Right *TreeNode
+ * }
+ */
+func insertIntoBST(root *TreeNode, val int) *TreeNode {
+	return insert(root, val)
+}
 
-	var res []int
-	// iterate the bucket from the end
-	for i := len(bucket) - 1; i >= 0; i-- {
-		// if the bucket is not empty and k is not 0
-		if len(bucket[i]) > 0 && k > 0 {
-			// append the numbers to the result
-			res = append(res, bucket[i]...)
-			// decrement k by the length of the bucket
-			k -= len(bucket[i])
-		}
+func insert(root *TreeNode, val int) *TreeNode {
+	if root == nil {
+		return &TreeNode{Val: val}
 	}
-	return res
+	if val < root.Val {
+		root.Left = insert(root.Left, val)
+	} else if val > root.Val {
+		root.Right = insert(root.Right, val)
+	}
+	return root
 }
