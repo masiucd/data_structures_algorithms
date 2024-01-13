@@ -1,32 +1,15 @@
-function topKFrequent(nums: number[], k: number): number[] {
-  let store = new Map<number, number>();
-  for (let n of nums) {
-    if (store.has(n)) {
-      let amount = store.get(n);
-      if (amount) {
-        store.set(n, amount + 1);
-      }
-    } else {
-      store.set(n, 1);
+function adjacentElementsProduct(inputArray: number[]): number {
+  let max = inputArray[0] * inputArray[1];
+  for (let i = 1; i < inputArray.length - 1; i++) {
+    let current = inputArray[i];
+    let next = inputArray[i + 1];
+    let product = current * next;
+    if (max < product) {
+      max = product;
     }
   }
-
-  let buckets: number[][] = new Array(nums.length + 1).map(() => []);
-  for (let [k, v] of store) {
-    if (!buckets[v]) buckets[v] = [];
-    buckets[v].push(k);
-  }
-
-  let result: number[] = [];
-  for (let i = buckets.length - 1; i >= 0; i--) {
-    let bucket = buckets[i];
-
-    if (bucket && k > 0) {
-      result.push(...bucket);
-      k -= bucket.length;
-    }
-  }
-  return result;
+  return max;
 }
 
-console.log(topKFrequent([1, 1, 1, 2, 2, 3], 2));
+console.log(adjacentElementsProduct([3, 6, -2, -5, 7, 3]));
+console.log(adjacentElementsProduct([9, 5, 10, 2, 24, -1, -48]));
