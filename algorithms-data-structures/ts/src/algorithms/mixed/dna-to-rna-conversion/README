@@ -1,0 +1,5 @@
+# DNA to RNA conversion
+
+## Description
+
+Convert a DNA string to a RNA string by replacing all occurrences of `T` with `U`.
