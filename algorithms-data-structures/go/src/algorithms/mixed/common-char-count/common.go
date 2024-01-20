@@ -25,3 +25,20 @@ func commonCharacterCount(s1, s2 string) int {
 
 	return res
 }
+func commonCharacterCountTwo(s1, s2 string) int {
+	seen := make(map[rune]int)
+	var res int
+
+	for _, v := range s1 {
+		seen[v]++
+	}
+
+	for _, v := range s2 {
+		if seen[v] > 0 {
+			res++
+			seen[v]--
+		}
+	}
+
+	return res
+}
