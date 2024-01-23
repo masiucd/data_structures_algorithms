@@ -20,3 +20,25 @@ func isLucky(n int) bool {
 	}
 	return sum1 == sum2
 }
+
+func isLuckyV2(n int) bool {
+	var sum1, sum2, length int
+	temp := n
+	// Calculate the length of the number
+	for temp != 0 {
+		length++
+		temp /= 10
+	}
+	half := length / 2
+	// Calculate the sums of the first and second halves of the number
+	for i := 0; i < length; i++ {
+		digit := n % 10
+		if i < half {
+			sum1 += digit
+		} else {
+			sum2 += digit
+		}
+		n /= 10
+	}
+	return sum1 == sum2
+}
