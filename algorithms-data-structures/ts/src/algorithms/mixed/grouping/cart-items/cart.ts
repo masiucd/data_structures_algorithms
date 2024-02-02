@@ -38,3 +38,22 @@ export function groupFruitsV2(fruits: Fruit[]): Record<string, GroupedFruit> {
     return obj;
   }, {});
 }
+
+export function groupToList(items: Fruit[]) {
+  return items.reduce<
+    {
+      id: number;
+      name: string;
+      price: number;
+      qty: number;
+    }[]
+  >((xs, item) => {
+    let foundItem = xs.find((x) => x.id === item.id);
+    if (foundItem) {
+      foundItem.qty = foundItem.qty += 1;
+    } else {
+      xs.push({...item, qty: 1});
+    }
+    return xs;
+  }, []);
+}
