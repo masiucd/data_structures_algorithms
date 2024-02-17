@@ -1,6 +1,6 @@
 module go-ds
 
-go 1.21.1
+go 1.22.0
 
 require (
 	github.com/bahlo/generic-list-go v0.2.0
