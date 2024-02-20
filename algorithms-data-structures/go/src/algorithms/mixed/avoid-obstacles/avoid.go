@@ -16,7 +16,7 @@ func avoidObstacles(inputArray []int) int {
 	}
 }
 
-func everyStrict(inputArray []int, fn func(n int) bool) bool {
+func everyStrict[T any](inputArray []T, fn func(n T) bool) bool {
 	i := 0
 	for _, value := range inputArray {
 		if fn(value) {
