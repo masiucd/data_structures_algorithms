@@ -27,14 +27,14 @@ func everyStrict[T any](inputArray []T, fn func(n T) bool) bool {
 }
 
 func avoidObstaclesV2(inputArray []int) int {
-	sum := 1
+	jumps := 1
 	for i := 0; i < len(inputArray); i++ {
 		// we hit an obstacle
-		// so we reset the index and increment the sum
-		if inputArray[i]%sum == 0 {
+		// so we reset the index and increment the jumps
+		if inputArray[i]%jumps == 0 {
 			i = -1
-			sum++
+			jumps++
 		}
 	}
-	return sum
+	return jumps
 }
