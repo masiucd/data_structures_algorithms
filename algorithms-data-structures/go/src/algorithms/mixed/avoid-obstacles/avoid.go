@@ -25,3 +25,16 @@ func everyStrict[T any](inputArray []T, fn func(n T) bool) bool {
 	}
 	return i == len(inputArray)
 }
+
+func avoidObstaclesV2(inputArray []int) int {
+	sum := 1
+	for i := 0; i < len(inputArray); i++ {
+		// we hit an obstacle
+		// so we reset the index and increment the sum
+		if inputArray[i]%sum == 0 {
+			i = -1
+			sum++
+		}
+	}
+	return sum
+}

@@ -23,4 +23,11 @@ func TestAvoidObstacles(t *testing.T) {
 			assert.Equal(t, tc.expected, res)
 		})
 	}
+
+	for _, tc := range testCases {
+		t.Run(tc.name, func(t *testing.T) {
+			res := avoidObstaclesV2(tc.input)
+			assert.Equal(t, tc.expected, res)
+		})
+	}
 }
