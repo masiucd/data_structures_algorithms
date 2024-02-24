@@ -1,3 +1,5 @@
+import {getMdxContents} from "@/app/db/content";
+
 export default function DataStructuresSlugPage({
 	params,
 }: {
@@ -5,6 +7,10 @@ export default function DataStructuresSlugPage({
 		slug: string;
 	};
 }) {
+	let x = getMdxContents();
+
+	console.log("x", x);
+
 	return (
 		<div>
 			<p>asdas</p>

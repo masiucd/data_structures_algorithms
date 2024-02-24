@@ -1,0 +1,104 @@
+---
+title: "Linked Lists"
+published: "2024-03-01"
+summery: "Linked List is a linear data structure. It is a collection of nodes where each node points to the next node in the sequence. It is a data structure consisting of a collection of nodes which together represent a sequence."
+---
+
+## What is Linked List?
+
+A linked list is a linear data structure, in which the elements are not stored at contiguous memory locations. The elements in a linked list are linked using pointers. In simple words, a linked list consists of nodes where each node contains a data field and a reference(link) to the next node in the list.
+
+## Types of Linked List
+
+1. **Singly Linked List** : In this type of linked list, each node in the list is connected to the next node in the list. The last node is connected to null.
+
+2. **Doubly Linked List** : In this type of linked list, each node in the list is connected to the next node and the previous node.
+
+3. **Circular Linked List** : In this type of linked list, the last node is connected to the first node.
+
+## Advantages of Linked List
+
+1. **Dynamic Size** : A linked list is a dynamic data structure so it can grow and shrink at runtime by allocating and deallocating memory.
+   So there is no need to give the initial size of the linked list.
+
+2. **Insertion and Deletion** : Insertion and deletion of nodes are really easier. Unlike an array here we don’t have to shift elements after insertion or deletion of an element. In a linked list, we can insert elements anywhere in the list.
+
+3. **No Memory Wastage** : In a linked list, the memory is allocated only when we need to insert a new element.
+
+## Disadvantages of Linked List
+
+1. **Memory Usage** : A linked list uses more memory compare to an array because of the storage used by their pointers.
+
+2. **Traversal** : In a linked list, the traversal is more time-consuming because we can not access the elements randomly. We have to access elements sequentially starting from the first node.
+
+3. **Reverse Traversal** : In a singly linked list, reverse traversal is not possible until we keep track of the previous node.
+
+## Operations on Linked List
+
+1. **Insertion** : Insertion is done at the beginning, end, or at a given position in the linked list.
+
+2. **Deletion** : Deletion is done at the beginning, end, or at a given position in the linked list.
+
+3. **Traversal** : Accessing each element of the linked list.
+
+4. **Searching** : Searching for an element in the linked list.
+
+5. **Sorting** : Sorting the linked list.
+
+6. **Reversing** : Reversing the linked list.
+
+## Implementation of Linked List
+
+```Go
+package main
+
+import "fmt"
+
+type Node struct {
+  data int
+  next *Node
+}
+
+type LinkedList struct {
+  head *Node
+}
+
+func (l *LinkedList) insert(data int) {
+  newNode := &Node{data: data}
+  if l.head == nil {
+    l.head = newNode
+  } else {
+    lastNode := l.head
+    for lastNode.next != nil {
+      lastNode = lastNode.next
+    }
+    lastNode.next = newNode
+  }
+}
+
+func (l *LinkedList) display() {
+  currentNode := l.head
+  for currentNode != nil {
+    fmt.Println(currentNode.data)
+    currentNode = currentNode.next
+  }
+}
+
+func main() {
+  l := LinkedList{}
+  l.insert(10)
+  l.insert(20)
+  l.insert(30)
+  l.display()
+}
+```
+
+## Conclusion
+
+Linked List is a linear data structure. It is a collection of nodes where each node points to the next node in the sequence. It is a data structure consisting of a collection of nodes which together represent a sequence. In a linked list, each node contains data and a reference to the next node in the sequence. Linked list is a dynamic data structure so it can grow and shrink at runtime by allocating and deallocating memory. Insertion and deletion of nodes are really easier in a linked list. But the traversal is more time-consuming because we can not access the elements randomly. We have to access elements sequentially starting from the first node. In a singly linked list, reverse traversal is not possible until we keep track of the previous node.
+
+## References
+
+- [Wikipedia](https://en.wikipedia.org/wiki/Linked_list)
+- [GeeksforGeeks](https://www.geeksforgeeks.org/data-structures/linked-list/)
+- [Programiz](https://www.programiz.com/dsa/linked-list)
