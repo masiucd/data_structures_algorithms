@@ -6,4 +6,7 @@
 	.container {
 		@apply mx-auto px-4;
 	}
+	.app-width {
+		@apply max-w-6xl;
+	}
 }
