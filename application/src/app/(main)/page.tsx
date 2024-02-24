@@ -119,13 +119,21 @@ function buildTree(
 export default function Home() {
 	return (
 		<PageWrapper>
-			<Heading as="h1">Data Structures and Algorithms</Heading>
-			<Text as="p">
-				Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum aliquam
-				maxime magnam quaerat iure deleniti placeat nemo. Saepe mollitia
-				officiis repellendus sunt. Error distinctio voluptatem inventore veniam
-				quasi similique eos!
-			</Text>
+			<section className="mb-5 ">
+				<Heading as="h1">Data Structures and Algorithms</Heading>
+				<aside className="md:pr-60">
+					<Text as="p">
+						A collection of learning resources for data structures and
+						algorithms. From basic to advanced topics.
+					</Text>
+					<Text>
+						Coding problems, algorithms, and data structures are the most
+						important part of any software development development. This is why
+						we need to have a good understanding of data structures and
+						algorithms.
+					</Text>
+				</aside>
+			</section>
 			<Tree treeData={buildTree(data)} level={0} />
 		</PageWrapper>
 	);
