@@ -1,5 +1,13 @@
 import {getMdxContents} from "@/app/db/content";
 
+export async function generateStaticParams() {
+	return getMdxContents().map(({slug}) => ({slug}));
+}
+
+function getPost(slug: string) {
+	return getMdxContents().find((post) => post.slug === slug);
+}
+
 export default function DataStructuresSlugPage({
 	params,
 }: {
@@ -7,14 +15,14 @@ export default function DataStructuresSlugPage({
 		slug: string;
 	};
 }) {
-	let x = getMdxContents();
-
-	console.log("x", x);
-
+	let post = getPost(params.slug);
+	if (!post) {
+		return <div>Post not found</div>;
+	}
 	return (
 		<div>
 			<p>asdas</p>
-			{params.slug}
+			{post.content}
 		</div>
 	);
 }
