@@ -19,3 +19,18 @@ export function searchBST2(
     ? searchBST(root.left, val)
     : searchBST(root.right, val);
 }
+
+export function searchBSTV3(
+  root: TreeNode | null,
+  val: number
+): TreeNode | null {
+  if (root === null) return null;
+  if (root.val === val) return root;
+  if (val < root.val) {
+    return searchBST(root.left, val);
+  } else if (val > root.val) {
+    return searchBST(root.right, val);
+  } else {
+    return root;
+  }
+}

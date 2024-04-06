@@ -1,6 +1,6 @@
 import {test, expect} from "bun:test";
 
-import {searchBST, searchBST2} from "./search";
+import {searchBST, searchBST2, searchBSTV3} from "./search";
 import {TreeNode} from "../TreeNode";
 
 function nodesToArray(root: TreeNode | null): number[] {
@@ -17,4 +17,5 @@ test("searchBST", () => {
 
   expect(nodesToArray(searchBST(root, 2))).toEqual([2, 1, 3]);
   expect(nodesToArray(searchBST2(root, 2))).toEqual([2, 1, 3]);
+  expect(nodesToArray(searchBSTV3(root, 2))).toEqual([2, 1, 3]);
 });
