@@ -1,9 +1,9 @@
 {
-  "name": "ts",
-  "module": "index.ts",
+  "name": "ds-and-a-ts",
+  "module": "main.ts",
   "type": "module",
   "devDependencies": {
-    "bun-types": "latest"
+    "@types/bun": "latest"
   },
   "peerDependencies": {
     "typescript": "^5.0.0"
