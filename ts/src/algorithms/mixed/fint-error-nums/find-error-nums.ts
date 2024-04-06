@@ -21,3 +21,23 @@ export function findErrorNums(nums: number[]): number[] {
   }
   return [duplicate, missing];
 }
+
+export function findErrorNumsV2(nums: number[]): number[] {
+  let xs = new Array(nums.length + 1).fill(0);
+  for (let i = 0; i < nums.length; i++) {
+    xs[nums[i]]++;
+  }
+
+  let duplicate = -1;
+  let missing = -1;
+
+  for (let i = 1; i < xs.length; i++) {
+    //
+    if (xs[i] === 2) {
+      duplicate = i;
+    } else if (xs[i] === 0) {
+      missing = i;
+    }
+  }
+  return [duplicate, missing];
+}

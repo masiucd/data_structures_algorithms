@@ -1,5 +1,5 @@
 import {expect, test} from "bun:test";
-import {findErrorNums} from "./find-error-nums";
+import {findErrorNums, findErrorNumsV2} from "./find-error-nums";
 
 const testCases = [
   {input: [1, 2, 2, 4], expected: [2, 3]},
@@ -10,5 +10,6 @@ const testCases = [
 testCases.forEach(({input, expected}, idx) => {
   test(`findErrorNums - case ${idx + 1}`, () => {
     expect(findErrorNums(input)).toStrictEqual(expected);
+    expect(findErrorNumsV2(input)).toStrictEqual(expected);
   });
 });
