@@ -21,9 +21,17 @@ func TestMissingNumber(t *testing.T) {
 	}
 }
 func TestMissingNumberV2(t *testing.T) {
-
 	for _, tt := range tests {
 		got := missingNumberV2(tt.nums)
+		if got != tt.want {
+			t.Errorf("got %v want %v given", got, tt.want)
+		}
+	}
+}
+
+func TestMissingNumberV3(t *testing.T) {
+	for _, tt := range tests {
+		got := missingNumberV3(tt.nums)
 		if got != tt.want {
 			t.Errorf("got %v want %v given", got, tt.want)
 		}

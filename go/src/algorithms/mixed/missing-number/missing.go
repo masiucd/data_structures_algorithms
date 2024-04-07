@@ -22,3 +22,18 @@ func missingNumberV2(nums []int) int {
 	}
 	return len(nums)*(len(nums)+1)/2 - sum
 }
+
+func missingNumberV3(nums []int) int {
+	missing := 0
+	sum := 0
+
+	for i := 0; i < len(nums); i++ {
+		// missing is the sum of the first n numbers
+		missing += i + 1
+		// sum is the sum of the numbers in the array
+		sum += nums[i]
+
+	}
+	// missing - sum is the missing number
+	return missing - sum
+}
