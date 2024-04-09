@@ -19,3 +19,12 @@ func findComplement(num int) int {
 	i, _ := strconv.ParseInt(r, 2, 64)
 	return int(i)
 }
+
+func findComplementV2(num int) int {
+	mask := 1
+	for mask < num {
+		mask = mask << 1
+		mask = mask | 1
+	}
+	return num ^ mask
+}
