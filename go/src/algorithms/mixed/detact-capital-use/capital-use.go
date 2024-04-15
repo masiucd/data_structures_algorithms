@@ -1,6 +1,9 @@
 package mixed
 
-import "unicode"
+import (
+	"strings"
+	"unicode"
+)
 
 func detectCapitalUse(word string) bool {
 	var upperCount int
@@ -52,3 +55,11 @@ func isLower(r rune) bool {
 // All letters in this word are capitals, like "USA".
 // All letters in this word are not capitals, like "leetcode".
 // Only the first letter in this word is capital, like "Google".
+
+func detectCapitalUseV2(word string) bool {
+	allCap := strings.ToUpper(word)
+	remainingPart := strings.ToLower(word)[1:]
+
+	return word == allCap || word[1:] == remainingPart
+
+}

@@ -17,5 +17,8 @@ func TestCapitalUse(t *testing.T) {
 		if got := detectCapitalUse(test.word); got != test.want {
 			t.Errorf("detectCapitalUse(%q) = %v; want %v", test.word, got, test.want)
 		}
+		if got := detectCapitalUseV2(test.word); got != test.want {
+			t.Errorf("detectCapitalUse(%q) = %v; want %v", test.word, got, test.want)
+		}
 	}
 }
