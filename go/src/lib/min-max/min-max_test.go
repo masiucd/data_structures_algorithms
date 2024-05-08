@@ -3,33 +3,41 @@ package minmax
 import "testing"
 
 func TestMaxFunc(t *testing.T) {
-	xs := []int{1, 2, 3, 10, 4, 5}
-	want := 10
-	result := Max(xs)
-	if result != want {
-		t.Errorf("Expected 5 but got %d", result)
+	testCases := []struct {
+		name     string
+		input    []float64
+		expected float64
+	}{
+		{"Integers", []float64{1, 2, 3, 10, 4, 5}, 10},
+		{"Floats", []float64{1.1, 2.2, 3.3, 10.1, 4.4, 5.5}, 10.1},
 	}
 
-	listWithFloats := []float64{1.1, 2.2, 3.3, 10.1, 4.4, 5.5}
-	wantFloat := 10.1
-	resultFloat := Max(listWithFloats)
-	if resultFloat != wantFloat {
-		t.Errorf("Expected 5 but got %f", resultFloat)
+	for _, tc := range testCases {
+		t.Run(tc.name, func(t *testing.T) {
+			result := Max(tc.input)
+			if result != tc.expected {
+				t.Errorf("Expected %v but got %v", tc.expected, result)
+			}
+		})
 	}
 }
 
 func TestMinFunc(t *testing.T) {
-	xs := []int{1, 2, 3, 10, 4, 5}
-	want := 1
-	result := Min(xs)
-	if result != want {
-		t.Errorf("Expected 5 but got %d", result)
+	testCases := []struct {
+		name     string
+		input    []float64
+		expected float64
+	}{
+		{"Integers", []float64{1, 2, 3, 10, 4, 5}, 1},
+		{"Floats", []float64{1.1, 2.2, 3.3, 10.1, 4.4, 5.5}, 1.1},
 	}
 
-	listWithFloats := []float64{1.1, 2.2, 3.3, 10.1, 4.4, 5.5}
-	wantFloat := 1.1
-	resultFloat := Min(listWithFloats)
-	if resultFloat != wantFloat {
-		t.Errorf("Expected 5 but got %f", resultFloat)
+	for _, tc := range testCases {
+		t.Run(tc.name, func(t *testing.T) {
+			result := Min(tc.input)
+			if result != tc.expected {
+				t.Errorf("Expected %v but got %v", tc.expected, result)
+			}
+		})
 	}
 }
