@@ -9,6 +9,13 @@ func TestMaxFunc(t *testing.T) {
 	if result != want {
 		t.Errorf("Expected 5 but got %d", result)
 	}
+
+	listWithFloats := []float64{1.1, 2.2, 3.3, 10.1, 4.4, 5.5}
+	wantFloat := 10.1
+	resultFloat := Max(listWithFloats)
+	if resultFloat != wantFloat {
+		t.Errorf("Expected 5 but got %f", resultFloat)
+	}
 }
 
 func TestMinFunc(t *testing.T) {
@@ -17,5 +24,12 @@ func TestMinFunc(t *testing.T) {
 	result := Min(xs)
 	if result != want {
 		t.Errorf("Expected 5 but got %d", result)
+	}
+
+	listWithFloats := []float64{1.1, 2.2, 3.3, 10.1, 4.4, 5.5}
+	wantFloat := 1.1
+	resultFloat := Min(listWithFloats)
+	if resultFloat != wantFloat {
+		t.Errorf("Expected 5 but got %f", resultFloat)
 	}
 }
