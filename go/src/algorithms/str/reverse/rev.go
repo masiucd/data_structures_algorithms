@@ -7,3 +7,11 @@ func reverse(s string) string {
 	}
 	return string(r)
 }
+
+// mutates the input slice
+func reverseString(s []byte) {
+	size := len(s)
+	for i := 0; i < size/2; i++ {
+		s[i], s[size-i-1] = s[size-i-1], s[i]
+	}
+}
