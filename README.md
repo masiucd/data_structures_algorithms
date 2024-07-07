@@ -2,29 +2,34 @@
 
 ## About
 
-This repository contains implementations of data structures and algorithms in ` Javascript/Typescript``,  `Rust`and`Go`.
+This repository contains implementations of data structures and algorithms using `(GO)[https://golang.org/]`.
+
+Data structures and algorithms are the building blocks of computer programming. They are the tools that help us to solve complex problems in an efficient way. Understanding data structures and algorithms is essential for every programmer. It is a common practice to ask data structure and algorithm problems in interviews. So, it is important to have a good understanding of data structures and algorithms.
 
 ## Table of contents
 
-- [Data structures](#data-structures)
-  - [Array](#array)
-  - [Linked List](#linked-list)
-  - [Stack](#stack)
-  - [Queue](#queue)
-  - [Tree](#tree)
-  - [Graph](#graph)
-  - [Hash Table](#hash-table)
-- [Algorithms](#algorithms)
-  - [Searching](#searching)
-    - [Linear Search](#linear-search)
-    - [Binary Search](#binary-search)
-  - [Sorting](#sorting)
-    - [Bubble Sort](#bubble-sort)
-    - [Selection Sort](#selection-sort)
-    - [Insertion Sort](#insertion-sort)
-    - [Merge Sort](#merge-sort)
-    - [Quick Sort](#quick-sort)
-- [Problem Solving](#problem-solving)
+- [Data structures and algorithms](#data-structures-and-algorithms)
+  - [About](#about)
+  - [Table of contents](#table-of-contents)
+  - [Data structures](#data-structures)
+    - [Array](#array)
+    - [Linked List](#linked-list)
+    - [Stack](#stack)
+    - [Queue](#queue)
+    - [Tree](#tree)
+    - [Graph](#graph)
+    - [Hash Table](#hash-table)
+  - [Algorithms](#algorithms)
+    - [Searching](#searching)
+      - [Linear Search](#linear-search)
+      - [Binary Search](#binary-search)
+    - [Sorting](#sorting)
+      - [Bubble Sort](#bubble-sort)
+      - [Selection Sort](#selection-sort)
+      - [Insertion Sort](#insertion-sort)
+      - [Merge Sort](#merge-sort)
+      - [Quick Sort](#quick-sort)
+  - [Problem Solving](#problem-solving)
 
 ## Data structures
 
