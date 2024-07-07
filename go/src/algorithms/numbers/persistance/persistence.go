@@ -7,11 +7,8 @@ import (
 
 func Persistence(n int) int {
 	persistenceCount := 0
-	if isSingleDigit(n) {
-		return persistenceCount
-	}
-
-	for !isSingleDigit(n) {
+	// loop until n is less than 10
+	for n > 9 {
 		nAsString := strconv.Itoa(n)
 		product := 1
 		for _, sn := range strings.Split(nAsString, "") {
@@ -26,11 +23,8 @@ func Persistence(n int) int {
 
 func PersistenceV2(n int) int {
 	persistenceCount := 0
-	if isSingleDigit(n) {
-		return persistenceCount
-	}
-
-	for !isSingleDigit(n) {
+	// loop until n is less than 10
+	for n > 9 {
 		product := 1
 		for n > 0 {
 			digit := n % 10
@@ -46,8 +40,4 @@ func PersistenceV2(n int) int {
 		persistenceCount++
 	}
 	return persistenceCount
-}
-
-func isSingleDigit(n int) bool {
-	return n >= 0 && n <= 9
 }
