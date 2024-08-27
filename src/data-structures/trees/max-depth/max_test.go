@@ -56,5 +56,10 @@ func TestMaxDepth(t *testing.T) {
 				t.Errorf("maxDepth() = %d, want %d", got, tt.want)
 			}
 		})
+		t.Run(tt.name, func(t *testing.T) {
+			if got := maxDepthV2(tt.tree); got != tt.want {
+				t.Errorf("maxDepthV2() = %d, want %d", got, tt.want)
+			}
+		})
 	}
 }
