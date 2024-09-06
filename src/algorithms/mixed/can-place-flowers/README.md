@@ -23,6 +23,6 @@ explanation: plant a flower in the second and the fourth plot and have adjacent 
 ### Constraints:
 
 - 1 <= flowerbed.length <= 2 \* 10^4
-- flowerbed[i] is 0 or 1.
+- `flowerbed[i]` is 0 or 1.
 - There are no two adjacent flowers in flowerbed.
 - 0 <= n <= flowerbed.length
