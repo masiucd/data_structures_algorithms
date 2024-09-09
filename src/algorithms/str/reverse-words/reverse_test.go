@@ -2,58 +2,47 @@ package reversewords
 
 import (
 	"testing"
-
-	"github.com/stretchr/testify/assert"
 )
 
 func TestReverseWords(t *testing.T) {
-	t.Run("should reverse words in a string", func(t *testing.T) {
-		input := "a good   example"
-		expected := "example good a"
-		assert.Equal(t, expected, reverseWords(input))
-	})
+	tests := []struct {
+		name     string
+		input    string
+		expected string
+	}{
+		{"should reverse words in a string", "a good   example", "example good a"},
+		{"should reverse words in a string", "  hello world  ", "world hello"},
+		{"should reverse words in a string", "  Bob    Loves  Alice   ", "Alice Loves Bob"},
+		{"should reverse words in a string", "Alice does not even like bob", "bob like even not does Alice"},
+	}
 
-	t.Run("should reverse words in a string", func(t *testing.T) {
-		input := "  hello world  "
-		expected := "world hello"
-		assert.Equal(t, expected, reverseWords(input))
-	})
-
-	t.Run("should reverse words in a string", func(t *testing.T) {
-		input := "  Bob    Loves  Alice   "
-		expected := "Alice Loves Bob"
-		assert.Equal(t, expected, reverseWords(input))
-	})
-
-	t.Run("should reverse words in a string", func(t *testing.T) {
-		input := "Alice does not even like bob"
-		expected := "bob like even not does Alice"
-		assert.Equal(t, expected, reverseWords(input))
-	})
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			// assert.Equal(t, tt.expected, reverseWords(tt.input))
+			if tt.expected != reverseWords(tt.input) {
+				t.Errorf("Expected %v but got %v", tt.expected, reverseWords(tt.input))
+			}
+		})
+	}
 }
 
 func TestReverseWordsV2(t *testing.T) {
-	t.Run("should reverse words in a string", func(t *testing.T) {
-		input := "a good   example"
-		expected := "example good a"
-		assert.Equal(t, expected, reverseWordsV2(input))
-	})
+	tests := []struct {
+		name     string
+		input    string
+		expected string
+	}{
+		{"should reverse words in a string", "a good   example", "example good a"},
+		{"should reverse words in a string", "  hello world  ", "world hello"},
+		{"should reverse words in a string", "  Bob    Loves  Alice   ", "Alice Loves Bob"},
+		{"should reverse words in a string", "Alice does not even like bob", "bob like even not does Alice"},
+	}
 
-	t.Run("should reverse words in a string", func(t *testing.T) {
-		input := "  hello world  "
-		expected := "world hello"
-		assert.Equal(t, expected, reverseWordsV2(input))
-	})
-
-	t.Run("should reverse words in a string", func(t *testing.T) {
-		input := "  Bob    Loves  Alice   "
-		expected := "Alice Loves Bob"
-		assert.Equal(t, expected, reverseWordsV2(input))
-	})
-
-	t.Run("should reverse words in a string", func(t *testing.T) {
-		input := "Alice does not even like bob"
-		expected := "bob like even not does Alice"
-		assert.Equal(t, expected, reverseWordsV2(input))
-	})
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			if tt.expected != reverseWordsV2(tt.input) {
+				t.Errorf("Expected %v but got %v", tt.expected, reverseWordsV2(tt.input))
+			}
+		})
+	}
 }
