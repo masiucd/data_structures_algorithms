@@ -1,5 +1,9 @@
 package mixed
 
+// productExceptSelf returns an array output such that output[i] is equal to the product of all the elements of nums except nums[i].
+// It uses two auxiliary arrays to store the product of elements to the left and right of each element.
+// nums: input array of integers
+// returns: array of integers where each element is the product of all elements in the input array except the element at the same index
 func productExceptSelf(nums []int) []int {
 	if len(nums) == 0 {
 		return []int{}
@@ -24,6 +28,10 @@ func productExceptSelf(nums []int) []int {
 	return result
 }
 
+// productExceptSelfV2 returns an array output such that output[i] is equal to the product of all the elements of nums except nums[i].
+// It uses a more space-efficient approach by avoiding the use of auxiliary arrays and instead using two variables to keep track of the product.
+// nums: input array of integers
+// returns: array of integers where each element is the product of all elements in the input array except the element at the same index
 func productExceptSelfV2(nums []int) []int {
 	n := len(nums)
 	output := make([]int, n)
