@@ -45,8 +45,13 @@ func moveZeroesV3(nums []int) {
 		// we move the lastFoundZeroAt to the next position
 		if nums[i] != 0 {
 			// swap
-			nums[lastFoundZeroAt], nums[i] = nums[i], nums[lastFoundZeroAt]
+			// nums[lastFoundZeroAt], nums[i] = nums[i], nums[lastFoundZeroAt]
+			swap(&nums[lastFoundZeroAt], &nums[i])
 			lastFoundZeroAt++
 		}
 	}
+}
+
+func swap(a, b *int) {
+	*a, *b = *b, *a
 }
