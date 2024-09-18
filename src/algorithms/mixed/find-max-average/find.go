@@ -7,6 +7,7 @@ func findMaxAverage(nums []int, k int) float64 {
 	}
 	maxSum := tempsum
 	for i := k; i < len(nums); i++ {
+		// maxSum will be the sum of the first k elements in the array
 		maxSum = maxSum - float64(nums[i-k]) + float64(nums[i])
 		tempsum = max(tempsum, maxSum)
 	}
