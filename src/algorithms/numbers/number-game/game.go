@@ -1,8 +1,9 @@
 package numbers
 
 import (
-	"go-ds/src/lib/fp"
 	"sort"
+
+	"github.com/repeale/fp-go"
 )
 
 // https://leetcode.com/problems/minimum-number-game/
