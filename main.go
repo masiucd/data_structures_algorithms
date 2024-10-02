@@ -2,68 +2,31 @@ package main
 
 import (
 	"fmt"
-	linkedlist "go-ds/src/data-structures/linked-list"
+	"time"
 )
 
 func main() {
-	head := linkedlist.SingleNode{Value: 7}
-	head.Next = &linkedlist.SingleNode{Value: 7}
-	head.Next.Next = &linkedlist.SingleNode{Value: 7}
-	head.Next.Next.Next = &linkedlist.SingleNode{Value: 7}
-	head.Next.Next.Next.Next = &linkedlist.SingleNode{Value: 7}
-	head.Next.Next.Next.Next.Next = &linkedlist.SingleNode{Value: 7}
-	head.Next.Next.Next.Next.Next.Next = &linkedlist.SingleNode{Value: 7}
+	memo := make(map[int]int)
+	start := time.Now()
+	fmt.Println(fibFast(100, memo))
+	end := time.Since(start)
+	fmt.Println("end", end)
 
-	// head := linkedlist.SingleNode{Value: 1}
-	// head.Next = &linkedlist.SingleNode{Value: 2}
-	// head.Next.Next = &linkedlist.SingleNode{Value: 6}
-	// head.Next.Next.Next = &linkedlist.SingleNode{Value: 3}
-	// head.Next.Next.Next.Next = &linkedlist.SingleNode{Value: 4}
-	// head.Next.Next.Next.Next.Next = &linkedlist.SingleNode{Value: 5}
-	// head.Next.Next.Next.Next.Next.Next = &linkedlist.SingleNode{Value: 6}
-
-	res := removeElements(&head, 7)
-	printList(res)
+	// start = time.Now()
+	// fmt.Println(fib(50))
+	// end = time.Since(start)
+	// fmt.Println("end", end)
 
 }
 
-func printList(head *linkedlist.SingleNode) {
-	var xs []int
-	current := head
+// 0 1 2 3 4 5 6 7 8 9 10
+// 1 2 3 5 7
 
-	for current != nil {
-		xs = append(xs, current.Value)
-		current = current.Next
+func fib(n int) int {
+	if n <= 2 {
+		return n
 	}
 
-	fmt.Println(xs)
+	return fib(n-2) + fib(n-1)
 }
 
-/**
- * Definition for singly-linked list.
- * type ListNode struct {
- *     Val int
- *     Next *ListNode
- * }
- */
-func removeElements(head *linkedlist.SingleNode, val int) *linkedlist.SingleNode {
-	// Handle the case where the head itself needs to be removed
-	for head != nil && head.Value == val {
-		head = head.Next
-	}
-
-	if head == nil {
-		return nil
-	}
-
-	current := head
-	for current.Next != nil {
-		if current.Next.Value == val {
-			// remove that node
-			current.Next = current.Next.Next
-		} else {
-			current = current.Next
-		}
-	}
-	return head
-}
