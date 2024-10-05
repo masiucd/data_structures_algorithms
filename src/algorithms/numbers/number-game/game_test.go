@@ -54,3 +54,21 @@ func equal(a, b []int) bool {
 
 	return true
 }
+
+func BenchmarkNumberGame(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		numberGame(tests[0].input)
+	}
+}
+
+func BenchmarkNumberGameV2(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		numberGameV2(tests[0].input)
+	}
+}
+
+func BenchmarkNumberGameV3(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		numberGameV3(tests[0].input)
+	}
+}
