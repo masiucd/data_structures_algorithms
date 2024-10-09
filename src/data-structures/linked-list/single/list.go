@@ -2,7 +2,7 @@ package single
 
 import (
 	"fmt"
-	"go-ds/src/data-structures/linked-list"
+	linkedlist "go-ds/src/data-structures/linked-list"
 	"strings"
 )
 
